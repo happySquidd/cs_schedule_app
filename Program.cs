@@ -1,4 +1,5 @@
-﻿using System;
+﻿using scheduleApp.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,10 @@ namespace scheduleApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            DBconnection.openConnection();
             Application.Run(new Form1());
+            DBconnection.closeConnection();
         }
     }
 }

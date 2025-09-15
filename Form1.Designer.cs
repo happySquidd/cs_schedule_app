@@ -28,33 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.submit = new System.Windows.Forms.Button();
+            this.languageLabel = new System.Windows.Forms.Label();
+            this.usernameBox = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // submit
             // 
-            this.button1.Location = new System.Drawing.Point(384, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submit.BackColor = System.Drawing.SystemColors.Window;
+            this.submit.Location = new System.Drawing.Point(185, 191);
+            this.submit.Name = "submit";
+            this.submit.Size = new System.Drawing.Size(90, 37);
+            this.submit.TabIndex = 0;
+            this.submit.Text = "Log in";
+            this.submit.UseVisualStyleBackColor = false;
+            this.submit.Click += new System.EventHandler(this.submit_Click);
+            // 
+            // languageLabel
+            // 
+            this.languageLabel.AutoSize = true;
+            this.languageLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.languageLabel.Location = new System.Drawing.Point(12, 256);
+            this.languageLabel.Name = "languageLabel";
+            this.languageLabel.Size = new System.Drawing.Size(51, 13);
+            this.languageLabel.TabIndex = 1;
+            this.languageLabel.Text = "language";
+            // 
+            // usernameBox
+            // 
+            this.usernameBox.Location = new System.Drawing.Point(116, 103);
+            this.usernameBox.Name = "usernameBox";
+            this.usernameBox.Size = new System.Drawing.Size(159, 20);
+            this.usernameBox.TabIndex = 2;
+            // 
+            // passwordBox
+            // 
+            this.passwordBox.Location = new System.Drawing.Point(116, 145);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(159, 20);
+            this.passwordBox.TabIndex = 3;
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(12, 106);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(58, 13);
+            this.usernameLabel.TabIndex = 4;
+            this.usernameLabel.Text = "Username:";
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(14, 148);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(56, 13);
+            this.passwordLabel.TabIndex = 5;
+            this.passwordLabel.Text = "Password:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 438);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(310, 278);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.usernameLabel);
+            this.Controls.Add(this.passwordBox);
+            this.Controls.Add(this.usernameBox);
+            this.Controls.Add(this.languageLabel);
+            this.Controls.Add(this.submit);
             this.Name = "Form1";
             this.Text = "Log in";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button submit;
+        private System.Windows.Forms.Label languageLabel;
+        private System.Windows.Forms.TextBox usernameBox;
+        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.Label passwordLabel;
     }
 }
 

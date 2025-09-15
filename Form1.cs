@@ -10,36 +10,48 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace scheduleApp
 {
     public partial class Form1 : Form
     {
+        readonly string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+
         public Form1()
         {
             InitializeComponent();
 
-            // get the connection string
-            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-
-            // make the connection
-            MySqlConnection conn = null;
-            try
-            {
-                conn = new MySqlConnection(constr);
-
-                conn.Open();
-                MessageBox.Show("Connected to db");
+            // set text based on language
+            if (culture == "es") 
+            { 
+                languageLabel.Text = "Spanish";
+                usernameLabel.Text = "Nombre de usuario";
+                passwordLabel.Text = "Contraseña";
+                submit.Text = "Acceso";
             }
-            catch(MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
+            else 
+            { 
+                languageLabel.Text = "English"; 
             }
-            finally
-            {
-                //close the connection
-                if(conn != null) { conn.Close(); }
-            }
+            passwordBox.UseSystemPasswordChar = true;
         }
+
+        private void submit_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(usernameBox.Text))
+            {
+                if (culture == "es") { MessageBox.Show("Por favor ingrese un nombre de usuario"); return; }
+                else { MessageBox.Show("Please enter a username"); return; }
+            }
+            if (string.IsNullOrWhiteSpace(passwordBox.Text))
+            {
+                if (culture == "es") { MessageBox.Show("Por favor ingrese una contraseña"); return; }
+                else { MessageBox.Show("Please enter a password"); return; }
+            }
+
+            MessageBox.Show(culture);
+        }
+
     }
 }
