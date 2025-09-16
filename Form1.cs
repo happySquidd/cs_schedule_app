@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using scheduleApp.Database;
+using System.Diagnostics.Eventing.Reader;
 
 namespace scheduleApp
 {
@@ -50,7 +52,40 @@ namespace scheduleApp
                 else { MessageBox.Show("Please enter a password"); return; }
             }
 
-            MessageBox.Show(culture);
+            // find the user from database
+            string sql = $"SELECT COUNT(*) FROM user WHERE userName = '{usernameBox.Text}' AND password = '{passwordBox.Text}'";
+            using (MySqlCommand sqlQuery = new MySqlCommand(sql, DBconnection.connection))
+            {
+                int count = Convert.ToInt32(sqlQuery.ExecuteScalar());
+                if (count > 0)
+                {
+                    Console.WriteLine("user logged in");
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    if (culture == "es") { MessageBox.Show("Nombre de usuario o contraseña incorrectos"); }
+                    else { MessageBox.Show("Incorrect username or password"); }
+                }
+            }
+
+
+            // select and display names
+            //string sql1 = "SELECT userName FROM user";
+            //using (MySqlCommand sqlQuery = new MySqlCommand(sql1, DBconnection.connection))
+            //{
+            //    using (var reader = sqlQuery.ExecuteReader())
+            //    {
+            //        while (reader.Read())
+            //        {
+            //            MessageBox.Show($"{reader.GetString(0)}");
+            //        }
+            //    }
+            //}
+
+            //MessageBox.Show(culture); // culture = en or es for spanish
         }
 
     }

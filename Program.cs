@@ -19,7 +19,14 @@ namespace scheduleApp
             Application.SetCompatibleTextRenderingDefault(false);
 
             DBconnection.openConnection();
-            Application.Run(new Form1());
+            using (Form1 login = new Form1())
+            {
+                // if login successful then show the main window
+                if (login.ShowDialog() == DialogResult.OK) 
+                {
+                    Application.Run(new UserForm());
+                }
+            }
             DBconnection.closeConnection();
         }
     }
