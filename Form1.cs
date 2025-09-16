@@ -28,9 +28,10 @@ namespace scheduleApp
             if (culture == "es") 
             { 
                 languageLabel.Text = "Spanish";
-                usernameLabel.Text = "Nombre de usuario";
-                passwordLabel.Text = "Contraseña";
+                usernameLabel.Text = "Nombre de usuario:";
+                passwordLabel.Text = "Contraseña:";
                 submit.Text = "Acceso";
+                this.Text = "Acceso";
             }
             else 
             { 
