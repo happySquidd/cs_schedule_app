@@ -24,6 +24,7 @@ namespace scheduleApp.Database
 
                 connection.Open();
                 //MessageBox.Show("connected");
+                Console.WriteLine("mysql connected");
                 return true;
             }
             catch (MySqlException ex)
@@ -40,6 +41,7 @@ namespace scheduleApp.Database
                 if (connection != null){ connection.Close(); }
                 connection = null;
                 //MessageBox.Show("closed");
+                Console.WriteLine("connection closed");
             }
             catch (MySqlException ex)
             {

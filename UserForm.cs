@@ -15,6 +15,12 @@ namespace scheduleApp
         public UserForm()
         {
             InitializeComponent();
+            
+        }
+
+        private void exit(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
