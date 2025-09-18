@@ -45,13 +45,12 @@
             this.exitBtn2 = new System.Windows.Forms.Button();
             this.tabCalendar = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.exitBtn3 = new System.Windows.Forms.Button();
-            this.viewWeekBtn = new System.Windows.Forms.Button();
-            this.viewMonthBtn = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.viewAllBtn = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.tabControl1.SuspendLayout();
             this.tabCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -116,6 +115,7 @@
             this.modifyCustomerBtn.TabIndex = 3;
             this.modifyCustomerBtn.Text = "Modify";
             this.modifyCustomerBtn.UseVisualStyleBackColor = true;
+            this.modifyCustomerBtn.Click += new System.EventHandler(this.modifyCustomerBtn_Click);
             // 
             // addCustomerBtn
             // 
@@ -125,6 +125,7 @@
             this.addCustomerBtn.TabIndex = 2;
             this.addCustomerBtn.Text = "Add";
             this.addCustomerBtn.UseVisualStyleBackColor = true;
+            this.addCustomerBtn.Click += new System.EventHandler(this.addCustomerBtn_Click);
             // 
             // label1
             // 
@@ -177,6 +178,7 @@
             this.updateAppointmentBtn.TabIndex = 10;
             this.updateAppointmentBtn.Text = "Update";
             this.updateAppointmentBtn.UseVisualStyleBackColor = true;
+            this.updateAppointmentBtn.Click += new System.EventHandler(this.updateAppointmentBtn_Click);
             // 
             // addAppointmentBtn
             // 
@@ -186,6 +188,7 @@
             this.addAppointmentBtn.TabIndex = 9;
             this.addAppointmentBtn.Text = "Add";
             this.addAppointmentBtn.UseVisualStyleBackColor = true;
+            this.addAppointmentBtn.Click += new System.EventHandler(this.addAppointmentBtn_Click);
             // 
             // label2
             // 
@@ -217,13 +220,12 @@
             // 
             // tabCalendar
             // 
-            this.tabCalendar.Controls.Add(this.label4);
-            this.tabCalendar.Controls.Add(this.viewAllBtn);
-            this.tabCalendar.Controls.Add(this.dateTimePicker1);
-            this.tabCalendar.Controls.Add(this.viewMonthBtn);
-            this.tabCalendar.Controls.Add(this.viewWeekBtn);
+            this.tabCalendar.Controls.Add(this.monthCalendar1);
+            this.tabCalendar.Controls.Add(this.radioButton4);
+            this.tabCalendar.Controls.Add(this.radioButton3);
+            this.tabCalendar.Controls.Add(this.radioButton2);
+            this.tabCalendar.Controls.Add(this.radioButton1);
             this.tabCalendar.Controls.Add(this.dataGridView3);
-            this.tabCalendar.Controls.Add(this.label3);
             this.tabCalendar.Controls.Add(this.exitBtn3);
             this.tabCalendar.Location = new System.Drawing.Point(4, 25);
             this.tabCalendar.Name = "tabCalendar";
@@ -235,20 +237,10 @@
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(41, 111);
+            this.dataGridView3.Location = new System.Drawing.Point(41, 211);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(491, 186);
+            this.dataGridView3.Size = new System.Drawing.Size(491, 122);
             this.dataGridView3.TabIndex = 8;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(37, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "View calendar";
             // 
             // exitBtn3
             // 
@@ -260,48 +252,55 @@
             this.exitBtn3.UseVisualStyleBackColor = true;
             this.exitBtn3.Click += new System.EventHandler(this.exit);
             // 
-            // viewWeekBtn
+            // radioButton1
             // 
-            this.viewWeekBtn.Location = new System.Drawing.Point(41, 74);
-            this.viewWeekBtn.Name = "viewWeekBtn";
-            this.viewWeekBtn.Size = new System.Drawing.Size(104, 31);
-            this.viewWeekBtn.TabIndex = 9;
-            this.viewWeekBtn.Text = "This Week";
-            this.viewWeekBtn.UseVisualStyleBackColor = true;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(162, 174);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(72, 20);
+            this.radioButton1.TabIndex = 14;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "View All";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // viewMonthBtn
+            // radioButton2
             // 
-            this.viewMonthBtn.Location = new System.Drawing.Point(151, 74);
-            this.viewMonthBtn.Name = "viewMonthBtn";
-            this.viewMonthBtn.Size = new System.Drawing.Size(104, 30);
-            this.viewMonthBtn.TabIndex = 10;
-            this.viewMonthBtn.Text = "This Month";
-            this.viewMonthBtn.UseVisualStyleBackColor = true;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(307, 174);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(61, 20);
+            this.radioButton2.TabIndex = 15;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Week";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // radioButton3
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(41, 319);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(271, 22);
-            this.dateTimePicker1.TabIndex = 11;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(240, 174);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(61, 20);
+            this.radioButton3.TabIndex = 16;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Month";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // viewAllBtn
+            // radioButton4
             // 
-            this.viewAllBtn.Location = new System.Drawing.Point(261, 73);
-            this.viewAllBtn.Name = "viewAllBtn";
-            this.viewAllBtn.Size = new System.Drawing.Size(104, 31);
-            this.viewAllBtn.TabIndex = 12;
-            this.viewAllBtn.Text = "View All";
-            this.viewAllBtn.UseVisualStyleBackColor = true;
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(374, 174);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(50, 20);
+            this.radioButton4.TabIndex = 17;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Day";
+            this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // monthCalendar1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 300);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 16);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Or choose a specific day:";
+            this.monthCalendar1.Location = new System.Drawing.Point(175, 9);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 18;
             // 
             // UserForm
             // 
@@ -344,12 +343,11 @@
         private System.Windows.Forms.Button addAppointmentBtn;
         private System.Windows.Forms.Button deleteAppointmentBtn;
         private System.Windows.Forms.Button updateAppointmentBtn;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button viewMonthBtn;
-        private System.Windows.Forms.Button viewWeekBtn;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button viewAllBtn;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
