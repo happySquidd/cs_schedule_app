@@ -15,6 +15,7 @@ namespace scheduleApp.AppointmentForms
         public AddAppointment()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

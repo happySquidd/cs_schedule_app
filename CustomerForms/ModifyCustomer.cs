@@ -16,6 +16,7 @@ namespace scheduleApp.CustomerForms
         public ModifyCustomer(Customer customer)
         {
             InitializeComponent();
+            this.MaximizeBox = false;
 
             idBox.Text = Convert.ToString(customer.customerId);
             nameBox.Text = customer.customerName;

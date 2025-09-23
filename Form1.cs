@@ -23,6 +23,7 @@ namespace scheduleApp
         public Form1()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
 
             // set text based on language
             if (culture == "es") 
@@ -82,21 +83,6 @@ namespace scheduleApp
                 }
             }
 
-
-            // select and display names
-            //string sql1 = "SELECT userName FROM user";
-            //using (MySqlCommand sqlQuery = new MySqlCommand(sql1, DBconnection.connection))
-            //{
-            //    using (var reader = sqlQuery.ExecuteReader())
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            MessageBox.Show($"{reader.GetString(0)}");
-            //        }
-            //    }
-            //}
-
-            //MessageBox.Show(culture); // culture = en or es for spanish
         }
 
     }

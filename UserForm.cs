@@ -19,6 +19,7 @@ namespace scheduleApp
         public UserForm()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
 
             // customers page
             customersDgv.AutoGenerateColumns = false;

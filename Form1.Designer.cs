@@ -100,6 +100,7 @@
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.languageLabel);
             this.Controls.Add(this.submit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Log in";
             this.ResumeLayout(false);

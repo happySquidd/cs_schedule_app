@@ -15,6 +15,7 @@ namespace scheduleApp
         public AddCustomer()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
