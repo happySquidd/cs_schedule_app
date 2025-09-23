@@ -19,7 +19,7 @@ namespace scheduleApp
     public partial class Form1 : Form
     {
         readonly string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-
+        public static int userId = 0;
         public Form1()
         {
             InitializeComponent();
@@ -55,12 +55,22 @@ namespace scheduleApp
 
             // find the user from database
             string sql = $"SELECT COUNT(*) FROM user WHERE userName = '{usernameBox.Text}' AND password = '{passwordBox.Text}'";
+            string id = $"SELECT userId FROM user WHERE userName = '{usernameBox.Text}' AND password = '{passwordBox.Text}'";
+
+
             using (MySqlCommand sqlQuery = new MySqlCommand(sql, DBconnection.connection))
             {
                 int count = Convert.ToInt32(sqlQuery.ExecuteScalar());
                 if (count > 0)
                 {
                     Console.WriteLine("user logged in");
+
+                    // execute query to get user id
+                    using (MySqlCommand getId = new MySqlCommand(id, DBconnection.connection))
+                    {
+                        userId = Convert.ToInt32(getId.ExecuteScalar());
+                        Console.WriteLine("user id : " + userId);
+                    }
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

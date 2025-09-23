@@ -139,11 +139,18 @@
             // 
             // customersDgv
             // 
+            this.customersDgv.AllowUserToAddRows = false;
+            this.customersDgv.AllowUserToResizeRows = false;
             this.customersDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.customersDgv.EnableHeadersVisualStyles = false;
             this.customersDgv.Location = new System.Drawing.Point(41, 66);
+            this.customersDgv.MultiSelect = false;
             this.customersDgv.Name = "customersDgv";
+            this.customersDgv.ReadOnly = true;
+            this.customersDgv.RowHeadersVisible = false;
             this.customersDgv.Size = new System.Drawing.Size(491, 186);
             this.customersDgv.TabIndex = 0;
+            this.customersDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 
             // tabAppointment
             // 
@@ -202,9 +209,15 @@
             // 
             // appointmentsDgv
             // 
+            this.appointmentsDgv.AllowUserToAddRows = false;
+            this.appointmentsDgv.AllowUserToResizeRows = false;
             this.appointmentsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.appointmentsDgv.EnableHeadersVisualStyles = false;
             this.appointmentsDgv.Location = new System.Drawing.Point(41, 66);
+            this.appointmentsDgv.MultiSelect = false;
             this.appointmentsDgv.Name = "appointmentsDgv";
+            this.appointmentsDgv.ReadOnly = true;
+            this.appointmentsDgv.RowHeadersVisible = false;
             this.appointmentsDgv.Size = new System.Drawing.Size(491, 186);
             this.appointmentsDgv.TabIndex = 7;
             // 
@@ -286,9 +299,15 @@
             // 
             // calendarDgv
             // 
+            this.calendarDgv.AllowUserToAddRows = false;
+            this.calendarDgv.AllowUserToResizeRows = false;
             this.calendarDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.calendarDgv.EnableHeadersVisualStyles = false;
             this.calendarDgv.Location = new System.Drawing.Point(41, 211);
+            this.calendarDgv.MultiSelect = false;
             this.calendarDgv.Name = "calendarDgv";
+            this.calendarDgv.ReadOnly = true;
+            this.calendarDgv.RowHeadersVisible = false;
             this.calendarDgv.Size = new System.Drawing.Size(491, 122);
             this.calendarDgv.TabIndex = 8;
             // 

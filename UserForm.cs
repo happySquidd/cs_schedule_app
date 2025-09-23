@@ -1,5 +1,7 @@
 ﻿using scheduleApp.AppointmentForms;
 using scheduleApp.CustomerForms;
+using scheduleApp.Database;
+using scheduleApp.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +20,21 @@ namespace scheduleApp
         {
             InitializeComponent();
             
+            // customers page
+            customersDgv.DataSource = Customer.allCustomers;
+            customersDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            customersDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            customersDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = customersDgv.ColumnHeadersDefaultCellStyle.BackColor;
+            customersDgv.Columns["addressId"].Visible = false;
+            customersDgv.Columns["createdBy"].Visible = false;
+            customersDgv.Columns["lastUpdated"].Visible = false;
+            customersDgv.Columns["lastUpdatedBy"].Visible = false;
+            
+
+        }
+        private void dataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            customersDgv.ClearSelection();
         }
 
         private void exit(object sender, EventArgs e)
@@ -48,5 +65,6 @@ namespace scheduleApp
             ModifyAppointment modifyAppointment = new ModifyAppointment();
             modifyAppointment.ShowDialog();
         }
+
     }
 }
