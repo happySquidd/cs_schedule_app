@@ -1,4 +1,5 @@
-﻿using System;
+﻿using scheduleApp.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace scheduleApp.CustomerForms
 {
     public partial class ModifyCustomer : Form
     {
-        public ModifyCustomer()
+        public ModifyCustomer(Customer customer)
         {
             InitializeComponent();
         }

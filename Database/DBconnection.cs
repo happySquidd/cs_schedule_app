@@ -55,8 +55,19 @@ namespace scheduleApp.Database
         {
             BindingList<Customer> customers = new BindingList<Customer>();
 
-            // double join user and appointment and appointment and customer to retrieve all customers
-            string sql = $"SELECT * FROM user INNER JOIN appointment a ON user.userId = a.userId INNER JOIN customer c ON a.customerId = c.customerId WHERE user.userId = '{Form1.userId}'";
+            // join user, appointment, customer, address, city, and country tables to retrieve all customers' data
+            string sql = 
+                $"SELECT cu.customerId, cu.customerName, cu.addressId, cu.active, cu.createDate AS cuCreateDate, cu.createdBy AS cuCreatedBy, cu.lastUpdate AS cuLastUpdate, cu.lastUpdateBy AS cuLastUpdateBy, " +
+                $"ad.address, ad.address2, ad.cityId, ad.postalCode, ad.phone, ad.createDate AS adCreateDate, ad.createdBy AS adCreatedBy, ad.lastUpdate AS adLastUpdate, ad.lastUpdateBy AS adLastUpdateBy, " +
+                $"ci.city, ci.countryId, ci.createDate AS ciCreateDate, ci.createdBy AS ciCreatedBy, ci.lastUpdate AS ciLastUpdate, ci.lastUpdateBy AS ciLastUpdateBy, " +
+                $"cy.country, cy.createDate AS cyCreateDate, cy.createdBy AS cyCreatedBy, cy.lastUpdate AS cyLastUpdate, cy.lastUpdateBy AS cyLastUpdateBy " +
+                $"FROM user " +
+                $"INNER JOIN appointment ap ON user.userId = ap.userId " +
+                $"INNER JOIN customer cu ON ap.customerId = cu.customerId " +
+                $"INNER JOIN address ad ON cu.addressId = ad.addressId " +
+                $"INNER JOIN city ci ON ad.cityId = ci.cityId " +
+                $"INNER JOIN country cy ON ci.countryId = cy.countryId " +
+                $"WHERE user.userId = '{Form1.userId}'";
 
             using (MySqlCommand command = new MySqlCommand(sql, connection))
             {
@@ -69,9 +80,36 @@ namespace scheduleApp.Database
                         customerName = Convert.ToString(reader["customerName"]),
                         addressId = Convert.ToInt32(reader["addressId"]),
                         active = Convert.ToInt32(reader["active"]),
-                        createdBy = Convert.ToString(reader["createdBy"]),
-                        lastUpdated = Convert.ToString(reader["lastUpdate"]),
-                        lastUpdatedBy = Convert.ToString(reader["lastUpdateBy"])
+                        createdDate = Convert.ToString(reader["cuCreateDate"]),
+                        createdBy = Convert.ToString(reader["cuCreatedBy"]),
+                        lastUpdated = Convert.ToString(reader["cuLastUpdate"]),
+                        lastUpdatedBy = Convert.ToString(reader["cuLastUpdateBy"]),
+
+                        // address
+                        address = Convert.ToString(reader["address"]),
+                        address2 = Convert.ToString(reader["address2"]),
+                        cityId = Convert.ToInt32(reader["cityId"]),
+                        postalCode = Convert.ToString(reader["postalCode"]),
+                        phone = Convert.ToString(reader["phone"]),
+                        addressCreatedDate = Convert.ToString(reader["adCreateDate"]),
+                        addressCreatedBy = Convert.ToString(reader["adCreatedBy"]),
+                        addressLastUpdated = Convert.ToString(reader["adLastUpdate"]),
+                        addressLastUpdatedBy = Convert.ToString(reader["adLastUpdateBy"]),
+
+                        // city
+                        city = Convert.ToString(reader["city"]),
+                        countryId = Convert.ToInt32(reader["countryId"]),
+                        cityCreatedDate = Convert.ToString(reader["ciCreateDate"]),
+                        cityCreatedBy = Convert.ToString(reader["ciCreatedBy"]),
+                        cityLastUpdatedDate = Convert.ToString(reader["ciLastUpdate"]),
+                        cityLastUpdatedBy = Convert.ToString(reader["ciLastUpdateBy"]),
+
+                        // country 
+                        country = Convert.ToString(reader["country"]),
+                        countryCreatedDate = Convert.ToString(reader["cyCreateDate"]),
+                        countryCreatedBy = Convert.ToString(reader["cyCreatedBy"]),
+                        countryLastUpdatedDate = Convert.ToString(reader["cyLastUpdate"]),
+                        countryLastUpdatedBy = Convert.ToString(reader["cyLastUpdateBy"])
                     };
                     customers.Add(customer);
                 }

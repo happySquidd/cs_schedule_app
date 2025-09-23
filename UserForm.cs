@@ -23,12 +23,12 @@ namespace scheduleApp
             // customers page
             customersDgv.DataSource = Customer.allCustomers;
             customersDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            customersDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //customersDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             customersDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = customersDgv.ColumnHeadersDefaultCellStyle.BackColor;
-            customersDgv.Columns["addressId"].Visible = false;
-            customersDgv.Columns["createdBy"].Visible = false;
-            customersDgv.Columns["lastUpdated"].Visible = false;
-            customersDgv.Columns["lastUpdatedBy"].Visible = false;
+            //customersDgv.Columns["addressId"].Visible = false;
+            //customersDgv.Columns["createdBy"].Visible = false;
+            //customersDgv.Columns["lastUpdated"].Visible = false;
+            //customersDgv.Columns["lastUpdatedBy"].Visible = false;
             
 
         }
@@ -42,6 +42,7 @@ namespace scheduleApp
             this.Close();
         }
 
+        // customer
         private void addCustomerBtn_Click(object sender, EventArgs e)
         {
             AddCustomer addCustomer = new AddCustomer();
@@ -50,10 +51,17 @@ namespace scheduleApp
 
         private void modifyCustomerBtn_Click(object sender, EventArgs e)
         {
-            ModifyCustomer modifyCustomer = new ModifyCustomer();
+            if (customersDgv.CurrentRow == null)
+            {
+                MessageBox.Show("Nothing is selected");
+                return;
+            }
+            Customer selected = customersDgv.CurrentRow.DataBoundItem as Customer;
+            ModifyCustomer modifyCustomer = new ModifyCustomer(selected);
             modifyCustomer.ShowDialog();
         }
 
+        // appointment
         private void addAppointmentBtn_Click(object sender, EventArgs e)
         {
             AddAppointment addAppointment = new AddAppointment();
