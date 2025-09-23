@@ -384,7 +384,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "UserForm";
-            this.Text = "UserForm";
+            this.Text = "User Form";
             this.tabControl1.ResumeLayout(false);
             this.tabCustomers.ResumeLayout(false);
             this.tabCustomers.PerformLayout();

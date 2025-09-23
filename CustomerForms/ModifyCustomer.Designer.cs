@@ -67,6 +67,7 @@
             this.saveBtn.TabIndex = 36;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // phoneBox
             // 
@@ -74,6 +75,7 @@
             this.phoneBox.Name = "phoneBox";
             this.phoneBox.Size = new System.Drawing.Size(133, 20);
             this.phoneBox.TabIndex = 35;
+            this.phoneBox.TextChanged += new System.EventHandler(this.phoneBox_TextChanged);
             // 
             // postalBox
             // 
@@ -81,6 +83,7 @@
             this.postalBox.Name = "postalBox";
             this.postalBox.Size = new System.Drawing.Size(133, 20);
             this.postalBox.TabIndex = 34;
+            this.postalBox.TextChanged += new System.EventHandler(this.postalBox_TextChanged);
             // 
             // countryBox
             // 
@@ -88,6 +91,7 @@
             this.countryBox.Name = "countryBox";
             this.countryBox.Size = new System.Drawing.Size(133, 20);
             this.countryBox.TabIndex = 33;
+            this.countryBox.TextChanged += new System.EventHandler(this.countryBox_TextChanged);
             // 
             // cityBox
             // 
@@ -95,6 +99,7 @@
             this.cityBox.Name = "cityBox";
             this.cityBox.Size = new System.Drawing.Size(133, 20);
             this.cityBox.TabIndex = 32;
+            this.cityBox.TextChanged += new System.EventHandler(this.cityBox_TextChanged);
             // 
             // address2Box
             // 
@@ -102,6 +107,7 @@
             this.address2Box.Name = "address2Box";
             this.address2Box.Size = new System.Drawing.Size(133, 20);
             this.address2Box.TabIndex = 31;
+            this.address2Box.TextChanged += new System.EventHandler(this.address2Box_TextChanged);
             // 
             // addressBox
             // 
@@ -109,6 +115,7 @@
             this.addressBox.Name = "addressBox";
             this.addressBox.Size = new System.Drawing.Size(133, 20);
             this.addressBox.TabIndex = 30;
+            this.addressBox.TextChanged += new System.EventHandler(this.addressBox_TextChanged);
             // 
             // nameBox
             // 
@@ -116,6 +123,7 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(133, 20);
             this.nameBox.TabIndex = 29;
+            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
             // idBox
             // 

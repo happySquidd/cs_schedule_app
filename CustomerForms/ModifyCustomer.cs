@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,6 +14,15 @@ namespace scheduleApp.CustomerForms
 {
     public partial class ModifyCustomer : Form
     {
+
+        bool name = true;
+        bool address = true;
+        bool address2 = true;
+        bool city = true;
+        bool country = true;
+        bool postal = true;
+        bool phone = true;
+
         public ModifyCustomer(Customer customer)
         {
             InitializeComponent();
@@ -33,5 +43,135 @@ namespace scheduleApp.CustomerForms
         {
             this.Close();
         }
+
+        private void nameBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(nameBox.Text))
+            {
+                nameBox.BackColor = Color.Salmon;
+                saveBtn.Enabled = false;
+                name = false;
+            }
+            else
+            {
+                name = true;
+                nameBox.BackColor = Color.White;
+                saveBtn.Enabled = canSave();
+            }
+        }
+
+        private void addressBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(addressBox.Text))
+            {
+                addressBox.BackColor = Color.Salmon;
+                saveBtn.Enabled = false;
+                address = false;
+            }
+            else
+            {
+                address = true;
+                addressBox.BackColor = Color.White;
+                saveBtn.Enabled = canSave();
+            }
+        }
+
+        private void address2Box_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(address2Box.Text))
+            {
+                address2Box.BackColor = Color.Salmon;
+                saveBtn.Enabled = false;
+                address2 = false;
+            }
+            else
+            {
+                address2 = true;
+                address2Box.BackColor = Color.White;
+                saveBtn.Enabled = canSave();
+            }
+        }
+
+        private void cityBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cityBox.Text))
+            {
+                cityBox.BackColor = Color.Salmon;
+                saveBtn.Enabled = false;
+                city = false;
+            }
+            else
+            {
+                city = true;
+                cityBox.BackColor = Color.White;
+                saveBtn.Enabled = canSave();
+            }
+        }
+
+        private void countryBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(countryBox.Text))
+            {
+                countryBox.BackColor = Color.Salmon;
+                saveBtn.Enabled = false;
+                country = false;
+            }
+            else
+            {
+                country = true;
+                countryBox.BackColor = Color.White;
+                saveBtn.Enabled = canSave();
+            }
+        }
+
+        private void postalBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(postalBox.Text) || !int.TryParse(postalBox.Text, out _))
+            {
+                postalBox.BackColor = Color.Salmon;
+                saveBtn.Enabled = false;
+                postal = false;
+            }
+            else
+            {
+                postal = true;
+                postalBox.BackColor = Color.White;
+                saveBtn.Enabled = canSave();
+            }
+        }
+
+        private void phoneBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(phoneBox.Text) || !Regex.IsMatch(phoneBox.Text, @"^\d{3}-\d{3}-\d{4}$"))
+            {
+                phoneBox.BackColor = Color.Salmon;
+                saveBtn.Enabled = false;
+                phone = false;
+            }
+            else
+            {
+                phone = true;
+                phoneBox.BackColor = Color.White;
+                saveBtn.Enabled = canSave();
+            }
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool canSave()
+        {
+            if (name && address && address2 && city && country && postal && phone)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
