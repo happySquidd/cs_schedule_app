@@ -19,16 +19,13 @@ namespace scheduleApp
         public UserForm()
         {
             InitializeComponent();
-            
+
             // customers page
+            customersDgv.AutoGenerateColumns = false;
             customersDgv.DataSource = Customer.allCustomers;
             customersDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //customersDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            customersDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             customersDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = customersDgv.ColumnHeadersDefaultCellStyle.BackColor;
-            //customersDgv.Columns["addressId"].Visible = false;
-            //customersDgv.Columns["createdBy"].Visible = false;
-            //customersDgv.Columns["lastUpdated"].Visible = false;
-            //customersDgv.Columns["lastUpdatedBy"].Visible = false;
             
 
         }

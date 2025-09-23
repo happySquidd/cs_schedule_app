@@ -16,6 +16,16 @@ namespace scheduleApp.CustomerForms
         public ModifyCustomer(Customer customer)
         {
             InitializeComponent();
+
+            idBox.Text = Convert.ToString(customer.customerId);
+            nameBox.Text = customer.customerName;
+            addressBox.Text = customer.address;
+            address2Box.Text = customer.address2;
+            cityBox.Text = customer.city;
+            countryBox.Text = customer.country;
+            postalBox.Text = customer.postalCode;
+            phoneBox.Text = customer.phone;
+
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
