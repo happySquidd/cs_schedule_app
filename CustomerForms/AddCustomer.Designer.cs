@@ -37,14 +37,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.idBox = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
+            this.addressBox = new System.Windows.Forms.TextBox();
+            this.address2Box = new System.Windows.Forms.TextBox();
+            this.cityBox = new System.Windows.Forms.TextBox();
+            this.countryBox = new System.Windows.Forms.TextBox();
+            this.postalBox = new System.Windows.Forms.TextBox();
+            this.phoneBox = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -131,62 +131,76 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Phone:";
             // 
-            // textBox1
+            // idBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(130, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 20);
-            this.textBox1.TabIndex = 9;
+            this.idBox.Enabled = false;
+            this.idBox.Location = new System.Drawing.Point(130, 69);
+            this.idBox.Name = "idBox";
+            this.idBox.Size = new System.Drawing.Size(133, 20);
+            this.idBox.TabIndex = 9;
             // 
-            // textBox2
+            // nameBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(130, 99);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 20);
-            this.textBox2.TabIndex = 10;
+            this.nameBox.BackColor = System.Drawing.Color.Salmon;
+            this.nameBox.Location = new System.Drawing.Point(130, 99);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(133, 20);
+            this.nameBox.TabIndex = 10;
+            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
-            // textBox3
+            // addressBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(130, 129);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(133, 20);
-            this.textBox3.TabIndex = 11;
+            this.addressBox.BackColor = System.Drawing.Color.Salmon;
+            this.addressBox.Location = new System.Drawing.Point(130, 129);
+            this.addressBox.Name = "addressBox";
+            this.addressBox.Size = new System.Drawing.Size(133, 20);
+            this.addressBox.TabIndex = 11;
+            this.addressBox.TextChanged += new System.EventHandler(this.addressBox_TextChanged);
             // 
-            // textBox4
+            // address2Box
             // 
-            this.textBox4.Location = new System.Drawing.Point(130, 159);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(133, 20);
-            this.textBox4.TabIndex = 12;
+            this.address2Box.BackColor = System.Drawing.Color.Salmon;
+            this.address2Box.Location = new System.Drawing.Point(130, 159);
+            this.address2Box.Name = "address2Box";
+            this.address2Box.Size = new System.Drawing.Size(133, 20);
+            this.address2Box.TabIndex = 12;
+            this.address2Box.TextChanged += new System.EventHandler(this.address2Box_TextChanged);
             // 
-            // textBox5
+            // cityBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(130, 189);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(133, 20);
-            this.textBox5.TabIndex = 13;
+            this.cityBox.BackColor = System.Drawing.Color.Salmon;
+            this.cityBox.Location = new System.Drawing.Point(130, 189);
+            this.cityBox.Name = "cityBox";
+            this.cityBox.Size = new System.Drawing.Size(133, 20);
+            this.cityBox.TabIndex = 13;
+            this.cityBox.TextChanged += new System.EventHandler(this.cityBox_TextChanged);
             // 
-            // textBox6
+            // countryBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(130, 219);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(133, 20);
-            this.textBox6.TabIndex = 14;
+            this.countryBox.BackColor = System.Drawing.Color.Salmon;
+            this.countryBox.Location = new System.Drawing.Point(130, 219);
+            this.countryBox.Name = "countryBox";
+            this.countryBox.Size = new System.Drawing.Size(133, 20);
+            this.countryBox.TabIndex = 14;
+            this.countryBox.TextChanged += new System.EventHandler(this.countryBox_TextChanged);
             // 
-            // textBox7
+            // postalBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(130, 249);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(133, 20);
-            this.textBox7.TabIndex = 15;
+            this.postalBox.BackColor = System.Drawing.Color.Salmon;
+            this.postalBox.Location = new System.Drawing.Point(130, 249);
+            this.postalBox.Name = "postalBox";
+            this.postalBox.Size = new System.Drawing.Size(133, 20);
+            this.postalBox.TabIndex = 15;
+            this.postalBox.TextChanged += new System.EventHandler(this.postalBox_TextChanged);
             // 
-            // textBox8
+            // phoneBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(130, 279);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(133, 20);
-            this.textBox8.TabIndex = 16;
+            this.phoneBox.BackColor = System.Drawing.Color.Salmon;
+            this.phoneBox.Location = new System.Drawing.Point(130, 279);
+            this.phoneBox.Name = "phoneBox";
+            this.phoneBox.Size = new System.Drawing.Size(133, 20);
+            this.phoneBox.TabIndex = 16;
+            this.phoneBox.TextChanged += new System.EventHandler(this.phoneBox_TextChanged);
             // 
             // saveBtn
             // 
@@ -196,6 +210,7 @@
             this.saveBtn.TabIndex = 17;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // cancelBtn
             // 
@@ -214,14 +229,14 @@
             this.ClientSize = new System.Drawing.Size(325, 381);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.phoneBox);
+            this.Controls.Add(this.postalBox);
+            this.Controls.Add(this.countryBox);
+            this.Controls.Add(this.cityBox);
+            this.Controls.Add(this.address2Box);
+            this.Controls.Add(this.addressBox);
+            this.Controls.Add(this.nameBox);
+            this.Controls.Add(this.idBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -250,14 +265,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox idBox;
+        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.TextBox addressBox;
+        private System.Windows.Forms.TextBox address2Box;
+        private System.Windows.Forms.TextBox cityBox;
+        private System.Windows.Forms.TextBox countryBox;
+        private System.Windows.Forms.TextBox postalBox;
+        private System.Windows.Forms.TextBox phoneBox;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button cancelBtn;
     }
