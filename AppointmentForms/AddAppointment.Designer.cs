@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -40,7 +39,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.nameBox = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.titleBox = new System.Windows.Forms.TextBox();
@@ -73,15 +71,6 @@
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Appointment ID:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Customer Name:";
             // 
             // label4
             // 
@@ -164,14 +153,6 @@
             this.label12.TabIndex = 11;
             this.label12.Text = "End time:";
             // 
-            // nameBox
-            // 
-            this.nameBox.BackColor = System.Drawing.Color.Salmon;
-            this.nameBox.Location = new System.Drawing.Point(143, 84);
-            this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(141, 20);
-            this.nameBox.TabIndex = 12;
-            // 
             // textBox2
             // 
             this.textBox2.Enabled = false;
@@ -195,6 +176,7 @@
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(141, 20);
             this.titleBox.TabIndex = 15;
+            this.titleBox.TextChanged += new System.EventHandler(this.titleBox_TextChanged);
             // 
             // descriptionBox
             // 
@@ -203,6 +185,7 @@
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(141, 20);
             this.descriptionBox.TabIndex = 16;
+            this.descriptionBox.TextChanged += new System.EventHandler(this.descriptionBox_TextChanged);
             // 
             // locationBox
             // 
@@ -211,6 +194,7 @@
             this.locationBox.Name = "locationBox";
             this.locationBox.Size = new System.Drawing.Size(141, 20);
             this.locationBox.TabIndex = 17;
+            this.locationBox.TextChanged += new System.EventHandler(this.locationBox_TextChanged);
             // 
             // contactBox
             // 
@@ -219,6 +203,7 @@
             this.contactBox.Name = "contactBox";
             this.contactBox.Size = new System.Drawing.Size(141, 20);
             this.contactBox.TabIndex = 18;
+            this.contactBox.TextChanged += new System.EventHandler(this.contactBox_TextChanged);
             // 
             // typeBox
             // 
@@ -227,6 +212,7 @@
             this.typeBox.Name = "typeBox";
             this.typeBox.Size = new System.Drawing.Size(141, 20);
             this.typeBox.TabIndex = 19;
+            this.typeBox.TextChanged += new System.EventHandler(this.typeBox_TextChanged);
             // 
             // urlBox
             // 
@@ -235,6 +221,7 @@
             this.urlBox.Name = "urlBox";
             this.urlBox.Size = new System.Drawing.Size(141, 20);
             this.urlBox.TabIndex = 20;
+            this.urlBox.TextChanged += new System.EventHandler(this.urlBox_TextChanged);
             // 
             // startBox
             // 
@@ -243,6 +230,7 @@
             this.startBox.Name = "startBox";
             this.startBox.Size = new System.Drawing.Size(141, 20);
             this.startBox.TabIndex = 21;
+            this.startBox.TextChanged += new System.EventHandler(this.startBox_TextChanged);
             // 
             // endBox
             // 
@@ -251,6 +239,7 @@
             this.endBox.Name = "endBox";
             this.endBox.Size = new System.Drawing.Size(141, 20);
             this.endBox.TabIndex = 22;
+            this.endBox.TextChanged += new System.EventHandler(this.endBox_TextChanged);
             // 
             // saveBtn
             // 
@@ -288,7 +277,6 @@
             this.Controls.Add(this.titleBox);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -298,7 +286,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -313,7 +300,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -323,7 +309,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox titleBox;

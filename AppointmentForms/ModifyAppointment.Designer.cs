@@ -40,7 +40,6 @@
             this.titleBox = new System.Windows.Forms.TextBox();
             this.userIdBox = new System.Windows.Forms.TextBox();
             this.idBox = new System.Windows.Forms.TextBox();
-            this.nameBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -50,7 +49,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -80,6 +78,7 @@
             this.endBox.Name = "endBox";
             this.endBox.Size = new System.Drawing.Size(141, 20);
             this.endBox.TabIndex = 47;
+            this.endBox.TextChanged += new System.EventHandler(this.endBox_TextChanged);
             // 
             // startBox
             // 
@@ -87,6 +86,7 @@
             this.startBox.Name = "startBox";
             this.startBox.Size = new System.Drawing.Size(141, 20);
             this.startBox.TabIndex = 46;
+            this.startBox.TextChanged += new System.EventHandler(this.startBox_TextChanged);
             // 
             // urlBox
             // 
@@ -94,6 +94,7 @@
             this.urlBox.Name = "urlBox";
             this.urlBox.Size = new System.Drawing.Size(141, 20);
             this.urlBox.TabIndex = 45;
+            this.urlBox.TextChanged += new System.EventHandler(this.urlBox_TextChanged);
             // 
             // typeBox
             // 
@@ -101,6 +102,7 @@
             this.typeBox.Name = "typeBox";
             this.typeBox.Size = new System.Drawing.Size(141, 20);
             this.typeBox.TabIndex = 44;
+            this.typeBox.TextChanged += new System.EventHandler(this.typeBox_TextChanged);
             // 
             // contactBox
             // 
@@ -108,6 +110,7 @@
             this.contactBox.Name = "contactBox";
             this.contactBox.Size = new System.Drawing.Size(141, 20);
             this.contactBox.TabIndex = 43;
+            this.contactBox.TextChanged += new System.EventHandler(this.contactBox_TextChanged);
             // 
             // locationBox
             // 
@@ -115,6 +118,7 @@
             this.locationBox.Name = "locationBox";
             this.locationBox.Size = new System.Drawing.Size(141, 20);
             this.locationBox.TabIndex = 42;
+            this.locationBox.TextChanged += new System.EventHandler(this.locationBox_TextChanged);
             // 
             // descriptionBox
             // 
@@ -122,6 +126,7 @@
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(141, 20);
             this.descriptionBox.TabIndex = 41;
+            this.descriptionBox.TextChanged += new System.EventHandler(this.descriptionBox_TextChanged);
             // 
             // titleBox
             // 
@@ -129,6 +134,7 @@
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(141, 20);
             this.titleBox.TabIndex = 40;
+            this.titleBox.TextChanged += new System.EventHandler(this.titleBox_TextChanged);
             // 
             // userIdBox
             // 
@@ -145,13 +151,6 @@
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(55, 20);
             this.idBox.TabIndex = 38;
-            // 
-            // nameBox
-            // 
-            this.nameBox.Location = new System.Drawing.Point(143, 84);
-            this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(141, 20);
-            this.nameBox.TabIndex = 37;
             // 
             // label12
             // 
@@ -234,15 +233,6 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "Title:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Customer Name:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -279,7 +269,6 @@
             this.Controls.Add(this.titleBox);
             this.Controls.Add(this.userIdBox);
             this.Controls.Add(this.idBox);
-            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -289,7 +278,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -314,7 +302,6 @@
         private System.Windows.Forms.TextBox titleBox;
         private System.Windows.Forms.TextBox userIdBox;
         private System.Windows.Forms.TextBox idBox;
-        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -324,7 +311,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
