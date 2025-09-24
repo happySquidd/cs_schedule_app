@@ -40,17 +40,17 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.titleBox = new System.Windows.Forms.TextBox();
+            this.descriptionBox = new System.Windows.Forms.TextBox();
+            this.locationBox = new System.Windows.Forms.TextBox();
+            this.contactBox = new System.Windows.Forms.TextBox();
+            this.typeBox = new System.Windows.Forms.TextBox();
+            this.urlBox = new System.Windows.Forms.TextBox();
+            this.startBox = new System.Windows.Forms.TextBox();
+            this.endBox = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -164,12 +164,13 @@
             this.label12.TabIndex = 11;
             this.label12.Text = "End time:";
             // 
-            // textBox1
+            // nameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(143, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 12;
+            this.nameBox.BackColor = System.Drawing.Color.Salmon;
+            this.nameBox.Location = new System.Drawing.Point(143, 84);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(141, 20);
+            this.nameBox.TabIndex = 12;
             // 
             // textBox2
             // 
@@ -187,61 +188,69 @@
             this.textBox3.Size = new System.Drawing.Size(55, 20);
             this.textBox3.TabIndex = 14;
             // 
-            // textBox4
+            // titleBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(143, 114);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(141, 20);
-            this.textBox4.TabIndex = 15;
+            this.titleBox.BackColor = System.Drawing.Color.Salmon;
+            this.titleBox.Location = new System.Drawing.Point(143, 114);
+            this.titleBox.Name = "titleBox";
+            this.titleBox.Size = new System.Drawing.Size(141, 20);
+            this.titleBox.TabIndex = 15;
             // 
-            // textBox5
+            // descriptionBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(143, 144);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(141, 20);
-            this.textBox5.TabIndex = 16;
+            this.descriptionBox.BackColor = System.Drawing.Color.Salmon;
+            this.descriptionBox.Location = new System.Drawing.Point(143, 144);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(141, 20);
+            this.descriptionBox.TabIndex = 16;
             // 
-            // textBox6
+            // locationBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(143, 174);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(141, 20);
-            this.textBox6.TabIndex = 17;
+            this.locationBox.BackColor = System.Drawing.Color.Salmon;
+            this.locationBox.Location = new System.Drawing.Point(143, 174);
+            this.locationBox.Name = "locationBox";
+            this.locationBox.Size = new System.Drawing.Size(141, 20);
+            this.locationBox.TabIndex = 17;
             // 
-            // textBox7
+            // contactBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(143, 204);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(141, 20);
-            this.textBox7.TabIndex = 18;
+            this.contactBox.BackColor = System.Drawing.Color.Salmon;
+            this.contactBox.Location = new System.Drawing.Point(143, 204);
+            this.contactBox.Name = "contactBox";
+            this.contactBox.Size = new System.Drawing.Size(141, 20);
+            this.contactBox.TabIndex = 18;
             // 
-            // textBox8
+            // typeBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(143, 234);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(141, 20);
-            this.textBox8.TabIndex = 19;
+            this.typeBox.BackColor = System.Drawing.Color.Salmon;
+            this.typeBox.Location = new System.Drawing.Point(143, 234);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(141, 20);
+            this.typeBox.TabIndex = 19;
             // 
-            // textBox9
+            // urlBox
             // 
-            this.textBox9.Location = new System.Drawing.Point(143, 264);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(141, 20);
-            this.textBox9.TabIndex = 20;
+            this.urlBox.BackColor = System.Drawing.Color.Salmon;
+            this.urlBox.Location = new System.Drawing.Point(143, 264);
+            this.urlBox.Name = "urlBox";
+            this.urlBox.Size = new System.Drawing.Size(141, 20);
+            this.urlBox.TabIndex = 20;
             // 
-            // textBox10
+            // startBox
             // 
-            this.textBox10.Location = new System.Drawing.Point(143, 294);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(141, 20);
-            this.textBox10.TabIndex = 21;
+            this.startBox.BackColor = System.Drawing.Color.Salmon;
+            this.startBox.Location = new System.Drawing.Point(143, 294);
+            this.startBox.Name = "startBox";
+            this.startBox.Size = new System.Drawing.Size(141, 20);
+            this.startBox.TabIndex = 21;
             // 
-            // textBox11
+            // endBox
             // 
-            this.textBox11.Location = new System.Drawing.Point(143, 324);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(141, 20);
-            this.textBox11.TabIndex = 22;
+            this.endBox.BackColor = System.Drawing.Color.Salmon;
+            this.endBox.Location = new System.Drawing.Point(143, 324);
+            this.endBox.Name = "endBox";
+            this.endBox.Size = new System.Drawing.Size(141, 20);
+            this.endBox.TabIndex = 22;
             // 
             // saveBtn
             // 
@@ -269,17 +278,17 @@
             this.ClientSize = new System.Drawing.Size(412, 419);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.endBox);
+            this.Controls.Add(this.startBox);
+            this.Controls.Add(this.urlBox);
+            this.Controls.Add(this.typeBox);
+            this.Controls.Add(this.contactBox);
+            this.Controls.Add(this.locationBox);
+            this.Controls.Add(this.descriptionBox);
+            this.Controls.Add(this.titleBox);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -314,17 +323,17 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox titleBox;
+        private System.Windows.Forms.TextBox descriptionBox;
+        private System.Windows.Forms.TextBox locationBox;
+        private System.Windows.Forms.TextBox contactBox;
+        private System.Windows.Forms.TextBox typeBox;
+        private System.Windows.Forms.TextBox urlBox;
+        private System.Windows.Forms.TextBox startBox;
+        private System.Windows.Forms.TextBox endBox;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button cancelBtn;
     }

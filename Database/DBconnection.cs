@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,6 +117,53 @@ namespace scheduleApp.Database
                 reader.Close();
             }
             return customers;
+        }
+
+        public static BindingList<Appointment> GetAppointments()
+        {
+            BindingList<Appointment> appointments = new BindingList<Appointment>();
+
+            // select all appointments that match user id and list customer name based on customer id
+            string command = 
+                $"SELECT ap.*, cu.customerName, ad.phone " +
+                $"FROM user " +
+                $"INNER JOIN appointment ap ON user.userId = ap.userId " +
+                $"INNER JOIN customer cu ON ap.customerId = cu.customerId " +
+                $"INNER JOIN address ad ON cu.addressId = ad.addressId " +
+                $"WHERE user.userId = '{Form1.userId}'";
+
+            using (MySqlCommand com = new MySqlCommand(command, connection)) 
+            { 
+                MySqlDataReader reader = com.ExecuteReader(); 
+                while (reader.Read())
+                {
+                    Appointment appointment = new Appointment()
+                    {
+                        appointmentId = Convert.ToInt32(reader["appointmentId"]),
+                        customerId = Convert.ToInt32(reader["customerId"]),
+                        userId = Convert.ToInt32(reader["userId"]),
+                        title = Convert.ToString(reader["title"]),
+                        description = Convert.ToString(reader["description"]),
+                        location = Convert.ToString(reader["location"]),
+                        contact = Convert.ToString(reader["contact"]),
+                        type = Convert.ToString(reader["type"]),
+                        url = Convert.ToString(reader["url"]),
+                        start = Convert.ToString(reader["start"]),
+                        end = Convert.ToString(reader["end"]),
+                        createDate = Convert.ToString(reader["createDate"]),
+                        createdBy = Convert.ToString(reader["createdBy"]),
+                        lastUpdate = Convert.ToString(reader["lastUpdate"]),
+                        lastUpdateBy = Convert.ToString(reader["lastUpdateBy"]),
+
+                        customerName = Convert.ToString(reader["customerName"]),
+                        phone = Convert.ToString(reader["phone"])
+                    };
+                    appointments.Add(appointment);
+
+                }
+                reader.Close();
+            }
+            return appointments;
         }
     }
 }

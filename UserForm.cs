@@ -27,12 +27,20 @@ namespace scheduleApp
             customersDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             customersDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             customersDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = customersDgv.ColumnHeadersDefaultCellStyle.BackColor;
-            
 
+            // appointments
+            appointmentsDgv.AutoGenerateColumns = false;
+            appointmentsDgv.DataSource = Appointment.allAppointments;
+            appointmentsDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            appointmentsDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = appointmentsDgv.ColumnHeadersDefaultCellStyle.BackColor;
+            // resize to match customers dgv
+            //appointmentsDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            //appointmentsDgv.ColumnHeadersHeight = 21;
         }
         private void dataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             customersDgv.ClearSelection();
+            appointmentsDgv.ClearSelection();
         }
 
         private void exit(object sender, EventArgs e)
@@ -68,7 +76,13 @@ namespace scheduleApp
 
         private void updateAppointmentBtn_Click(object sender, EventArgs e)
         {
-            ModifyAppointment modifyAppointment = new ModifyAppointment();
+            if (appointmentsDgv.CurrentRow == null)
+            {
+                MessageBox.Show("Nothing is selected");
+                return;
+            }
+            Appointment appointment = appointmentsDgv.CurrentRow.DataBoundItem as Appointment;
+            ModifyAppointment modifyAppointment = new ModifyAppointment(appointment);
             modifyAppointment.ShowDialog();
         }
 

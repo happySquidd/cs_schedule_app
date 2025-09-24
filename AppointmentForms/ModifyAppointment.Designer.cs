@@ -30,17 +30,17 @@
         {
             this.cancelBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.endBox = new System.Windows.Forms.TextBox();
+            this.startBox = new System.Windows.Forms.TextBox();
+            this.urlBox = new System.Windows.Forms.TextBox();
+            this.typeBox = new System.Windows.Forms.TextBox();
+            this.contactBox = new System.Windows.Forms.TextBox();
+            this.locationBox = new System.Windows.Forms.TextBox();
+            this.descriptionBox = new System.Windows.Forms.TextBox();
+            this.titleBox = new System.Windows.Forms.TextBox();
+            this.userIdBox = new System.Windows.Forms.TextBox();
+            this.idBox = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -74,84 +74,84 @@
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // endBox
             // 
-            this.textBox11.Location = new System.Drawing.Point(143, 324);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(141, 20);
-            this.textBox11.TabIndex = 47;
+            this.endBox.Location = new System.Drawing.Point(143, 324);
+            this.endBox.Name = "endBox";
+            this.endBox.Size = new System.Drawing.Size(141, 20);
+            this.endBox.TabIndex = 47;
             // 
-            // textBox10
+            // startBox
             // 
-            this.textBox10.Location = new System.Drawing.Point(143, 294);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(141, 20);
-            this.textBox10.TabIndex = 46;
+            this.startBox.Location = new System.Drawing.Point(143, 294);
+            this.startBox.Name = "startBox";
+            this.startBox.Size = new System.Drawing.Size(141, 20);
+            this.startBox.TabIndex = 46;
             // 
-            // textBox9
+            // urlBox
             // 
-            this.textBox9.Location = new System.Drawing.Point(143, 264);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(141, 20);
-            this.textBox9.TabIndex = 45;
+            this.urlBox.Location = new System.Drawing.Point(143, 264);
+            this.urlBox.Name = "urlBox";
+            this.urlBox.Size = new System.Drawing.Size(141, 20);
+            this.urlBox.TabIndex = 45;
             // 
-            // textBox8
+            // typeBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(143, 234);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(141, 20);
-            this.textBox8.TabIndex = 44;
+            this.typeBox.Location = new System.Drawing.Point(143, 234);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(141, 20);
+            this.typeBox.TabIndex = 44;
             // 
-            // textBox7
+            // contactBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(143, 204);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(141, 20);
-            this.textBox7.TabIndex = 43;
+            this.contactBox.Location = new System.Drawing.Point(143, 204);
+            this.contactBox.Name = "contactBox";
+            this.contactBox.Size = new System.Drawing.Size(141, 20);
+            this.contactBox.TabIndex = 43;
             // 
-            // textBox6
+            // locationBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(143, 174);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(141, 20);
-            this.textBox6.TabIndex = 42;
+            this.locationBox.Location = new System.Drawing.Point(143, 174);
+            this.locationBox.Name = "locationBox";
+            this.locationBox.Size = new System.Drawing.Size(141, 20);
+            this.locationBox.TabIndex = 42;
             // 
-            // textBox5
+            // descriptionBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(143, 144);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(141, 20);
-            this.textBox5.TabIndex = 41;
+            this.descriptionBox.Location = new System.Drawing.Point(143, 144);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(141, 20);
+            this.descriptionBox.TabIndex = 41;
             // 
-            // textBox4
+            // titleBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(143, 114);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(141, 20);
-            this.textBox4.TabIndex = 40;
+            this.titleBox.Location = new System.Drawing.Point(143, 114);
+            this.titleBox.Name = "titleBox";
+            this.titleBox.Size = new System.Drawing.Size(141, 20);
+            this.titleBox.TabIndex = 40;
             // 
-            // textBox3
+            // userIdBox
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(273, 54);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(55, 20);
-            this.textBox3.TabIndex = 39;
+            this.userIdBox.Enabled = false;
+            this.userIdBox.Location = new System.Drawing.Point(273, 54);
+            this.userIdBox.Name = "userIdBox";
+            this.userIdBox.Size = new System.Drawing.Size(55, 20);
+            this.userIdBox.TabIndex = 39;
             // 
-            // textBox2
+            // idBox
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(143, 54);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(55, 20);
-            this.textBox2.TabIndex = 38;
+            this.idBox.Enabled = false;
+            this.idBox.Location = new System.Drawing.Point(143, 54);
+            this.idBox.Name = "idBox";
+            this.idBox.Size = new System.Drawing.Size(55, 20);
+            this.idBox.TabIndex = 38;
             // 
-            // textBox1
+            // nameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(143, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 37;
+            this.nameBox.Location = new System.Drawing.Point(143, 84);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(141, 20);
+            this.nameBox.TabIndex = 37;
             // 
             // label12
             // 
@@ -269,17 +269,17 @@
             this.ClientSize = new System.Drawing.Size(412, 419);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.endBox);
+            this.Controls.Add(this.startBox);
+            this.Controls.Add(this.urlBox);
+            this.Controls.Add(this.typeBox);
+            this.Controls.Add(this.contactBox);
+            this.Controls.Add(this.locationBox);
+            this.Controls.Add(this.descriptionBox);
+            this.Controls.Add(this.titleBox);
+            this.Controls.Add(this.userIdBox);
+            this.Controls.Add(this.idBox);
+            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -304,17 +304,17 @@
 
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox endBox;
+        private System.Windows.Forms.TextBox startBox;
+        private System.Windows.Forms.TextBox urlBox;
+        private System.Windows.Forms.TextBox typeBox;
+        private System.Windows.Forms.TextBox contactBox;
+        private System.Windows.Forms.TextBox locationBox;
+        private System.Windows.Forms.TextBox descriptionBox;
+        private System.Windows.Forms.TextBox titleBox;
+        private System.Windows.Forms.TextBox userIdBox;
+        private System.Windows.Forms.TextBox idBox;
+        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
