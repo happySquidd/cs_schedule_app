@@ -11,6 +11,7 @@ namespace scheduleApp.model
     public class Appointment
     {
         public static BindingList<Appointment> allAppointments = DBconnection.GetAppointments();
+        public static List<string> types = new List<string>() { "Onboarding", "Advising", "Questions", "Presentation", "Scrum"};
 
         public int appointmentId { get; set; }
         public int customerId { get; set; }
@@ -31,5 +32,6 @@ namespace scheduleApp.model
         // additional info 
         public string customerName { get; set; }
         public string phone { get; set; }
+
     }
 }

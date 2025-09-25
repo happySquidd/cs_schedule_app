@@ -40,17 +40,17 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.titleBox = new System.Windows.Forms.TextBox();
             this.descriptionBox = new System.Windows.Forms.TextBox();
             this.locationBox = new System.Windows.Forms.TextBox();
             this.contactBox = new System.Windows.Forms.TextBox();
-            this.typeBox = new System.Windows.Forms.TextBox();
             this.urlBox = new System.Windows.Forms.TextBox();
             this.startBox = new System.Windows.Forms.TextBox();
             this.endBox = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.assignCustomerBox = new System.Windows.Forms.ComboBox();
+            this.typeBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -120,11 +120,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(211, 57);
+            this.label9.Location = new System.Drawing.Point(42, 87);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 8;
-            this.label9.Text = "User ID:";
+            this.label9.Text = "Customer ID:";
             // 
             // label10
             // 
@@ -158,16 +158,8 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(143, 54);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(55, 20);
+            this.textBox2.Size = new System.Drawing.Size(141, 20);
             this.textBox2.TabIndex = 13;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(273, 54);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(55, 20);
-            this.textBox3.TabIndex = 14;
             // 
             // titleBox
             // 
@@ -205,15 +197,6 @@
             this.contactBox.TabIndex = 18;
             this.contactBox.TextChanged += new System.EventHandler(this.contactBox_TextChanged);
             // 
-            // typeBox
-            // 
-            this.typeBox.BackColor = System.Drawing.Color.Salmon;
-            this.typeBox.Location = new System.Drawing.Point(143, 234);
-            this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(141, 20);
-            this.typeBox.TabIndex = 19;
-            this.typeBox.TextChanged += new System.EventHandler(this.typeBox_TextChanged);
-            // 
             // urlBox
             // 
             this.urlBox.BackColor = System.Drawing.Color.Salmon;
@@ -249,6 +232,7 @@
             this.saveBtn.TabIndex = 23;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // cancelBtn
             // 
@@ -260,22 +244,41 @@
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
+            // assignCustomerBox
+            // 
+            this.assignCustomerBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.assignCustomerBox.FormattingEnabled = true;
+            this.assignCustomerBox.Location = new System.Drawing.Point(143, 84);
+            this.assignCustomerBox.Name = "assignCustomerBox";
+            this.assignCustomerBox.Size = new System.Drawing.Size(141, 21);
+            this.assignCustomerBox.TabIndex = 26;
+            this.assignCustomerBox.SelectedIndexChanged += new System.EventHandler(this.assignCustomerBox_SelectedIndexChanged);
+            // 
+            // typeBox
+            // 
+            this.typeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.Location = new System.Drawing.Point(143, 234);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(141, 21);
+            this.typeBox.TabIndex = 27;
+            // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 419);
+            this.Controls.Add(this.typeBox);
+            this.Controls.Add(this.assignCustomerBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.endBox);
             this.Controls.Add(this.startBox);
             this.Controls.Add(this.urlBox);
-            this.Controls.Add(this.typeBox);
             this.Controls.Add(this.contactBox);
             this.Controls.Add(this.locationBox);
             this.Controls.Add(this.descriptionBox);
             this.Controls.Add(this.titleBox);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -310,16 +313,16 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox titleBox;
         private System.Windows.Forms.TextBox descriptionBox;
         private System.Windows.Forms.TextBox locationBox;
         private System.Windows.Forms.TextBox contactBox;
-        private System.Windows.Forms.TextBox typeBox;
         private System.Windows.Forms.TextBox urlBox;
         private System.Windows.Forms.TextBox startBox;
         private System.Windows.Forms.TextBox endBox;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.ComboBox assignCustomerBox;
+        private System.Windows.Forms.ComboBox typeBox;
     }
 }

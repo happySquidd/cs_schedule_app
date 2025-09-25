@@ -1,4 +1,5 @@
-﻿using System;
+﻿using scheduleApp.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,18 +17,41 @@ namespace scheduleApp.AppointmentForms
         private bool description = false;
         private bool location = false;
         private bool contact = false;
-        private bool type = false;
         private bool url = false;
         private bool start = false;
         private bool end = false;
+
+        private BindingList<Customer> customers = Customer.allCustomers;
+        private List<string> types = Appointment.types;
 
         public AddAppointment()
         {
             InitializeComponent();
             this.MaximizeBox = false;
             saveBtn.Enabled = false;
+
+            // populate customer ids
+            assignCustomerBox.BeginUpdate();
+            
+            for (int i = 0; i < customers.Count; i++)
+            {
+                assignCustomerBox.Items.Add($"{customers[i].customerId}  ({customers[i].customerName})");
+            }
+            assignCustomerBox.EndUpdate();
+
+            // populate type fields
+            typeBox.BeginUpdate();
+            for (int i = 0; i < types.Count; i++)
+            {
+                typeBox.Items.Add(types[i].ToString());
+            }
+            typeBox.EndUpdate();
         }
 
+        private void assignCustomerBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void titleBox_TextChanged(object sender, EventArgs e)
         {
@@ -89,20 +113,6 @@ namespace scheduleApp.AppointmentForms
             saveBtn.Enabled = canSave();
         }
 
-        private void typeBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(typeBox.Text))
-            {
-                typeBox.BackColor = Color.Salmon;
-                type = false;
-            }
-            else
-            {
-                typeBox.BackColor = Color.White;
-                type = true;
-            }
-            saveBtn.Enabled = canSave();
-        }
 
         private void urlBox_TextChanged(object sender, EventArgs e)
         {
@@ -151,7 +161,7 @@ namespace scheduleApp.AppointmentForms
 
         private bool canSave()
         {
-            if (title && description && location && contact && type && url && start && end)
+            if (title && description && location && contact && url && start && end)
             {
                 return true;
             }
@@ -163,6 +173,22 @@ namespace scheduleApp.AppointmentForms
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (assignCustomerBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a customer for this appointment");
+                return;
+            }
+            if (typeBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the type of appointment");
+                return;
+            }
+
             this.Close();
         }
     }

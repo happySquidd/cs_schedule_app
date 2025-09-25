@@ -38,7 +38,6 @@
             this.locationBox = new System.Windows.Forms.TextBox();
             this.descriptionBox = new System.Windows.Forms.TextBox();
             this.titleBox = new System.Windows.Forms.TextBox();
-            this.userIdBox = new System.Windows.Forms.TextBox();
             this.idBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.userIdBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cancelBtn
@@ -135,14 +135,6 @@
             this.titleBox.Size = new System.Drawing.Size(141, 20);
             this.titleBox.TabIndex = 40;
             this.titleBox.TextChanged += new System.EventHandler(this.titleBox_TextChanged);
-            // 
-            // userIdBox
-            // 
-            this.userIdBox.Enabled = false;
-            this.userIdBox.Location = new System.Drawing.Point(273, 54);
-            this.userIdBox.Name = "userIdBox";
-            this.userIdBox.Size = new System.Drawing.Size(55, 20);
-            this.userIdBox.TabIndex = 39;
             // 
             // idBox
             // 
@@ -252,6 +244,14 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Modify appointment";
             // 
+            // userIdBox
+            // 
+            this.userIdBox.Enabled = false;
+            this.userIdBox.Location = new System.Drawing.Point(273, 54);
+            this.userIdBox.Name = "userIdBox";
+            this.userIdBox.Size = new System.Drawing.Size(55, 20);
+            this.userIdBox.TabIndex = 39;
+            // 
             // ModifyAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,7 +300,6 @@
         private System.Windows.Forms.TextBox locationBox;
         private System.Windows.Forms.TextBox descriptionBox;
         private System.Windows.Forms.TextBox titleBox;
-        private System.Windows.Forms.TextBox userIdBox;
         private System.Windows.Forms.TextBox idBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
@@ -313,5 +312,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox userIdBox;
     }
 }

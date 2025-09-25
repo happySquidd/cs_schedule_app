@@ -33,14 +33,20 @@ namespace scheduleApp
             appointmentsDgv.DataSource = Appointment.allAppointments;
             appointmentsDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             appointmentsDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = appointmentsDgv.ColumnHeadersDefaultCellStyle.BackColor;
-            // resize to match customers dgv
-            //appointmentsDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            //appointmentsDgv.ColumnHeadersHeight = 21;
+
+
+            // calendar 
+            calendarDgv.AutoGenerateColumns = false;
+            calendarDgv.DataSource = Appointment.allAppointments;
+            calendarDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            calendarDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            calendarDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = calendarDgv.ColumnHeadersDefaultCellStyle.BackColor;
         }
         private void dataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             customersDgv.ClearSelection();
             appointmentsDgv.ClearSelection();
+            calendarDgv.ClearSelection();
         }
 
         private void exit(object sender, EventArgs e)
@@ -86,5 +92,29 @@ namespace scheduleApp
             modifyAppointment.ShowDialog();
         }
 
+        private void viewAllBtn_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewMonthBtn_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewWeekBtn_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewDayBtn_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            Console.WriteLine(monthCalendar.SelectionRange.Start);
+        }
     }
 }
