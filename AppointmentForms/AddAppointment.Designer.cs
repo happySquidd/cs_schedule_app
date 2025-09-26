@@ -45,12 +45,12 @@
             this.locationBox = new System.Windows.Forms.TextBox();
             this.contactBox = new System.Windows.Forms.TextBox();
             this.urlBox = new System.Windows.Forms.TextBox();
-            this.startBox = new System.Windows.Forms.TextBox();
-            this.endBox = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.assignCustomerBox = new System.Windows.Forms.ComboBox();
             this.typeBox = new System.Windows.Forms.ComboBox();
+            this.startTimeBox = new System.Windows.Forms.DateTimePicker();
+            this.endTimeBox = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -206,24 +206,6 @@
             this.urlBox.TabIndex = 20;
             this.urlBox.TextChanged += new System.EventHandler(this.urlBox_TextChanged);
             // 
-            // startBox
-            // 
-            this.startBox.BackColor = System.Drawing.Color.Salmon;
-            this.startBox.Location = new System.Drawing.Point(143, 294);
-            this.startBox.Name = "startBox";
-            this.startBox.Size = new System.Drawing.Size(141, 20);
-            this.startBox.TabIndex = 21;
-            this.startBox.TextChanged += new System.EventHandler(this.startBox_TextChanged);
-            // 
-            // endBox
-            // 
-            this.endBox.BackColor = System.Drawing.Color.Salmon;
-            this.endBox.Location = new System.Drawing.Point(143, 324);
-            this.endBox.Name = "endBox";
-            this.endBox.Size = new System.Drawing.Size(141, 20);
-            this.endBox.TabIndex = 22;
-            this.endBox.TextChanged += new System.EventHandler(this.endBox_TextChanged);
-            // 
             // saveBtn
             // 
             this.saveBtn.Location = new System.Drawing.Point(225, 372);
@@ -263,17 +245,31 @@
             this.typeBox.Size = new System.Drawing.Size(141, 21);
             this.typeBox.TabIndex = 27;
             // 
+            // startTimeBox
+            // 
+            this.startTimeBox.Location = new System.Drawing.Point(143, 294);
+            this.startTimeBox.Name = "startTimeBox";
+            this.startTimeBox.Size = new System.Drawing.Size(161, 20);
+            this.startTimeBox.TabIndex = 28;
+            // 
+            // endTimeBox
+            // 
+            this.endTimeBox.Location = new System.Drawing.Point(143, 324);
+            this.endTimeBox.Name = "endTimeBox";
+            this.endTimeBox.Size = new System.Drawing.Size(161, 20);
+            this.endTimeBox.TabIndex = 29;
+            // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 419);
+            this.Controls.Add(this.endTimeBox);
+            this.Controls.Add(this.startTimeBox);
             this.Controls.Add(this.typeBox);
             this.Controls.Add(this.assignCustomerBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.endBox);
-            this.Controls.Add(this.startBox);
             this.Controls.Add(this.urlBox);
             this.Controls.Add(this.contactBox);
             this.Controls.Add(this.locationBox);
@@ -318,11 +314,11 @@
         private System.Windows.Forms.TextBox locationBox;
         private System.Windows.Forms.TextBox contactBox;
         private System.Windows.Forms.TextBox urlBox;
-        private System.Windows.Forms.TextBox startBox;
-        private System.Windows.Forms.TextBox endBox;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.ComboBox assignCustomerBox;
         private System.Windows.Forms.ComboBox typeBox;
+        private System.Windows.Forms.DateTimePicker startTimeBox;
+        private System.Windows.Forms.DateTimePicker endTimeBox;
     }
 }

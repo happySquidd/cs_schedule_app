@@ -30,10 +30,7 @@
         {
             this.cancelBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.endBox = new System.Windows.Forms.TextBox();
-            this.startBox = new System.Windows.Forms.TextBox();
             this.urlBox = new System.Windows.Forms.TextBox();
-            this.typeBox = new System.Windows.Forms.TextBox();
             this.contactBox = new System.Windows.Forms.TextBox();
             this.locationBox = new System.Windows.Forms.TextBox();
             this.descriptionBox = new System.Windows.Forms.TextBox();
@@ -50,7 +47,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.userIdBox = new System.Windows.Forms.TextBox();
+            this.typeBox = new System.Windows.Forms.ComboBox();
+            this.customerIdBox = new System.Windows.Forms.TextBox();
+            this.startTimeBox = new System.Windows.Forms.DateTimePicker();
+            this.endTimeBox = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // cancelBtn
@@ -71,44 +71,21 @@
             this.saveBtn.TabIndex = 48;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
-            // 
-            // endBox
-            // 
-            this.endBox.Location = new System.Drawing.Point(143, 324);
-            this.endBox.Name = "endBox";
-            this.endBox.Size = new System.Drawing.Size(141, 20);
-            this.endBox.TabIndex = 47;
-            this.endBox.TextChanged += new System.EventHandler(this.endBox_TextChanged);
-            // 
-            // startBox
-            // 
-            this.startBox.Location = new System.Drawing.Point(143, 294);
-            this.startBox.Name = "startBox";
-            this.startBox.Size = new System.Drawing.Size(141, 20);
-            this.startBox.TabIndex = 46;
-            this.startBox.TextChanged += new System.EventHandler(this.startBox_TextChanged);
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // urlBox
             // 
             this.urlBox.Location = new System.Drawing.Point(143, 264);
             this.urlBox.Name = "urlBox";
-            this.urlBox.Size = new System.Drawing.Size(141, 20);
+            this.urlBox.Size = new System.Drawing.Size(161, 20);
             this.urlBox.TabIndex = 45;
             this.urlBox.TextChanged += new System.EventHandler(this.urlBox_TextChanged);
-            // 
-            // typeBox
-            // 
-            this.typeBox.Location = new System.Drawing.Point(143, 234);
-            this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(141, 20);
-            this.typeBox.TabIndex = 44;
-            this.typeBox.TextChanged += new System.EventHandler(this.typeBox_TextChanged);
             // 
             // contactBox
             // 
             this.contactBox.Location = new System.Drawing.Point(143, 204);
             this.contactBox.Name = "contactBox";
-            this.contactBox.Size = new System.Drawing.Size(141, 20);
+            this.contactBox.Size = new System.Drawing.Size(161, 20);
             this.contactBox.TabIndex = 43;
             this.contactBox.TextChanged += new System.EventHandler(this.contactBox_TextChanged);
             // 
@@ -116,7 +93,7 @@
             // 
             this.locationBox.Location = new System.Drawing.Point(143, 174);
             this.locationBox.Name = "locationBox";
-            this.locationBox.Size = new System.Drawing.Size(141, 20);
+            this.locationBox.Size = new System.Drawing.Size(161, 20);
             this.locationBox.TabIndex = 42;
             this.locationBox.TextChanged += new System.EventHandler(this.locationBox_TextChanged);
             // 
@@ -124,7 +101,7 @@
             // 
             this.descriptionBox.Location = new System.Drawing.Point(143, 144);
             this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(141, 20);
+            this.descriptionBox.Size = new System.Drawing.Size(161, 20);
             this.descriptionBox.TabIndex = 41;
             this.descriptionBox.TextChanged += new System.EventHandler(this.descriptionBox_TextChanged);
             // 
@@ -132,7 +109,7 @@
             // 
             this.titleBox.Location = new System.Drawing.Point(143, 114);
             this.titleBox.Name = "titleBox";
-            this.titleBox.Size = new System.Drawing.Size(141, 20);
+            this.titleBox.Size = new System.Drawing.Size(161, 20);
             this.titleBox.TabIndex = 40;
             this.titleBox.TextChanged += new System.EventHandler(this.titleBox_TextChanged);
             // 
@@ -141,7 +118,7 @@
             this.idBox.Enabled = false;
             this.idBox.Location = new System.Drawing.Point(143, 54);
             this.idBox.Name = "idBox";
-            this.idBox.Size = new System.Drawing.Size(55, 20);
+            this.idBox.Size = new System.Drawing.Size(61, 20);
             this.idBox.TabIndex = 38;
             // 
             // label12
@@ -174,11 +151,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(211, 57);
+            this.label9.Location = new System.Drawing.Point(222, 57);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 33;
-            this.label9.Text = "User ID:";
+            this.label9.Text = "Customer ID:";
             // 
             // label8
             // 
@@ -244,30 +221,53 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Modify appointment";
             // 
-            // userIdBox
+            // typeBox
             // 
-            this.userIdBox.Enabled = false;
-            this.userIdBox.Location = new System.Drawing.Point(273, 54);
-            this.userIdBox.Name = "userIdBox";
-            this.userIdBox.Size = new System.Drawing.Size(55, 20);
-            this.userIdBox.TabIndex = 39;
+            this.typeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.Location = new System.Drawing.Point(143, 234);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(161, 21);
+            this.typeBox.TabIndex = 50;
+            // 
+            // customerIdBox
+            // 
+            this.customerIdBox.Enabled = false;
+            this.customerIdBox.Location = new System.Drawing.Point(296, 54);
+            this.customerIdBox.Name = "customerIdBox";
+            this.customerIdBox.Size = new System.Drawing.Size(61, 20);
+            this.customerIdBox.TabIndex = 51;
+            // 
+            // startTimeBox
+            // 
+            this.startTimeBox.Location = new System.Drawing.Point(143, 294);
+            this.startTimeBox.Name = "startTimeBox";
+            this.startTimeBox.Size = new System.Drawing.Size(161, 20);
+            this.startTimeBox.TabIndex = 52;
+            // 
+            // endTimeBox
+            // 
+            this.endTimeBox.Location = new System.Drawing.Point(143, 324);
+            this.endTimeBox.Name = "endTimeBox";
+            this.endTimeBox.Size = new System.Drawing.Size(161, 20);
+            this.endTimeBox.TabIndex = 53;
             // 
             // ModifyAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 419);
+            this.Controls.Add(this.endTimeBox);
+            this.Controls.Add(this.startTimeBox);
+            this.Controls.Add(this.customerIdBox);
+            this.Controls.Add(this.typeBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.endBox);
-            this.Controls.Add(this.startBox);
             this.Controls.Add(this.urlBox);
-            this.Controls.Add(this.typeBox);
             this.Controls.Add(this.contactBox);
             this.Controls.Add(this.locationBox);
             this.Controls.Add(this.descriptionBox);
             this.Controls.Add(this.titleBox);
-            this.Controls.Add(this.userIdBox);
             this.Controls.Add(this.idBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -292,10 +292,7 @@
 
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.TextBox endBox;
-        private System.Windows.Forms.TextBox startBox;
         private System.Windows.Forms.TextBox urlBox;
-        private System.Windows.Forms.TextBox typeBox;
         private System.Windows.Forms.TextBox contactBox;
         private System.Windows.Forms.TextBox locationBox;
         private System.Windows.Forms.TextBox descriptionBox;
@@ -312,6 +309,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox userIdBox;
+        private System.Windows.Forms.ComboBox typeBox;
+        private System.Windows.Forms.TextBox customerIdBox;
+        private System.Windows.Forms.DateTimePicker startTimeBox;
+        private System.Windows.Forms.DateTimePicker endTimeBox;
     }
 }

@@ -17,10 +17,7 @@ namespace scheduleApp.AppointmentForms
         private bool description = true;
         private bool location = true;
         private bool contact = true;
-        private bool type = true;
         private bool url = true;
-        private bool start = true;
-        private bool end = true;
 
         public ModifyAppointment(Appointment appointment)
         {
@@ -30,15 +27,30 @@ namespace scheduleApp.AppointmentForms
 
             // fill all fields
             idBox.Text = Convert.ToString(appointment.appointmentId);
-            userIdBox.Text = Convert.ToString(appointment.userId);
+            customerIdBox.Text = Convert.ToString(appointment.customerId);
             titleBox.Text = appointment.title;
             descriptionBox.Text = appointment.description;
             locationBox.Text = appointment.location;
             contactBox.Text = appointment.contact;
-            typeBox.Text = appointment.type;
             urlBox.Text = appointment.url;
-            startBox.Text = appointment.start;
-            endBox.Text = appointment.end;
+            startTimeBox.Format = DateTimePickerFormat.Custom;
+            startTimeBox.CustomFormat = "yyyy-MM-dd  h:mm tt";
+            endTimeBox.Format = DateTimePickerFormat.Custom;
+            endTimeBox.CustomFormat = "yyyy-MM-dd  h:mm tt";
+
+            // fill type box
+            typeBox.BeginUpdate();
+            for (int i = 0; i < Appointment.types.Count; i++)
+            {
+                typeBox.Items.Add(Appointment.types[i].ToString());
+            }
+            if (!Appointment.types.Contains(appointment.type))
+            {
+                typeBox.Items.Add(appointment.type);
+            }
+            typeBox.SelectedItem = appointment.type;
+
+            typeBox.EndUpdate();
         }
 
         private void titleBox_TextChanged(object sender, EventArgs e)
@@ -101,21 +113,6 @@ namespace scheduleApp.AppointmentForms
             saveBtn.Enabled = canSave();
         }
 
-        private void typeBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(typeBox.Text))
-            {
-                typeBox.BackColor = Color.Salmon;
-                type = false;
-            }
-            else
-            {
-                typeBox.BackColor = Color.White;
-                type = true;
-            }
-            saveBtn.Enabled = canSave();
-        }
-
         private void urlBox_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(urlBox.Text))
@@ -131,39 +128,9 @@ namespace scheduleApp.AppointmentForms
             saveBtn.Enabled = canSave();
         }
 
-        private void startBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(startBox.Text))
-            {
-                startBox.BackColor = Color.Salmon;
-                start = false;
-            }
-            else
-            {
-                startBox.BackColor = Color.White;
-                start = true;
-            }
-            saveBtn.Enabled = canSave();
-        }
-
-        private void endBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(endBox.Text))
-            {
-                endBox.BackColor = Color.Salmon;
-                end = false;
-            }
-            else
-            {
-                endBox.BackColor = Color.White;
-                end = true;
-            }
-            saveBtn.Enabled = canSave();
-        }
-
         private bool canSave()
         {
-            if (title && description && location && contact && type && url && start && end)
+            if (title && description && location && contact && url)
             {
                 return true;
             }
@@ -175,6 +142,16 @@ namespace scheduleApp.AppointmentForms
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (typeBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a type for this appointment");
+                return;
+            }
             this.Close();
         }
     }

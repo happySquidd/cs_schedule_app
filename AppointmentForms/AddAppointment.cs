@@ -18,8 +18,6 @@ namespace scheduleApp.AppointmentForms
         private bool location = false;
         private bool contact = false;
         private bool url = false;
-        private bool start = false;
-        private bool end = false;
 
         private BindingList<Customer> customers = Customer.allCustomers;
         private List<string> types = Appointment.types;
@@ -29,6 +27,10 @@ namespace scheduleApp.AppointmentForms
             InitializeComponent();
             this.MaximizeBox = false;
             saveBtn.Enabled = false;
+            startTimeBox.Format = DateTimePickerFormat.Custom;
+            startTimeBox.CustomFormat = "yyyy-MM-dd  h:mm tt";
+            endTimeBox.Format = DateTimePickerFormat.Custom;
+            endTimeBox.CustomFormat = "yyyy-MM-dd  h:mm tt";
 
             // populate customer ids
             assignCustomerBox.BeginUpdate();
@@ -129,39 +131,9 @@ namespace scheduleApp.AppointmentForms
             saveBtn.Enabled = canSave();
         }
 
-        private void startBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(startBox.Text))
-            {
-                startBox.BackColor = Color.Salmon;
-                start = false;
-            }
-            else
-            {
-                startBox.BackColor = Color.White;
-                start = true;
-            }
-            saveBtn.Enabled = canSave();
-        }
-
-        private void endBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(endBox.Text))
-            {
-                endBox.BackColor = Color.Salmon;
-                end = false;
-            }
-            else
-            {
-                endBox.BackColor = Color.White;
-                end = true;
-            }
-            saveBtn.Enabled = canSave();
-        }
-
         private bool canSave()
         {
-            if (title && description && location && contact && url && start && end)
+            if (title && description && location && contact && url)
             {
                 return true;
             }
