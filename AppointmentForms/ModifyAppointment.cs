@@ -147,6 +147,7 @@ namespace scheduleApp.AppointmentForms
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            // -1 means nothing was selected, return to form
             if (typeBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a type for this appointment");

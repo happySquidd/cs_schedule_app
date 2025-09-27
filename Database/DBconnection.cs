@@ -16,7 +16,7 @@ namespace scheduleApp.Database
     {
         public static MySqlConnection connection { get; set; }
 
-
+        // open sql connection
         public static bool openConnection()
         {
             try
@@ -37,6 +37,7 @@ namespace scheduleApp.Database
             }
         }
 
+        // close sql connection
         public static void closeConnection()
         {
             try
@@ -54,6 +55,7 @@ namespace scheduleApp.Database
 
         public static BindingList<Customer> getCustomers()
         {
+            // create a list to add customers to and then return
             BindingList<Customer> customers = new BindingList<Customer>();
 
             // join user, appointment, customer, address, city, and country tables to retrieve all customers' data

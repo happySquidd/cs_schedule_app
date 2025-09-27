@@ -94,7 +94,7 @@ namespace scheduleApp
 
         private void viewAllBtn_CheckedChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void viewMonthBtn_CheckedChanged(object sender, EventArgs e)

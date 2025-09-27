@@ -91,6 +91,7 @@ namespace scheduleApp
 
         }
 
+        // check for any upcoming appointments in the next 15 minutes, return true if there are
         private bool upcomingAppointment()
         {
             DateTime currentTime = DateTime.Now;

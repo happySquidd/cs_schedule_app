@@ -11,6 +11,8 @@ namespace scheduleApp.model
 {
     public class Customer
     {
+        // note - all times are converted to local time when retrieved from the database
+
         public static BindingList<Customer> allCustomers = DBconnection.getCustomers();
 
         // customer info
