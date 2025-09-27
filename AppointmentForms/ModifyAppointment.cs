@@ -34,9 +34,9 @@ namespace scheduleApp.AppointmentForms
             contactBox.Text = appointment.contact;
             urlBox.Text = appointment.url;
             startTimeBox.Format = DateTimePickerFormat.Custom;
-            startTimeBox.CustomFormat = "yyyy-MM-dd  h:mm tt";
+            startTimeBox.CustomFormat = "yyyy-MM-dd  HH:mm";
             endTimeBox.Format = DateTimePickerFormat.Custom;
-            endTimeBox.CustomFormat = "yyyy-MM-dd  h:mm tt";
+            endTimeBox.CustomFormat = "yyyy-MM-dd  HH:mm";
 
             // fill type box
             typeBox.BeginUpdate();

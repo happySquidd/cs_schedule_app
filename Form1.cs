@@ -26,17 +26,17 @@ namespace scheduleApp
             this.MaximizeBox = false;
 
             // set text based on language
-            if (culture == "es") 
-            { 
+            if (culture == "es")
+            {
                 languageLabel.Text = "Spanish";
                 usernameLabel.Text = "Nombre de usuario:";
                 passwordLabel.Text = "Contraseña:";
                 submit.Text = "Acceso";
                 this.Text = "Acceso";
             }
-            else 
-            { 
-                languageLabel.Text = "English"; 
+            else
+            {
+                languageLabel.Text = "English";
             }
             passwordBox.UseSystemPasswordChar = true;
         }
@@ -63,7 +63,7 @@ namespace scheduleApp
             {
                 int count = Convert.ToInt32(sqlQuery.ExecuteScalar());
                 if (count > 0)
-                {
+                { // success
                     Console.WriteLine("user logged in");
 
                     // execute query to get user id
@@ -73,6 +73,12 @@ namespace scheduleApp
                         Console.WriteLine("user id : " + userId);
                     }
 
+                    // see any appointments within 15 minutes
+                    if (upcomingAppointment())
+                    {
+                        MessageBox.Show("You have an appointment in the next 15 minutes.");
+                    }
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -80,6 +86,30 @@ namespace scheduleApp
                 {
                     if (culture == "es") { MessageBox.Show("Nombre de usuario o contraseña incorrectos"); }
                     else { MessageBox.Show("Incorrect username or password"); }
+                }
+            }
+
+        }
+
+        private bool upcomingAppointment()
+        {
+            DateTime currentTime = DateTime.Now;
+            DateTime currentUtcTime = currentTime.ToUniversalTime();
+            DateTime timeIn15 = currentUtcTime.AddMinutes(15);
+            //Console.WriteLine("current time: " + currentUtcTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            //Console.WriteLine("time in 15: " + timeIn15);
+            // query to find any appointments within the next 15 minutes
+            string sql = $"SELECT COUNT(*) FROM appointment WHERE userId = '{userId}' AND start BETWEEN '{currentUtcTime.ToString("yyyy-MM-dd HH:mm:ss")}' AND '{timeIn15.ToString("yyyy-MM-dd HH:mm:ss")}'";
+            using (MySqlCommand command = new MySqlCommand(sql, DBconnection.connection))
+            {
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
 
