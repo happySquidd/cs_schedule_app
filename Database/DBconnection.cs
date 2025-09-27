@@ -81,10 +81,10 @@ namespace scheduleApp.Database
                         customerName = Convert.ToString(reader["customerName"]),
                         addressId = Convert.ToInt32(reader["addressId"]),
                         active = Convert.ToInt32(reader["active"]),
-                        createdDate = Convert.ToString(reader["cuCreateDate"]),
-                        createdBy = Convert.ToString(reader["cuCreatedBy"]),
-                        lastUpdated = Convert.ToString(reader["cuLastUpdate"]),
-                        lastUpdatedBy = Convert.ToString(reader["cuLastUpdateBy"]),
+                        createdDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cuCreateDate"].ToString()), TimeZoneInfo.Local)),
+                        createdBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cuCreatedBy"].ToString()), TimeZoneInfo.Local)),
+                        lastUpdated = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cuLastUpdate"].ToString()), TimeZoneInfo.Local)),
+                        lastUpdatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cuLastUpdateBy"].ToString()), TimeZoneInfo.Local)),
 
                         // address
                         address = Convert.ToString(reader["address"]),
@@ -92,25 +92,25 @@ namespace scheduleApp.Database
                         cityId = Convert.ToInt32(reader["cityId"]),
                         postalCode = Convert.ToString(reader["postalCode"]),
                         phone = Convert.ToString(reader["phone"]),
-                        addressCreatedDate = Convert.ToString(reader["adCreateDate"]),
-                        addressCreatedBy = Convert.ToString(reader["adCreatedBy"]),
-                        addressLastUpdated = Convert.ToString(reader["adLastUpdate"]),
-                        addressLastUpdatedBy = Convert.ToString(reader["adLastUpdateBy"]),
+                        addressCreatedDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adCreateDate"].ToString()), TimeZoneInfo.Local)),
+                        addressCreatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adCreatedBy"].ToString()), TimeZoneInfo.Local)),
+                        addressLastUpdated = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adLastUpdate"].ToString()), TimeZoneInfo.Local)),
+                        addressLastUpdatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adLastUpdateBy"].ToString()), TimeZoneInfo.Local)),
 
                         // city
                         city = Convert.ToString(reader["city"]),
                         countryId = Convert.ToInt32(reader["countryId"]),
-                        cityCreatedDate = Convert.ToString(reader["ciCreateDate"]),
-                        cityCreatedBy = Convert.ToString(reader["ciCreatedBy"]),
-                        cityLastUpdatedDate = Convert.ToString(reader["ciLastUpdate"]),
-                        cityLastUpdatedBy = Convert.ToString(reader["ciLastUpdateBy"]),
+                        cityCreatedDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["ciCreateDate"].ToString()), TimeZoneInfo.Local)),
+                        cityCreatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["ciCreatedBy"].ToString()), TimeZoneInfo.Local)),
+                        cityLastUpdatedDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["ciLastUpdate"].ToString()), TimeZoneInfo.Local)),
+                        cityLastUpdatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["ciLastUpdateBy"].ToString()), TimeZoneInfo.Local)),
 
                         // country 
                         country = Convert.ToString(reader["country"]),
-                        countryCreatedDate = Convert.ToString(reader["cyCreateDate"]),
-                        countryCreatedBy = Convert.ToString(reader["cyCreatedBy"]),
-                        countryLastUpdatedDate = Convert.ToString(reader["cyLastUpdate"]),
-                        countryLastUpdatedBy = Convert.ToString(reader["cyLastUpdateBy"])
+                        countryCreatedDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cyCreateDate"].ToString()), TimeZoneInfo.Local)),
+                        countryCreatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cyCreatedBy"].ToString()), TimeZoneInfo.Local)),
+                        countryLastUpdatedDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cyLastUpdate"].ToString()), TimeZoneInfo.Local)),
+                        countryLastUpdatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["cyLastUpdateBy"].ToString()), TimeZoneInfo.Local))
                     };
                     customers.Add(customer);
                 }
@@ -148,12 +148,12 @@ namespace scheduleApp.Database
                         contact = Convert.ToString(reader["contact"]),
                         type = Convert.ToString(reader["type"]),
                         url = Convert.ToString(reader["url"]),
-                        start = Convert.ToString(reader["start"]),
-                        end = Convert.ToString(reader["end"]),
-                        createDate = Convert.ToString(reader["createDate"]),
-                        createdBy = Convert.ToString(reader["createdBy"]),
-                        lastUpdate = Convert.ToString(reader["lastUpdate"]),
-                        lastUpdateBy = Convert.ToString(reader["lastUpdateBy"]),
+                        start = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["start"].ToString()), TimeZoneInfo.Local)),
+                        end = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["end"].ToString()), TimeZoneInfo.Local)),
+                        createDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["createDate"].ToString()), TimeZoneInfo.Local)),
+                        createdBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["createdBy"].ToString()), TimeZoneInfo.Local)),
+                        lastUpdate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["lastUpdate"].ToString()), TimeZoneInfo.Local)),
+                        lastUpdateBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["lastUpdateBy"].ToString()), TimeZoneInfo.Local)),
 
                         customerName = Convert.ToString(reader["customerName"]),
                         phone = Convert.ToString(reader["phone"])

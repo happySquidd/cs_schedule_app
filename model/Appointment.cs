@@ -10,6 +10,8 @@ namespace scheduleApp.model
 {
     public class Appointment
     {
+        // note - all times are converted to local time when retrieved from the database
+
         public static BindingList<Appointment> allAppointments = DBconnection.GetAppointments();
         public static List<string> types = new List<string>() { "Onboarding", "Advising", "Questions", "Presentation", "Scrum"};
 
