@@ -41,6 +41,9 @@ namespace scheduleApp
             calendarDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             calendarDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             calendarDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = calendarDgv.ColumnHeadersDefaultCellStyle.BackColor;
+            var currentDay = DateTime.Now;
+            monthCalendar.AddBoldedDate(currentDay);
+            viewAllBtn.Checked = true;
         }
         private void dataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -94,27 +97,46 @@ namespace scheduleApp
 
         private void viewAllBtn_CheckedChanged(object sender, EventArgs e)
         {
-            
+            monthCalendar.RemoveAllBoldedDates();
+            monthCalendar.UpdateBoldedDates();
+            calendarDgv.DataSource = Appointment.allAppointments;
         }
 
         private void viewMonthBtn_CheckedChanged(object sender, EventArgs e)
         {
-
+            Calendar.DisplayMonth(monthCalendar);
         }
 
         private void viewWeekBtn_CheckedChanged(object sender, EventArgs e)
         {
-
+            Calendar.DisplayWeek(monthCalendar);
         }
 
         private void viewDayBtn_CheckedChanged(object sender, EventArgs e)
         {
-
+            Calendar.DisplayDay(monthCalendar);
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
-            Console.WriteLine(monthCalendar.SelectionRange.Start);
+            if (viewAllBtn.Checked)
+            {
+                monthCalendar.RemoveAllBoldedDates();
+                monthCalendar.UpdateBoldedDates();
+                calendarDgv.DataSource = Appointment.allAppointments;
+            }
+            else if (viewMonthBtn.Checked)
+            {
+                Calendar.DisplayMonth(monthCalendar);
+            }
+            else if (viewWeekBtn.Checked)
+            {
+                Calendar.DisplayWeek(monthCalendar);
+            }
+            else // radio to display day is chosen
+            {
+                Calendar.DisplayDay(monthCalendar);
+            }
         }
     }
 }
