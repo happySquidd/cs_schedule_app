@@ -1,4 +1,5 @@
-﻿using scheduleApp.AppointmentForms;
+﻿using MySql.Data.MySqlClient;
+using scheduleApp.AppointmentForms;
 using scheduleApp.CustomerForms;
 using scheduleApp.Database;
 using scheduleApp.model;
@@ -137,6 +138,11 @@ namespace scheduleApp
             {
                 Calendar.DisplayDay(monthCalendar);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse("2025-09-22 20:05:00"), TimeZoneInfo.Local)));
         }
     }
 }

@@ -29,49 +29,50 @@
         private void InitializeComponent()
         {
             this.tabCalendar = new System.Windows.Forms.TabPage();
-            this.exitBtn3 = new System.Windows.Forms.Button();
-            this.calendarDgv = new System.Windows.Forms.DataGridView();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viewAllBtn = new System.Windows.Forms.RadioButton();
-            this.viewWeekBtn = new System.Windows.Forms.RadioButton();
-            this.viewMonthBtn = new System.Windows.Forms.RadioButton();
-            this.viewDayBtn = new System.Windows.Forms.RadioButton();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.viewDayBtn = new System.Windows.Forms.RadioButton();
+            this.viewMonthBtn = new System.Windows.Forms.RadioButton();
+            this.viewWeekBtn = new System.Windows.Forms.RadioButton();
+            this.viewAllBtn = new System.Windows.Forms.RadioButton();
+            this.calendarDgv = new System.Windows.Forms.DataGridView();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exitBtn3 = new System.Windows.Forms.Button();
             this.tabAppointment = new System.Windows.Forms.TabPage();
-            this.exitBtn2 = new System.Windows.Forms.Button();
-            this.appointmentsDgv = new System.Windows.Forms.DataGridView();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.addAppointmentBtn = new System.Windows.Forms.Button();
-            this.updateAppointmentBtn = new System.Windows.Forms.Button();
             this.deleteAppointmentBtn = new System.Windows.Forms.Button();
+            this.updateAppointmentBtn = new System.Windows.Forms.Button();
+            this.addAppointmentBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.appointmentsDgv = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exitBtn2 = new System.Windows.Forms.Button();
             this.tabCustomers = new System.Windows.Forms.TabPage();
-            this.customersDgv = new System.Windows.Forms.DataGridView();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addCustomerBtn = new System.Windows.Forms.Button();
-            this.modifyCustomerBtn = new System.Windows.Forms.Button();
-            this.deleteCustomerBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
+            this.deleteCustomerBtn = new System.Windows.Forms.Button();
+            this.modifyCustomerBtn = new System.Windows.Forms.Button();
+            this.addCustomerBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.customersDgv = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabReport = new System.Windows.Forms.TabControl();
             this.tabReports = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarDgv)).BeginInit();
             this.tabAppointment.SuspendLayout();
@@ -84,6 +85,7 @@
             // 
             // tabCalendar
             // 
+            this.tabCalendar.Controls.Add(this.button2);
             this.tabCalendar.Controls.Add(this.monthCalendar);
             this.tabCalendar.Controls.Add(this.viewDayBtn);
             this.tabCalendar.Controls.Add(this.viewMonthBtn);
@@ -98,15 +100,60 @@
             this.tabCalendar.Text = "Calendar";
             this.tabCalendar.UseVisualStyleBackColor = true;
             // 
-            // exitBtn3
+            // monthCalendar
             // 
-            this.exitBtn3.Location = new System.Drawing.Point(455, 370);
-            this.exitBtn3.Name = "exitBtn3";
-            this.exitBtn3.Size = new System.Drawing.Size(77, 31);
-            this.exitBtn3.TabIndex = 6;
-            this.exitBtn3.Text = "Log out";
-            this.exitBtn3.UseVisualStyleBackColor = true;
-            this.exitBtn3.Click += new System.EventHandler(this.exit);
+            this.monthCalendar.Location = new System.Drawing.Point(175, 9);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 18;
+            this.monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateChanged);
+            // 
+            // viewDayBtn
+            // 
+            this.viewDayBtn.AutoSize = true;
+            this.viewDayBtn.Location = new System.Drawing.Point(374, 174);
+            this.viewDayBtn.Name = "viewDayBtn";
+            this.viewDayBtn.Size = new System.Drawing.Size(50, 20);
+            this.viewDayBtn.TabIndex = 17;
+            this.viewDayBtn.TabStop = true;
+            this.viewDayBtn.Text = "Day";
+            this.viewDayBtn.UseVisualStyleBackColor = true;
+            this.viewDayBtn.CheckedChanged += new System.EventHandler(this.viewDayBtn_CheckedChanged);
+            // 
+            // viewMonthBtn
+            // 
+            this.viewMonthBtn.AutoSize = true;
+            this.viewMonthBtn.Location = new System.Drawing.Point(240, 174);
+            this.viewMonthBtn.Name = "viewMonthBtn";
+            this.viewMonthBtn.Size = new System.Drawing.Size(61, 20);
+            this.viewMonthBtn.TabIndex = 16;
+            this.viewMonthBtn.TabStop = true;
+            this.viewMonthBtn.Text = "Month";
+            this.viewMonthBtn.UseVisualStyleBackColor = true;
+            this.viewMonthBtn.CheckedChanged += new System.EventHandler(this.viewMonthBtn_CheckedChanged);
+            // 
+            // viewWeekBtn
+            // 
+            this.viewWeekBtn.AutoSize = true;
+            this.viewWeekBtn.Location = new System.Drawing.Point(307, 174);
+            this.viewWeekBtn.Name = "viewWeekBtn";
+            this.viewWeekBtn.Size = new System.Drawing.Size(61, 20);
+            this.viewWeekBtn.TabIndex = 15;
+            this.viewWeekBtn.TabStop = true;
+            this.viewWeekBtn.Text = "Week";
+            this.viewWeekBtn.UseVisualStyleBackColor = true;
+            this.viewWeekBtn.CheckedChanged += new System.EventHandler(this.viewWeekBtn_CheckedChanged);
+            // 
+            // viewAllBtn
+            // 
+            this.viewAllBtn.AutoSize = true;
+            this.viewAllBtn.Location = new System.Drawing.Point(162, 174);
+            this.viewAllBtn.Name = "viewAllBtn";
+            this.viewAllBtn.Size = new System.Drawing.Size(72, 20);
+            this.viewAllBtn.TabIndex = 14;
+            this.viewAllBtn.TabStop = true;
+            this.viewAllBtn.Text = "View All";
+            this.viewAllBtn.UseVisualStyleBackColor = true;
+            this.viewAllBtn.CheckedChanged += new System.EventHandler(this.viewAllBtn_CheckedChanged);
             // 
             // calendarDgv
             // 
@@ -129,34 +176,6 @@
             this.calendarDgv.TabIndex = 8;
             this.calendarDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "contact";
-            this.Column19.HeaderText = "Contact";
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "end";
-            this.Column18.HeaderText = "End Time";
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "start";
-            this.Column17.HeaderText = "Start Time";
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "title";
-            this.Column16.HeaderText = "Title";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            // 
             // Column15
             // 
             this.Column15.DataPropertyName = "appointmentId";
@@ -166,60 +185,43 @@
             this.Column15.ReadOnly = true;
             this.Column15.Width = 70;
             // 
-            // viewAllBtn
+            // Column16
             // 
-            this.viewAllBtn.AutoSize = true;
-            this.viewAllBtn.Location = new System.Drawing.Point(162, 174);
-            this.viewAllBtn.Name = "viewAllBtn";
-            this.viewAllBtn.Size = new System.Drawing.Size(72, 20);
-            this.viewAllBtn.TabIndex = 14;
-            this.viewAllBtn.TabStop = true;
-            this.viewAllBtn.Text = "View All";
-            this.viewAllBtn.UseVisualStyleBackColor = true;
-            this.viewAllBtn.CheckedChanged += new System.EventHandler(this.viewAllBtn_CheckedChanged);
+            this.Column16.DataPropertyName = "title";
+            this.Column16.HeaderText = "Title";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
             // 
-            // viewWeekBtn
+            // Column17
             // 
-            this.viewWeekBtn.AutoSize = true;
-            this.viewWeekBtn.Location = new System.Drawing.Point(307, 174);
-            this.viewWeekBtn.Name = "viewWeekBtn";
-            this.viewWeekBtn.Size = new System.Drawing.Size(61, 20);
-            this.viewWeekBtn.TabIndex = 15;
-            this.viewWeekBtn.TabStop = true;
-            this.viewWeekBtn.Text = "Week";
-            this.viewWeekBtn.UseVisualStyleBackColor = true;
-            this.viewWeekBtn.CheckedChanged += new System.EventHandler(this.viewWeekBtn_CheckedChanged);
+            this.Column17.DataPropertyName = "start";
+            this.Column17.HeaderText = "Start Time";
+            this.Column17.Name = "Column17";
+            this.Column17.ReadOnly = true;
             // 
-            // viewMonthBtn
+            // Column18
             // 
-            this.viewMonthBtn.AutoSize = true;
-            this.viewMonthBtn.Location = new System.Drawing.Point(240, 174);
-            this.viewMonthBtn.Name = "viewMonthBtn";
-            this.viewMonthBtn.Size = new System.Drawing.Size(61, 20);
-            this.viewMonthBtn.TabIndex = 16;
-            this.viewMonthBtn.TabStop = true;
-            this.viewMonthBtn.Text = "Month";
-            this.viewMonthBtn.UseVisualStyleBackColor = true;
-            this.viewMonthBtn.CheckedChanged += new System.EventHandler(this.viewMonthBtn_CheckedChanged);
+            this.Column18.DataPropertyName = "end";
+            this.Column18.HeaderText = "End Time";
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
             // 
-            // viewDayBtn
+            // Column19
             // 
-            this.viewDayBtn.AutoSize = true;
-            this.viewDayBtn.Location = new System.Drawing.Point(374, 174);
-            this.viewDayBtn.Name = "viewDayBtn";
-            this.viewDayBtn.Size = new System.Drawing.Size(50, 20);
-            this.viewDayBtn.TabIndex = 17;
-            this.viewDayBtn.TabStop = true;
-            this.viewDayBtn.Text = "Day";
-            this.viewDayBtn.UseVisualStyleBackColor = true;
-            this.viewDayBtn.CheckedChanged += new System.EventHandler(this.viewDayBtn_CheckedChanged);
+            this.Column19.DataPropertyName = "contact";
+            this.Column19.HeaderText = "Contact";
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
             // 
-            // monthCalendar
+            // exitBtn3
             // 
-            this.monthCalendar.Location = new System.Drawing.Point(175, 9);
-            this.monthCalendar.Name = "monthCalendar";
-            this.monthCalendar.TabIndex = 18;
-            this.monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateChanged);
+            this.exitBtn3.Location = new System.Drawing.Point(455, 370);
+            this.exitBtn3.Name = "exitBtn3";
+            this.exitBtn3.Size = new System.Drawing.Size(77, 31);
+            this.exitBtn3.TabIndex = 6;
+            this.exitBtn3.Text = "Log out";
+            this.exitBtn3.UseVisualStyleBackColor = true;
+            this.exitBtn3.Click += new System.EventHandler(this.exit);
             // 
             // tabAppointment
             // 
@@ -237,15 +239,44 @@
             this.tabAppointment.Text = "Appointments";
             this.tabAppointment.UseVisualStyleBackColor = true;
             // 
-            // exitBtn2
+            // deleteAppointmentBtn
             // 
-            this.exitBtn2.Location = new System.Drawing.Point(455, 370);
-            this.exitBtn2.Name = "exitBtn2";
-            this.exitBtn2.Size = new System.Drawing.Size(77, 31);
-            this.exitBtn2.TabIndex = 6;
-            this.exitBtn2.Text = "Log out";
-            this.exitBtn2.UseVisualStyleBackColor = true;
-            this.exitBtn2.Click += new System.EventHandler(this.exit);
+            this.deleteAppointmentBtn.Location = new System.Drawing.Point(207, 271);
+            this.deleteAppointmentBtn.Name = "deleteAppointmentBtn";
+            this.deleteAppointmentBtn.Size = new System.Drawing.Size(77, 31);
+            this.deleteAppointmentBtn.TabIndex = 11;
+            this.deleteAppointmentBtn.Text = "Delete";
+            this.deleteAppointmentBtn.UseVisualStyleBackColor = true;
+            // 
+            // updateAppointmentBtn
+            // 
+            this.updateAppointmentBtn.Location = new System.Drawing.Point(124, 271);
+            this.updateAppointmentBtn.Name = "updateAppointmentBtn";
+            this.updateAppointmentBtn.Size = new System.Drawing.Size(77, 31);
+            this.updateAppointmentBtn.TabIndex = 10;
+            this.updateAppointmentBtn.Text = "Update";
+            this.updateAppointmentBtn.UseVisualStyleBackColor = true;
+            this.updateAppointmentBtn.Click += new System.EventHandler(this.updateAppointmentBtn_Click);
+            // 
+            // addAppointmentBtn
+            // 
+            this.addAppointmentBtn.Location = new System.Drawing.Point(41, 271);
+            this.addAppointmentBtn.Name = "addAppointmentBtn";
+            this.addAppointmentBtn.Size = new System.Drawing.Size(77, 31);
+            this.addAppointmentBtn.TabIndex = 9;
+            this.addAppointmentBtn.Text = "Add";
+            this.addAppointmentBtn.UseVisualStyleBackColor = true;
+            this.addAppointmentBtn.Click += new System.EventHandler(this.addAppointmentBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(37, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "My appointments";
             // 
             // appointmentsDgv
             // 
@@ -271,55 +302,6 @@
             this.appointmentsDgv.TabIndex = 7;
             this.appointmentsDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "phone";
-            this.Column14.HeaderText = "Phone";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "customerName";
-            this.Column13.HeaderText = "Name";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "end";
-            this.Column12.HeaderText = "End";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "start";
-            this.Column11.HeaderText = "Start";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "url";
-            this.Column10.HeaderText = "Url";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "description";
-            this.Column9.HeaderText = "Description";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "title";
-            this.Column8.HeaderText = "Title";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
             // Column7
             // 
             this.Column7.DataPropertyName = "appointmentId";
@@ -328,44 +310,64 @@
             this.Column7.ReadOnly = true;
             this.Column7.Width = 50;
             // 
-            // label2
+            // Column8
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(37, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "My appointments";
+            this.Column8.DataPropertyName = "title";
+            this.Column8.HeaderText = "Title";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             // 
-            // addAppointmentBtn
+            // Column9
             // 
-            this.addAppointmentBtn.Location = new System.Drawing.Point(41, 271);
-            this.addAppointmentBtn.Name = "addAppointmentBtn";
-            this.addAppointmentBtn.Size = new System.Drawing.Size(77, 31);
-            this.addAppointmentBtn.TabIndex = 9;
-            this.addAppointmentBtn.Text = "Add";
-            this.addAppointmentBtn.UseVisualStyleBackColor = true;
-            this.addAppointmentBtn.Click += new System.EventHandler(this.addAppointmentBtn_Click);
+            this.Column9.DataPropertyName = "description";
+            this.Column9.HeaderText = "Description";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             // 
-            // updateAppointmentBtn
+            // Column10
             // 
-            this.updateAppointmentBtn.Location = new System.Drawing.Point(124, 271);
-            this.updateAppointmentBtn.Name = "updateAppointmentBtn";
-            this.updateAppointmentBtn.Size = new System.Drawing.Size(77, 31);
-            this.updateAppointmentBtn.TabIndex = 10;
-            this.updateAppointmentBtn.Text = "Update";
-            this.updateAppointmentBtn.UseVisualStyleBackColor = true;
-            this.updateAppointmentBtn.Click += new System.EventHandler(this.updateAppointmentBtn_Click);
+            this.Column10.DataPropertyName = "url";
+            this.Column10.HeaderText = "Url";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
-            // deleteAppointmentBtn
+            // Column11
             // 
-            this.deleteAppointmentBtn.Location = new System.Drawing.Point(207, 271);
-            this.deleteAppointmentBtn.Name = "deleteAppointmentBtn";
-            this.deleteAppointmentBtn.Size = new System.Drawing.Size(77, 31);
-            this.deleteAppointmentBtn.TabIndex = 11;
-            this.deleteAppointmentBtn.Text = "Delete";
-            this.deleteAppointmentBtn.UseVisualStyleBackColor = true;
+            this.Column11.DataPropertyName = "start";
+            this.Column11.HeaderText = "Start";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "end";
+            this.Column12.HeaderText = "End";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "customerName";
+            this.Column13.HeaderText = "Name";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "phone";
+            this.Column14.HeaderText = "Phone";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // exitBtn2
+            // 
+            this.exitBtn2.Location = new System.Drawing.Point(455, 370);
+            this.exitBtn2.Name = "exitBtn2";
+            this.exitBtn2.Size = new System.Drawing.Size(77, 31);
+            this.exitBtn2.TabIndex = 6;
+            this.exitBtn2.Text = "Log out";
+            this.exitBtn2.UseVisualStyleBackColor = true;
+            this.exitBtn2.Click += new System.EventHandler(this.exit);
             // 
             // tabCustomers
             // 
@@ -382,6 +384,55 @@
             this.tabCustomers.TabIndex = 0;
             this.tabCustomers.Text = "Customers";
             this.tabCustomers.UseVisualStyleBackColor = true;
+            // 
+            // exitBtn
+            // 
+            this.exitBtn.Location = new System.Drawing.Point(455, 370);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(77, 31);
+            this.exitBtn.TabIndex = 5;
+            this.exitBtn.Text = "Log out";
+            this.exitBtn.UseVisualStyleBackColor = true;
+            this.exitBtn.Click += new System.EventHandler(this.exit);
+            // 
+            // deleteCustomerBtn
+            // 
+            this.deleteCustomerBtn.Location = new System.Drawing.Point(207, 271);
+            this.deleteCustomerBtn.Name = "deleteCustomerBtn";
+            this.deleteCustomerBtn.Size = new System.Drawing.Size(77, 31);
+            this.deleteCustomerBtn.TabIndex = 4;
+            this.deleteCustomerBtn.Text = "Delete";
+            this.deleteCustomerBtn.UseVisualStyleBackColor = true;
+            // 
+            // modifyCustomerBtn
+            // 
+            this.modifyCustomerBtn.Location = new System.Drawing.Point(124, 271);
+            this.modifyCustomerBtn.Name = "modifyCustomerBtn";
+            this.modifyCustomerBtn.Size = new System.Drawing.Size(77, 31);
+            this.modifyCustomerBtn.TabIndex = 3;
+            this.modifyCustomerBtn.Text = "Modify";
+            this.modifyCustomerBtn.UseVisualStyleBackColor = true;
+            this.modifyCustomerBtn.Click += new System.EventHandler(this.modifyCustomerBtn_Click);
+            // 
+            // addCustomerBtn
+            // 
+            this.addCustomerBtn.Location = new System.Drawing.Point(41, 271);
+            this.addCustomerBtn.Name = "addCustomerBtn";
+            this.addCustomerBtn.Size = new System.Drawing.Size(77, 31);
+            this.addCustomerBtn.TabIndex = 2;
+            this.addCustomerBtn.Text = "Add";
+            this.addCustomerBtn.UseVisualStyleBackColor = true;
+            this.addCustomerBtn.Click += new System.EventHandler(this.addCustomerBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(37, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "All customers";
             // 
             // customersDgv
             // 
@@ -405,33 +456,12 @@
             this.customersDgv.TabIndex = 0;
             this.customersDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 
-            // Column6
+            // Column1
             // 
-            this.Column6.DataPropertyName = "createdDate";
-            this.Column6.HeaderText = "Created";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "phone";
-            this.Column5.HeaderText = "Phone";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "country";
-            this.Column4.HeaderText = "Country";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "city";
-            this.Column3.HeaderText = "City";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.Column1.DataPropertyName = "customerName";
+            this.Column1.HeaderText = "Name";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
@@ -440,61 +470,33 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // Column1
+            // Column3
             // 
-            this.Column1.DataPropertyName = "customerName";
-            this.Column1.HeaderText = "Name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.Column3.DataPropertyName = "city";
+            this.Column3.HeaderText = "City";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
-            // label1
+            // Column4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "All customers";
+            this.Column4.DataPropertyName = "country";
+            this.Column4.HeaderText = "Country";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
-            // addCustomerBtn
+            // Column5
             // 
-            this.addCustomerBtn.Location = new System.Drawing.Point(41, 271);
-            this.addCustomerBtn.Name = "addCustomerBtn";
-            this.addCustomerBtn.Size = new System.Drawing.Size(77, 31);
-            this.addCustomerBtn.TabIndex = 2;
-            this.addCustomerBtn.Text = "Add";
-            this.addCustomerBtn.UseVisualStyleBackColor = true;
-            this.addCustomerBtn.Click += new System.EventHandler(this.addCustomerBtn_Click);
+            this.Column5.DataPropertyName = "phone";
+            this.Column5.HeaderText = "Phone";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
-            // modifyCustomerBtn
+            // Column6
             // 
-            this.modifyCustomerBtn.Location = new System.Drawing.Point(124, 271);
-            this.modifyCustomerBtn.Name = "modifyCustomerBtn";
-            this.modifyCustomerBtn.Size = new System.Drawing.Size(77, 31);
-            this.modifyCustomerBtn.TabIndex = 3;
-            this.modifyCustomerBtn.Text = "Modify";
-            this.modifyCustomerBtn.UseVisualStyleBackColor = true;
-            this.modifyCustomerBtn.Click += new System.EventHandler(this.modifyCustomerBtn_Click);
-            // 
-            // deleteCustomerBtn
-            // 
-            this.deleteCustomerBtn.Location = new System.Drawing.Point(207, 271);
-            this.deleteCustomerBtn.Name = "deleteCustomerBtn";
-            this.deleteCustomerBtn.Size = new System.Drawing.Size(77, 31);
-            this.deleteCustomerBtn.TabIndex = 4;
-            this.deleteCustomerBtn.Text = "Delete";
-            this.deleteCustomerBtn.UseVisualStyleBackColor = true;
-            // 
-            // exitBtn
-            // 
-            this.exitBtn.Location = new System.Drawing.Point(455, 370);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(77, 31);
-            this.exitBtn.TabIndex = 5;
-            this.exitBtn.Text = "Log out";
-            this.exitBtn.UseVisualStyleBackColor = true;
-            this.exitBtn.Click += new System.EventHandler(this.exit);
+            this.Column6.DataPropertyName = "createdDate";
+            this.Column6.HeaderText = "Created";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // tabReport
             // 
@@ -527,6 +529,16 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Log out";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(451, 118);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // UserForm
             // 
@@ -597,5 +609,6 @@
         private System.Windows.Forms.TabControl tabReport;
         private System.Windows.Forms.TabPage tabReports;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

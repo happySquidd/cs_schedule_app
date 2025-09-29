@@ -94,7 +94,7 @@ namespace scheduleApp.Database
                         cityId = Convert.ToInt32(reader["cityId"]),
                         postalCode = Convert.ToString(reader["postalCode"]),
                         phone = Convert.ToString(reader["phone"]),
-                        addressCreatedDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adCreateDate"].ToString()), TimeZoneInfo.Local)),
+                        addressCreatedDate = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(Convert.ToString(reader["adCreateDate"])), TimeZoneInfo.Local)),
                         addressCreatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adCreatedBy"].ToString()), TimeZoneInfo.Local)),
                         addressLastUpdated = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adLastUpdate"].ToString()), TimeZoneInfo.Local)),
                         addressLastUpdatedBy = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(reader["adLastUpdateBy"].ToString()), TimeZoneInfo.Local)),
@@ -119,6 +119,11 @@ namespace scheduleApp.Database
                 reader.Close();
             }
             return customers;
+        }
+
+        private static DateTime ConvertDataReaderToLocalDate (MySqlDataReader reader, string value)
+        {
+            return TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(Convert.ToString(reader[value])), TimeZoneInfo.Local);
         }
 
         public static BindingList<Appointment> GetAppointments()
