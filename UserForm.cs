@@ -142,7 +142,7 @@ namespace scheduleApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse("2025-09-22 20:05:00"), TimeZoneInfo.Local)));
+            
         }
     }
 }
