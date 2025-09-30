@@ -12,7 +12,6 @@ namespace scheduleApp.model
 {
     internal class Calendar
     {
-        private static DateTime currentDate = DateTime.Now;
         public static BindingList<Appointment> DisplayDay(MonthCalendar calendar)
         {
             DateTime selectedDate = calendar.SelectionStart;
@@ -22,6 +21,7 @@ namespace scheduleApp.model
 
             string startDate = ConvertDateFormat(selectedDate.Date);
             string endDate = ConvertDateFormat(selectedDate.AddDays(1).Date);
+            // continuation of the query "WHERE userid = x AND"
             string query = $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
             Console.WriteLine("query for day: " + query);
             return DBconnection.GetAppointments(query);
@@ -41,7 +41,7 @@ namespace scheduleApp.model
             }
             calendar.UpdateBoldedDates();
             string startDate = ConvertDateFormat(tempStartDate.Date);
-            string endDate = ConvertDateFormat(currentDate.AddDays(7 - dayOfWeek).Date);
+            string endDate = ConvertDateFormat(selectedDate.AddDays(7 - dayOfWeek).Date);
             string query =
                 // continuation of the query "WHERE userid = x AND"
                 $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
@@ -80,9 +80,10 @@ namespace scheduleApp.model
             }
             calendar.UpdateBoldedDates();
 
-            DateTime endDate = selectedDate.AddDays(days);
+            DateTime endDate = tempStartDate.AddDays(days);
             string queryStartDate = ConvertDateFormat(tempStartDate.Date);
             string queryEndDate = ConvertDateFormat(endDate.Date);
+            // continuation of the query "WHERE userid = x AND"
             string query =  $"AND ap.start BETWEEN '{queryStartDate}' AND '{queryEndDate}'";
             Console.WriteLine("query for month: " + query);
             return DBconnection.GetAppointments(query);

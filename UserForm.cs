@@ -105,17 +105,17 @@ namespace scheduleApp
 
         private void viewMonthBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Calendar.DisplayMonth(monthCalendar);
+            calendarDgv.DataSource = Calendar.DisplayMonth(monthCalendar);
         }
 
         private void viewWeekBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Calendar.DisplayWeek(monthCalendar);
+            calendarDgv.DataSource = Calendar.DisplayWeek(monthCalendar);
         }
 
         private void viewDayBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Calendar.DisplayDay(monthCalendar);
+            calendarDgv.DataSource = Calendar.DisplayDay(monthCalendar);
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
