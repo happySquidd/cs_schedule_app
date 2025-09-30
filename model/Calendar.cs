@@ -89,8 +89,16 @@ namespace scheduleApp.model
             return DBconnection.GetAppointments(query);
         }
         
+        // converts DateTime format to the database format of year first
         private static string ConvertDateFormat(DateTime date)
         {
+            // since the displayed time is converted to local time, this next line helps convert the time back to UTC for the database.
+            // this prevents edge cases such as if utc is -4 (the displayed time in the data grid is 4 hours behind the time in the databse),
+            // the displayed days can be off by one if the time is near midnight. This basically esnures the readable time is correlated to the databse time
+            // by converting it to utc before sending the query and when displying it converts it back into local time. so if we see day 27,
+            // it might be day 26 at night in the database, and if we select day 27 expecting to see it we would see it there but we would see the day 27 on the 26th
+            // this solves that issue.
+            date = TimeZoneInfo.ConvertTimeToUtc(date.Date);
             return date.ToString("yyyy-MM-dd HH:mm:ss");
         }
     }

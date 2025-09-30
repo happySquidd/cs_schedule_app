@@ -142,7 +142,6 @@ namespace scheduleApp.Database
             else
             {
                 query = basicQuery + " " + query;
-                Console.WriteLine("custom query: " + query);
             }
 
                 using (MySqlCommand com = new MySqlCommand(query, connection))
