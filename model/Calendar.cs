@@ -33,10 +33,11 @@ namespace scheduleApp.model
                 calendar.AddBoldedDate(tempStartDate.AddDays(i));
             }
             calendar.UpdateBoldedDates();
-            string endDate = currentDate.AddDays(7 - dayOfWeek).Date.ToString();
+            string startDate = ConvertDateFormat(tempStartDate.Date);
+            string endDate = ConvertDateFormat(currentDate.AddDays(7 - dayOfWeek).Date);
             string query =
                 // continuation of the query "WHERE userid = x AND"
-                $"AND ap.start BETWEEN '{tempStartDate.Date}'" +
+                $"AND ap.start BETWEEN '{startDate}' " +
                 $"AND '{endDate}'";
             DBconnection.GetAppointments(query);
         }
@@ -73,5 +74,9 @@ namespace scheduleApp.model
             string endDate = month.ToString() + "/" + days.ToString() + "/" + year.ToString();
         }
         
+        private static string ConvertDateFormat(DateTime date)
+        {
+            return date.ToString("yyyy-MM-dd HH:mm:ss");
+        }
     }
 }
