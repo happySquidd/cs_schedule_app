@@ -121,12 +121,12 @@ namespace scheduleApp.Database
             return customers;
         }
 
-        public static BindingList<Appointment> GetAppointments()
+        public static BindingList<Appointment> GetAppointments(string query = "none")
         {
             BindingList<Appointment> appointments = new BindingList<Appointment>();
 
             // select all appointments that match user id and list customer name based on customer id
-            string command = 
+            string basicQuery =
                 $"SELECT ap.*, cu.customerName, ad.phone " +
                 $"FROM user " +
                 $"INNER JOIN appointment ap ON user.userId = ap.userId " +
@@ -134,37 +134,48 @@ namespace scheduleApp.Database
                 $"INNER JOIN address ad ON cu.addressId = ad.addressId " +
                 $"WHERE user.userId = '{Form1.userId}'";
 
-            using (MySqlCommand com = new MySqlCommand(command, connection)) 
-            { 
-                MySqlDataReader reader = com.ExecuteReader(); 
-                while (reader.Read())
-                {
-                    Appointment appointment = new Appointment()
-                    {
-                        appointmentId = Convert.ToInt32(reader["appointmentId"]),
-                        customerId = Convert.ToInt32(reader["customerId"]),
-                        userId = Convert.ToInt32(reader["userId"]),
-                        title = Convert.ToString(reader["title"]),
-                        description = Convert.ToString(reader["description"]),
-                        location = Convert.ToString(reader["location"]),
-                        contact = Convert.ToString(reader["contact"]),
-                        type = Convert.ToString(reader["type"]),
-                        url = Convert.ToString(reader["url"]),
-                        start = Convert.ToString(ConvertDataReaderToLocalDate(reader["start"])),
-                        end = Convert.ToString(ConvertDataReaderToLocalDate(reader["end"])),
-                        createDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["createDate"])),
-                        createdBy = Convert.ToString(reader["createdBy"]),
-                        lastUpdate = Convert.ToString(ConvertDataReaderToLocalDate(reader["lastUpdate"])),
-                        lastUpdateBy = Convert.ToString(reader["lastUpdateBy"]),
-
-                        customerName = Convert.ToString(reader["customerName"]),
-                        phone = Convert.ToString(reader["phone"])
-                    };
-                    appointments.Add(appointment);
-
-                }
-                reader.Close();
+            // if no query is given then pull all data
+            if (query == "none")
+            {
+                query = basicQuery;
+            } 
+            else
+            {
+                query = basicQuery + " " + query;
+                Console.WriteLine("custom query: " + query);
             }
+
+                using (MySqlCommand com = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader reader = com.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Appointment appointment = new Appointment()
+                        {
+                            appointmentId = Convert.ToInt32(reader["appointmentId"]),
+                            customerId = Convert.ToInt32(reader["customerId"]),
+                            userId = Convert.ToInt32(reader["userId"]),
+                            title = Convert.ToString(reader["title"]),
+                            description = Convert.ToString(reader["description"]),
+                            location = Convert.ToString(reader["location"]),
+                            contact = Convert.ToString(reader["contact"]),
+                            type = Convert.ToString(reader["type"]),
+                            url = Convert.ToString(reader["url"]),
+                            start = Convert.ToString(ConvertDataReaderToLocalDate(reader["start"])),
+                            end = Convert.ToString(ConvertDataReaderToLocalDate(reader["end"])),
+                            createDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["createDate"])),
+                            createdBy = Convert.ToString(reader["createdBy"]),
+                            lastUpdate = Convert.ToString(ConvertDataReaderToLocalDate(reader["lastUpdate"])),
+                            lastUpdateBy = Convert.ToString(reader["lastUpdateBy"]),
+
+                            customerName = Convert.ToString(reader["customerName"]),
+                            phone = Convert.ToString(reader["phone"])
+                        };
+                        appointments.Add(appointment);
+
+                    }
+                    reader.Close();
+                }
             return appointments;
         }
 

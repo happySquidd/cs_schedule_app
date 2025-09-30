@@ -1,4 +1,5 @@
 ﻿using Org.BouncyCastle.Crypto.Operators;
+using scheduleApp.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,23 @@ namespace scheduleApp.model
 
         public static void DisplayWeek(MonthCalendar calendar)
         {
-            DateTime selectedDate = calendar.SelectionStart;
+            DateTime selectedDate = calendar.SelectionStart.Date;
+            Console.WriteLine("debug should be just date: "+ selectedDate);
             calendar.RemoveAllBoldedDates();
             int dayOfWeek = (int)selectedDate.DayOfWeek;
             string startOfWeek = selectedDate.AddDays(-dayOfWeek).ToString();
-            DateTime tempDate = Convert.ToDateTime(startOfWeek);
+            DateTime tempStartDate = Convert.ToDateTime(startOfWeek);
             for (int i = 0;  i < 7; i++)
             {
-                calendar.AddBoldedDate(tempDate.AddDays(i));
+                calendar.AddBoldedDate(tempStartDate.AddDays(i));
             }
             calendar.UpdateBoldedDates();
-            string endDate = currentDate.AddDays(7 - dayOfWeek).ToString();
+            string endDate = currentDate.AddDays(7 - dayOfWeek).Date.ToString();
+            string query =
+                // continuation of the query "WHERE userid = x AND"
+                $"AND ap.start BETWEEN '{tempStartDate.Date}'" +
+                $"AND '{endDate}'";
+            DBconnection.GetAppointments(query);
         }
 
         public static void DisplayMonth(MonthCalendar calendar)
