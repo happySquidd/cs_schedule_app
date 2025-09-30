@@ -128,15 +128,15 @@ namespace scheduleApp
             }
             else if (viewMonthBtn.Checked)
             {
-                Calendar.DisplayMonth(monthCalendar);
+                calendarDgv.DataSource = Calendar.DisplayMonth(monthCalendar);
             }
             else if (viewWeekBtn.Checked)
             {
-                Calendar.DisplayWeek(monthCalendar);
+                calendarDgv.DataSource = Calendar.DisplayWeek(monthCalendar);
             }
             else // radio to display day is chosen
             {
-                Calendar.DisplayDay(monthCalendar);
+                calendarDgv.DataSource = Calendar.DisplayDay(monthCalendar);
             }
         }
 

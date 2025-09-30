@@ -181,7 +181,6 @@ namespace scheduleApp.Database
 
         private static DateTime ConvertDataReaderToLocalDate(object reader)
         {
-            Console.WriteLine("converting: " + reader);
             return TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(Convert.ToString(reader)), TimeZoneInfo.Local);
         }
 

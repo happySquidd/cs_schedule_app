@@ -2,6 +2,7 @@
 using scheduleApp.Database;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,15 +13,21 @@ namespace scheduleApp.model
     internal class Calendar
     {
         private static DateTime currentDate = DateTime.Now;
-        public static void DisplayDay(MonthCalendar calendar)
+        public static BindingList<Appointment> DisplayDay(MonthCalendar calendar)
         {
             DateTime selectedDate = calendar.SelectionStart;
             calendar.RemoveAllBoldedDates();
             calendar.AddBoldedDate(selectedDate);
             calendar.UpdateBoldedDates();
+
+            string startDate = ConvertDateFormat(selectedDate.Date);
+            string endDate = ConvertDateFormat(selectedDate.AddDays(1).Date);
+            string query = $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
+            Console.WriteLine("query for day: " + query);
+            return DBconnection.GetAppointments(query);
         }
 
-        public static void DisplayWeek(MonthCalendar calendar)
+        public static BindingList<Appointment> DisplayWeek(MonthCalendar calendar)
         {
             DateTime selectedDate = calendar.SelectionStart.Date;
             Console.WriteLine("debug should be just date: "+ selectedDate);
@@ -37,23 +44,24 @@ namespace scheduleApp.model
             string endDate = ConvertDateFormat(currentDate.AddDays(7 - dayOfWeek).Date);
             string query =
                 // continuation of the query "WHERE userid = x AND"
-                $"AND ap.start BETWEEN '{startDate}' " +
-                $"AND '{endDate}'";
-            DBconnection.GetAppointments(query);
+                $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
+            Console.WriteLine("query for week: " + query);
+            return DBconnection.GetAppointments(query);
         }
 
-        public static void DisplayMonth(MonthCalendar calendar)
+        public static BindingList<Appointment> DisplayMonth(MonthCalendar calendar)
         {
-            DateTime selectedDate = calendar.SelectionStart;
+            DateTime selectedDate = calendar.SelectionStart.Date;
             calendar.RemoveAllBoldedDates();
             int month = selectedDate.Month;
             int year = selectedDate.Year;
             int days;
             string startDate = month.ToString() + "/01/" + year.ToString();
-            DateTime tempDate = Convert.ToDateTime(startDate);
+            DateTime tempStartDate = Convert.ToDateTime(startDate);
             switch (month)
             {
                 case 2:
+                    // february
                     days = 29;
                     break;
                 case 4:
@@ -68,10 +76,16 @@ namespace scheduleApp.model
             }
             for (int i = 0; i < days; i++)
             {
-                calendar.AddBoldedDate(tempDate.AddDays(i));
+                calendar.AddBoldedDate(tempStartDate.AddDays(i));
             }
             calendar.UpdateBoldedDates();
-            string endDate = month.ToString() + "/" + days.ToString() + "/" + year.ToString();
+
+            DateTime endDate = selectedDate.AddDays(days);
+            string queryStartDate = ConvertDateFormat(tempStartDate.Date);
+            string queryEndDate = ConvertDateFormat(endDate.Date);
+            string query =  $"AND ap.start BETWEEN '{queryStartDate}' AND '{queryEndDate}'";
+            Console.WriteLine("query for month: " + query);
+            return DBconnection.GetAppointments(query);
         }
         
         private static string ConvertDateFormat(DateTime date)
