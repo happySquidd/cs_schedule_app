@@ -34,7 +34,7 @@ namespace scheduleApp.AppointmentForms
 
             // populate customer ids
             assignCustomerBox.BeginUpdate();
-            
+
             for (int i = 0; i < customers.Count; i++)
             {
                 assignCustomerBox.Items.Add($"{customers[i].customerId}  ({customers[i].customerName})");
@@ -48,6 +48,14 @@ namespace scheduleApp.AppointmentForms
                 typeBox.Items.Add(types[i].ToString());
             }
             typeBox.EndUpdate();
+
+            // helpful time conversion label from EST to local time
+            DateTime timeAm = new DateTime(2000, 01, 01, 09, 00, 00);
+            DateTime timePm = new DateTime(2000, 01, 01, 17, 00, 00);
+            TimeZoneInfo estZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime localAm = TimeZoneInfo.ConvertTime(timeAm, estZone, TimeZoneInfo.Local);
+            DateTime localPm = TimeZoneInfo.ConvertTime(timePm, estZone, TimeZoneInfo.Local);
+            localTimeLabel.Text = $"{localAm.Hour}:00-{localPm.Hour}:00 local time";
         }
 
         private void assignCustomerBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -177,8 +185,12 @@ namespace scheduleApp.AppointmentForms
             //validate time by comparing it to datetime hours 9am and 5pm
             DateTime am = DateTime.Parse("1/1/2000 09:00:00");
             DateTime pm = DateTime.Parse("1/1/2000 17:00:00");
-            if (startTimeBox.Value.TimeOfDay < am.TimeOfDay || startTimeBox.Value.TimeOfDay >= pm.TimeOfDay || 
-                endTimeBox.Value.TimeOfDay < am.TimeOfDay || endTimeBox.Value.TimeOfDay > pm.TimeOfDay)
+            // we have to change the selected time to eastern time to ensure appointments are made within EST business hours
+            TimeZoneInfo estZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime estStart = TimeZoneInfo.ConvertTime(startTimeBox.Value, estZone);
+            DateTime estEnd = TimeZoneInfo.ConvertTime(endTimeBox.Value, estZone);
+            if (estStart.TimeOfDay < am.TimeOfDay || estStart.TimeOfDay >= pm.TimeOfDay || 
+                estEnd.TimeOfDay < am.TimeOfDay || estEnd.TimeOfDay > pm.TimeOfDay)
             {
                 MessageBox.Show("Business hours are between 9:00am. and 5:00pm. EST, \nPlease adjust your time");
                 return;

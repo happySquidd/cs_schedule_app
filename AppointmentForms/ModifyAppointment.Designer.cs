@@ -51,6 +51,9 @@
             this.customerIdBox = new System.Windows.Forms.TextBox();
             this.startTimeBox = new System.Windows.Forms.DateTimePicker();
             this.endTimeBox = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.localTimeLabel = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelBtn
@@ -254,11 +257,44 @@
             this.endTimeBox.TabIndex = 53;
             this.endTimeBox.ValueChanged += new System.EventHandler(this.endTimeBox_ValueChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(42, 360);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(175, 26);
+            this.label3.TabIndex = 54;
+            this.label3.Text = "Note: This business is open Mon-Fri\r\n9:00-17:00 EST";
+            // 
+            // localTimeLabel
+            // 
+            this.localTimeLabel.AutoSize = true;
+            this.localTimeLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.localTimeLabel.Location = new System.Drawing.Point(42, 386);
+            this.localTimeLabel.Name = "localTimeLabel";
+            this.localTimeLabel.Size = new System.Drawing.Size(57, 13);
+            this.localTimeLabel.TabIndex = 55;
+            this.localTimeLabel.Text = "[local time]";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label13.Location = new System.Drawing.Point(42, 347);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(113, 13);
+            this.label13.TabIndex = 56;
+            this.label13.Text = "Choose your local time";
+            // 
             // ModifyAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 419);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.localTimeLabel);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.endTimeBox);
             this.Controls.Add(this.startTimeBox);
             this.Controls.Add(this.customerIdBox);
@@ -315,5 +351,8 @@
         private System.Windows.Forms.TextBox customerIdBox;
         private System.Windows.Forms.DateTimePicker startTimeBox;
         private System.Windows.Forms.DateTimePicker endTimeBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label localTimeLabel;
+        private System.Windows.Forms.Label label13;
     }
 }
