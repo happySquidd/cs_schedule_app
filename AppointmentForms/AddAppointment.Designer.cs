@@ -51,6 +51,8 @@
             this.typeBox = new System.Windows.Forms.ComboBox();
             this.startTimeBox = new System.Windows.Forms.DateTimePicker();
             this.endTimeBox = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -259,11 +261,33 @@
             this.endTimeBox.Size = new System.Drawing.Size(161, 20);
             this.endTimeBox.TabIndex = 29;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(42, 347);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(275, 13);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Note: This business is open Mon-Fri 9:00am-5:00pm EST";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label13.Location = new System.Drawing.Point(42, 360);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(116, 13);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Selected time is in EST";
+            // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 419);
+            this.ClientSize = new System.Drawing.Size(458, 419);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.endTimeBox);
             this.Controls.Add(this.startTimeBox);
             this.Controls.Add(this.typeBox);
@@ -320,5 +344,7 @@
         private System.Windows.Forms.ComboBox typeBox;
         private System.Windows.Forms.DateTimePicker startTimeBox;
         private System.Windows.Forms.DateTimePicker endTimeBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label13;
     }
 }

@@ -18,6 +18,7 @@ namespace scheduleApp.AppointmentForms
         private bool location = true;
         private bool contact = true;
         private bool url = true;
+        private bool timeChanged = false;
 
         public ModifyAppointment(Appointment appointment)
         {
@@ -33,6 +34,8 @@ namespace scheduleApp.AppointmentForms
             locationBox.Text = appointment.location;
             contactBox.Text = appointment.contact;
             urlBox.Text = appointment.url;
+            startTimeBox.Value = Convert.ToDateTime(appointment.start);
+            endTimeBox.Value = Convert.ToDateTime(appointment.end);
             startTimeBox.Format = DateTimePickerFormat.Custom;
             startTimeBox.CustomFormat = "yyyy-MM-dd  HH:mm";
             endTimeBox.Format = DateTimePickerFormat.Custom;
@@ -139,6 +142,16 @@ namespace scheduleApp.AppointmentForms
                 return false;
             }
         }
+        private void startTimeBox_ValueChanged(object sender, EventArgs e)
+        {
+            // change bool value to then validate new times
+            timeChanged = true;
+        }
+
+        private void endTimeBox_ValueChanged(object sender, EventArgs e)
+        {
+            timeChanged = true;
+        }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
@@ -153,7 +166,35 @@ namespace scheduleApp.AppointmentForms
                 MessageBox.Show("Please select a type for this appointment");
                 return;
             }
+
+            // validate time only if the user changed it
+            if (timeChanged)
+            {
+                if (startTimeBox.Value >= endTimeBox.Value)
+                {
+                    MessageBox.Show("The end time should be after the start time");
+                    return;
+                }
+                if (startTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || startTimeBox.Value.DayOfWeek == DayOfWeek.Sunday ||
+                    endTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || endTimeBox.Value.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    MessageBox.Show("Business is not open on weekends, please adjust your time");
+                    return;
+                }
+
+                //validate time by comparing it to datetime hours 9am and 5pm
+                DateTime am = DateTime.Parse("1/1/2000 09:00:00");
+                DateTime pm = DateTime.Parse("1/1/2000 17:00:00");
+                if (startTimeBox.Value.TimeOfDay < am.TimeOfDay || startTimeBox.Value.TimeOfDay >= pm.TimeOfDay ||
+                    endTimeBox.Value.TimeOfDay < am.TimeOfDay || endTimeBox.Value.TimeOfDay > pm.TimeOfDay)
+                {
+                    MessageBox.Show("Business hours are between 9:00am. and 5:00pm. EST, \nPlease adjust your time");
+                    return;
+                }
+            }
             this.Close();
         }
+
+        
     }
 }

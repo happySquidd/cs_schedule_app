@@ -244,6 +244,7 @@
             this.startTimeBox.Name = "startTimeBox";
             this.startTimeBox.Size = new System.Drawing.Size(161, 20);
             this.startTimeBox.TabIndex = 52;
+            this.startTimeBox.ValueChanged += new System.EventHandler(this.startTimeBox_ValueChanged);
             // 
             // endTimeBox
             // 
@@ -251,6 +252,7 @@
             this.endTimeBox.Name = "endTimeBox";
             this.endTimeBox.Size = new System.Drawing.Size(161, 20);
             this.endTimeBox.TabIndex = 53;
+            this.endTimeBox.ValueChanged += new System.EventHandler(this.endTimeBox_ValueChanged);
             // 
             // ModifyAppointment
             // 

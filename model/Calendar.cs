@@ -30,7 +30,6 @@ namespace scheduleApp.model
         public static BindingList<Appointment> DisplayWeek(MonthCalendar calendar)
         {
             DateTime selectedDate = calendar.SelectionStart.Date;
-            Console.WriteLine("debug should be just date: "+ selectedDate);
             calendar.RemoveAllBoldedDates();
             int dayOfWeek = (int)selectedDate.DayOfWeek;
             string startOfWeek = selectedDate.AddDays(-dayOfWeek).ToString();
@@ -42,9 +41,8 @@ namespace scheduleApp.model
             calendar.UpdateBoldedDates();
             string startDate = ConvertDateFormat(tempStartDate.Date);
             string endDate = ConvertDateFormat(selectedDate.AddDays(7 - dayOfWeek).Date);
-            string query =
-                // continuation of the query "WHERE userid = x AND"
-                $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
+            // continuation of the query "WHERE userid = x AND"
+            string query = $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
             Console.WriteLine("query for week: " + query);
             return DBconnection.GetAppointments(query);
         }

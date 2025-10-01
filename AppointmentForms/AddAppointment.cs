@@ -150,6 +150,7 @@ namespace scheduleApp.AppointmentForms
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            // input validation
             // -1 means nothing was selected, return to form
             if (assignCustomerBox.SelectedIndex == -1)
             {
@@ -161,8 +162,30 @@ namespace scheduleApp.AppointmentForms
                 MessageBox.Show("Please select the type of appointment");
                 return;
             }
+            if (startTimeBox.Value >= endTimeBox.Value)
+            {
+                MessageBox.Show("The end time should be after the start time");
+                return;
+            }
+            if (startTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || startTimeBox.Value.DayOfWeek == DayOfWeek.Sunday ||
+                endTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || endTimeBox.Value.DayOfWeek == DayOfWeek.Sunday)
+            {
+                MessageBox.Show("Business is not open on weekends, please adjust your time");
+                return;
+            }
+
+            //validate time by comparing it to datetime hours 9am and 5pm
+            DateTime am = DateTime.Parse("1/1/2000 09:00:00");
+            DateTime pm = DateTime.Parse("1/1/2000 17:00:00");
+            if (startTimeBox.Value.TimeOfDay < am.TimeOfDay || startTimeBox.Value.TimeOfDay >= pm.TimeOfDay || 
+                endTimeBox.Value.TimeOfDay < am.TimeOfDay || endTimeBox.Value.TimeOfDay > pm.TimeOfDay)
+            {
+                MessageBox.Show("Business hours are between 9:00am. and 5:00pm. EST, \nPlease adjust your time");
+                return;
+            }
 
             this.Close();
         }
+
     }
 }
