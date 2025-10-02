@@ -213,10 +213,8 @@ namespace scheduleApp.AppointmentForms
             }
             else
             {
-                // update dgv with new appointment
-                Appointment.allAppointments = DBconnection.GetAppointments();
                 this.DialogResult = DialogResult.OK;
-                Close();
+                this.Close();
             }
 
         }

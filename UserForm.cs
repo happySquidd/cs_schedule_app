@@ -77,12 +77,13 @@ namespace scheduleApp
             modifyCustomer.ShowDialog();
         }
 
-        // appointment
+        // appointment tab
         private void addAppointmentBtn_Click(object sender, EventArgs e)
         {
             AddAppointment addAppointment = new AddAppointment();
             if (addAppointment.ShowDialog() == DialogResult.OK)
             {
+                Appointment.allAppointments = DBconnection.GetAppointments();
                 appointmentsDgv.DataSource = Appointment.allAppointments;
                 calendarDgv.DataSource = Appointment.allAppointments;
             }
@@ -97,12 +98,40 @@ namespace scheduleApp
             }
             Appointment appointment = appointmentsDgv.CurrentRow.DataBoundItem as Appointment;
             ModifyAppointment modifyAppointment = new ModifyAppointment(appointment);
-            if (modifyAppointment.ShowDialog() == DialogResult.OK) 
-            { 
-                appointmentsDgv.DataSource = Appointment.allAppointments;
-            }
+            modifyAppointment.ShowDialog();
+            
         }
 
+        private void deleteAppointmentBtn_Click(object sender, EventArgs e)
+        {
+            if (appointmentsDgv.CurrentRow == null)
+            {
+                MessageBox.Show("Nothing is selected");
+            }
+            Appointment appointment = appointmentsDgv.CurrentRow.DataBoundItem as Appointment;
+
+            var confirm = MessageBox.Show("Are you sure you want to delete this appointment?", "Confirm", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.No)
+            {
+                return;
+            }
+
+            // delete from database and update tables
+            if (!DBconnection.DeleteAppointment(appointment.appointmentId))
+            {
+                MessageBox.Show("There was an error deleting the appointment\nPlease try again.");
+                return;
+            }
+            else
+            {
+                Appointment.allAppointments = DBconnection.GetAppointments();
+                appointmentsDgv.DataSource = Appointment.allAppointments;
+                calendarDgv.DataSource = Appointment.allAppointments;
+            }
+            
+        }
+
+        // calendar tab
         private void viewAllBtn_CheckedChanged(object sender, EventArgs e)
         {
             monthCalendar.RemoveAllBoldedDates();

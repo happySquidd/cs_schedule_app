@@ -249,9 +249,19 @@ namespace scheduleApp.Database
             // not implemented
         }
 
-        public static void DeleteAppointment()
+        public static bool DeleteAppointment(int appointmentId)
         {
-            // not implemented
+            string query = 
+                $"USE client_schedule; " +
+                $"DELETE FROM appointment " +
+                $"WHERE appointmentId = {appointmentId}";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection))
+            {
+                int result = command.ExecuteNonQuery();
+                if (result == 1) { Console.WriteLine("deleted one row"); return true; }
+                else { return false; }
+            }
         }
 
         private static DateTime ConvertToUTC(DateTime local)
