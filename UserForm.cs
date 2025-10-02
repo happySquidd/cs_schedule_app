@@ -81,7 +81,10 @@ namespace scheduleApp
         private void addAppointmentBtn_Click(object sender, EventArgs e)
         {
             AddAppointment addAppointment = new AddAppointment();
-            addAppointment.ShowDialog();
+            if (addAppointment.ShowDialog() == DialogResult.OK)
+            {
+                appointmentsDgv.DataSource = Appointment.allAppointments;
+            }
         }
 
         private void updateAppointmentBtn_Click(object sender, EventArgs e)
@@ -93,7 +96,10 @@ namespace scheduleApp
             }
             Appointment appointment = appointmentsDgv.CurrentRow.DataBoundItem as Appointment;
             ModifyAppointment modifyAppointment = new ModifyAppointment(appointment);
-            modifyAppointment.ShowDialog();
+            if (modifyAppointment.ShowDialog() == DialogResult.OK) 
+            { 
+                appointmentsDgv.DataSource = Appointment.allAppointments;
+            }
         }
 
         private void viewAllBtn_CheckedChanged(object sender, EventArgs e)

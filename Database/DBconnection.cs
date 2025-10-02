@@ -42,7 +42,7 @@ namespace scheduleApp.Database
         {
             try
             {
-                if (connection != null){ connection.Close(); }
+                if (connection != null) { connection.Close(); }
                 connection = null;
                 //MessageBox.Show("closed");
                 Console.WriteLine("connection closed");
@@ -59,7 +59,7 @@ namespace scheduleApp.Database
             BindingList<Customer> customers = new BindingList<Customer>();
 
             // join user, appointment, customer, address, city, and country tables to retrieve all customers' data
-            string sql = 
+            string sql =
                 $"SELECT cu.customerId, cu.customerName, cu.addressId, cu.active, cu.createDate AS cuCreateDate, cu.createdBy AS cuCreatedBy, cu.lastUpdate AS cuLastUpdate, cu.lastUpdateBy AS cuLastUpdateBy, " +
                 $"ad.address, ad.address2, ad.cityId, ad.postalCode, ad.phone, ad.createDate AS adCreateDate, ad.createdBy AS adCreatedBy, ad.lastUpdate AS adLastUpdate, ad.lastUpdateBy AS adLastUpdateBy, " +
                 $"ci.city, ci.countryId, ci.createDate AS ciCreateDate, ci.createdBy AS ciCreatedBy, ci.lastUpdate AS ciLastUpdate, ci.lastUpdateBy AS ciLastUpdateBy, " +
@@ -138,43 +138,43 @@ namespace scheduleApp.Database
             if (query == "none")
             {
                 query = basicQuery;
-            } 
+            }
             else
             {
                 query = basicQuery + " " + query;
             }
 
-                using (MySqlCommand com = new MySqlCommand(query, connection))
+            using (MySqlCommand com = new MySqlCommand(query, connection))
+            {
+                MySqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
                 {
-                    MySqlDataReader reader = com.ExecuteReader();
-                    while (reader.Read())
+                    Appointment appointment = new Appointment()
                     {
-                        Appointment appointment = new Appointment()
-                        {
-                            appointmentId = Convert.ToInt32(reader["appointmentId"]),
-                            customerId = Convert.ToInt32(reader["customerId"]),
-                            userId = Convert.ToInt32(reader["userId"]),
-                            title = Convert.ToString(reader["title"]),
-                            description = Convert.ToString(reader["description"]),
-                            location = Convert.ToString(reader["location"]),
-                            contact = Convert.ToString(reader["contact"]),
-                            type = Convert.ToString(reader["type"]),
-                            url = Convert.ToString(reader["url"]),
-                            start = Convert.ToString(ConvertDataReaderToLocalDate(reader["start"])),
-                            end = Convert.ToString(ConvertDataReaderToLocalDate(reader["end"])),
-                            createDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["createDate"])),
-                            createdBy = Convert.ToString(reader["createdBy"]),
-                            lastUpdate = Convert.ToString(ConvertDataReaderToLocalDate(reader["lastUpdate"])),
-                            lastUpdateBy = Convert.ToString(reader["lastUpdateBy"]),
+                        appointmentId = Convert.ToInt32(reader["appointmentId"]),
+                        customerId = Convert.ToInt32(reader["customerId"]),
+                        userId = Convert.ToInt32(reader["userId"]),
+                        title = Convert.ToString(reader["title"]),
+                        description = Convert.ToString(reader["description"]),
+                        location = Convert.ToString(reader["location"]),
+                        contact = Convert.ToString(reader["contact"]),
+                        type = Convert.ToString(reader["type"]),
+                        url = Convert.ToString(reader["url"]),
+                        start = Convert.ToString(ConvertDataReaderToLocalDate(reader["start"])),
+                        end = Convert.ToString(ConvertDataReaderToLocalDate(reader["end"])),
+                        createDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["createDate"])),
+                        createdBy = Convert.ToString(reader["createdBy"]),
+                        lastUpdate = Convert.ToString(ConvertDataReaderToLocalDate(reader["lastUpdate"])),
+                        lastUpdateBy = Convert.ToString(reader["lastUpdateBy"]),
 
-                            customerName = Convert.ToString(reader["customerName"]),
-                            phone = Convert.ToString(reader["phone"])
-                        };
-                        appointments.Add(appointment);
+                        customerName = Convert.ToString(reader["customerName"]),
+                        phone = Convert.ToString(reader["phone"])
+                    };
+                    appointments.Add(appointment);
 
-                    }
-                    reader.Close();
                 }
+                reader.Close();
+            }
             return appointments;
         }
 
@@ -183,5 +183,80 @@ namespace scheduleApp.Database
             return TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(Convert.ToString(reader)), TimeZoneInfo.Local);
         }
 
+        public static void CreateCustomer()
+        {
+            // not implemented
+        }
+
+        public static void UpdateCustomer()
+        {
+            // not implemented
+        }
+
+        public static void DeleteCustomer()
+        {
+            // not implemented
+        }
+
+        public static bool CreateAppointment(int customerId, string title, string description, string location,
+            string contact, string type, string url, DateTime startTime, DateTime endTime)
+        {
+            string start = ConvertToUTC(startTime).ToString("yyyy-MM-dd HH:mm:ss");
+            string end = ConvertToUTC(endTime).ToString("yyyy-MM-dd HH:mm:ss");
+            var command =
+                $"USE client_schedule; " +
+                $"INSERT INTO appointment " +
+                $"(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                $"VALUES (@cuId, @userId, @title, @description, @location, @contact, @type, @url, @start, @end, NOW(), 'user', NOW(), 'user')";
+            using (MySqlCommand query = new MySqlCommand(command, connection))
+            {
+                query.Parameters.AddWithValue("@cuId", customerId);
+                query.Parameters.AddWithValue("@userId", Form1.userId);
+                query.Parameters.AddWithValue("@title", title);
+                query.Parameters.AddWithValue("@description", description);
+                query.Parameters.AddWithValue("@location", location);
+                query.Parameters.AddWithValue("@contact", contact);
+                query.Parameters.AddWithValue("@type", type);
+                query.Parameters.AddWithValue("@url", url);
+                query.Parameters.AddWithValue("@start", start);
+                query.Parameters.AddWithValue("@end", end);
+                try
+                {
+                    int result = query.ExecuteNonQuery();
+                    if (result == 1)
+                    {
+                        Console.WriteLine("successfully entered data");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("error creating appointment");
+                        return false;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error: " + ex.Message);
+                    return false;
+                }
+            }
+
+        }
+
+        public static void UpdateAppointment(int customerId, string title, string description, string location,
+            string contact, string type, string url, DateTime startTime, DateTime endTime)
+        {
+            // not implemented
+        }
+
+        public static void DeleteAppointment()
+        {
+            // not implemented
+        }
+
+        private static DateTime ConvertToUTC(DateTime local)
+        {
+            return TimeZoneInfo.ConvertTimeToUtc(local, TimeZoneInfo.Local);
+        }
     }
 }

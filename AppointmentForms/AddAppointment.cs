@@ -1,8 +1,10 @@
-﻿using scheduleApp.model;
+﻿using scheduleApp.Database;
+using scheduleApp.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -158,6 +160,9 @@ namespace scheduleApp.AppointmentForms
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            // debug
+            //Console.WriteLine("debug from add appointment: " + typeBox.Text);
+
             // input validation
             // -1 means nothing was selected, return to form
             if (assignCustomerBox.SelectedIndex == -1)
@@ -196,7 +201,24 @@ namespace scheduleApp.AppointmentForms
                 return;
             }
 
-            this.Close();
+            // get customer id from the selected box
+            string[] customerString = assignCustomerBox.Text.Split(' ');
+            int customerId = Convert.ToInt32(customerString[0]);
+
+            // create the appointment
+            bool add = DBconnection.CreateAppointment(customerId, titleBox.Text, descriptionBox.Text, locationBox.Text, contactBox.Text, typeBox.Text, urlBox.Text, startTimeBox.Value, endTimeBox.Value);
+            if (!add)
+            {
+                MessageBox.Show("There was a problem inserting into\nthe database, please check your fields");
+            }
+            else
+            {
+                // update dgv with new appointment
+                Appointment.allAppointments = DBconnection.GetAppointments();
+                this.DialogResult = DialogResult.OK;
+                Close();
+            }
+
         }
 
     }
