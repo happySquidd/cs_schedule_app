@@ -203,26 +203,26 @@ namespace scheduleApp.Database
         {
             string start = ConvertToUTC(startTime).ToString("yyyy-MM-dd HH:mm:ss");
             string end = ConvertToUTC(endTime).ToString("yyyy-MM-dd HH:mm:ss");
-            var command =
+            var query =
                 $"USE client_schedule; " +
                 $"INSERT INTO appointment " +
                 $"(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) " +
                 $"VALUES (@cuId, @userId, @title, @description, @location, @contact, @type, @url, @start, @end, NOW(), 'user', NOW(), 'user')";
-            using (MySqlCommand query = new MySqlCommand(command, connection))
+            using (MySqlCommand command = new MySqlCommand(query, connection))
             {
-                query.Parameters.AddWithValue("@cuId", customerId);
-                query.Parameters.AddWithValue("@userId", Form1.userId);
-                query.Parameters.AddWithValue("@title", title);
-                query.Parameters.AddWithValue("@description", description);
-                query.Parameters.AddWithValue("@location", location);
-                query.Parameters.AddWithValue("@contact", contact);
-                query.Parameters.AddWithValue("@type", type);
-                query.Parameters.AddWithValue("@url", url);
-                query.Parameters.AddWithValue("@start", start);
-                query.Parameters.AddWithValue("@end", end);
+                command.Parameters.AddWithValue("@cuId", customerId);
+                command.Parameters.AddWithValue("@userId", Form1.userId);
+                command.Parameters.AddWithValue("@title", title);
+                command.Parameters.AddWithValue("@description", description);
+                command.Parameters.AddWithValue("@location", location);
+                command.Parameters.AddWithValue("@contact", contact);
+                command.Parameters.AddWithValue("@type", type);
+                command.Parameters.AddWithValue("@url", url);
+                command.Parameters.AddWithValue("@start", start);
+                command.Parameters.AddWithValue("@end", end);
                 try
                 {
-                    int result = query.ExecuteNonQuery();
+                    int result = command.ExecuteNonQuery();
                     if (result == 1)
                     {
                         Console.WriteLine("successfully entered data");
@@ -243,10 +243,50 @@ namespace scheduleApp.Database
 
         }
 
-        public static void UpdateAppointment(int customerId, string title, string description, string location,
+        public static bool UpdateAppointment(int appointmentId, string title, string description, string location,
             string contact, string type, string url, DateTime startTime, DateTime endTime)
         {
-            // not implemented
+            string start = ConvertToUTC(startTime).ToString("yyyy-MM-dd HH:mm:ss");
+            string end = ConvertToUTC(endTime).ToString("yyyy-MM-dd HH:mm:ss");
+            string query =
+                "USE client_schedule; " +
+                "UPDATE appointment " +
+                "SET title = @title, description = @description, location = @location, contact = @contact, type = @type, url = @url, start = @start, end = @end, lastUpdate = NOW() " +
+                "WHERE appointmentId = @appId;";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection))
+            {
+
+                command.Parameters.AddWithValue("@title", title);
+                command.Parameters.AddWithValue("@description", description);
+                command.Parameters.AddWithValue("@location", location);
+                command.Parameters.AddWithValue("@contact", contact);
+                command.Parameters.AddWithValue("@type", type);
+                command.Parameters.AddWithValue("@url", url);
+                command.Parameters.AddWithValue("@start", start);
+                command.Parameters.AddWithValue("@end", end);
+                command.Parameters.AddWithValue("@appId", appointmentId);
+
+                try
+                {
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        Console.WriteLine("updated one row");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("error in the update");
+                        return false;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error: " + ex.Message);
+                    return false;
+                }
+                
+            }
         }
 
         public static bool DeleteAppointment(int appointmentId)

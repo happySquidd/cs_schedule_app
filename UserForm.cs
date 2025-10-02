@@ -96,7 +96,10 @@ namespace scheduleApp
             }
             Appointment appointment = appointmentsDgv.CurrentRow.DataBoundItem as Appointment;
             ModifyAppointment modifyAppointment = new ModifyAppointment(appointment);
-            modifyAppointment.ShowDialog();
+            if (modifyAppointment.ShowDialog() == DialogResult.OK)
+            {
+                UpdateDataGrid();
+            }
             
         }
 
