@@ -1,4 +1,5 @@
-﻿using System;
+﻿using scheduleApp.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -159,7 +160,8 @@ namespace scheduleApp
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-
+            DBconnection.CreateCustomer();
+            this.Close();
         }
     }
 }

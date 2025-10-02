@@ -64,13 +64,10 @@ namespace scheduleApp.Database
                 $"ad.address, ad.address2, ad.cityId, ad.postalCode, ad.phone, ad.createDate AS adCreateDate, ad.createdBy AS adCreatedBy, ad.lastUpdate AS adLastUpdate, ad.lastUpdateBy AS adLastUpdateBy, " +
                 $"ci.city, ci.countryId, ci.createDate AS ciCreateDate, ci.createdBy AS ciCreatedBy, ci.lastUpdate AS ciLastUpdate, ci.lastUpdateBy AS ciLastUpdateBy, " +
                 $"cy.country, cy.createDate AS cyCreateDate, cy.createdBy AS cyCreatedBy, cy.lastUpdate AS cyLastUpdate, cy.lastUpdateBy AS cyLastUpdateBy " +
-                $"FROM user " +
-                $"INNER JOIN appointment ap ON user.userId = ap.userId " +
-                $"INNER JOIN customer cu ON ap.customerId = cu.customerId " +
+                $"FROM customer cu " +
                 $"INNER JOIN address ad ON cu.addressId = ad.addressId " +
                 $"INNER JOIN city ci ON ad.cityId = ci.cityId " +
-                $"INNER JOIN country cy ON ci.countryId = cy.countryId " +
-                $"WHERE user.userId = '{Form1.userId}'";
+                $"INNER JOIN country cy ON ci.countryId = cy.countryId";
 
             using (MySqlCommand command = new MySqlCommand(sql, connection))
             {
@@ -183,6 +180,7 @@ namespace scheduleApp.Database
             return TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(Convert.ToString(reader)), TimeZoneInfo.Local);
         }
 
+        // Customer handling functions
         public static void CreateCustomer()
         {
             // not implemented
@@ -198,6 +196,8 @@ namespace scheduleApp.Database
             // not implemented
         }
 
+        // TODO: check if appointment overlaps on creation and modification
+        // Appointment handling functions
         public static bool CreateAppointment(int customerId, string title, string description, string location,
             string contact, string type, string url, DateTime startTime, DateTime endTime)
         {
@@ -243,6 +243,7 @@ namespace scheduleApp.Database
 
         }
 
+        // TODO: see if appointment overlaps
         public static bool UpdateAppointment(int appointmentId, string title, string description, string location,
             string contact, string type, string url, DateTime startTime, DateTime endTime)
         {

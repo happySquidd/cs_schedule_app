@@ -17,7 +17,7 @@ namespace scheduleApp.CustomerForms
 
         bool name = true;
         bool address = true;
-        bool address2 = true;
+        bool address2 = false;
         bool city = true;
         bool country = true;
         bool postal = true;
@@ -126,7 +126,7 @@ namespace scheduleApp.CustomerForms
 
         private void postalBox_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(postalBox.Text) || !int.TryParse(postalBox.Text, out _))
+            if (string.IsNullOrWhiteSpace(postalBox.Text))
             {
                 postalBox.BackColor = Color.Salmon;
                 saveBtn.Enabled = false;
