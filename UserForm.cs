@@ -84,6 +84,7 @@ namespace scheduleApp
             if (addAppointment.ShowDialog() == DialogResult.OK)
             {
                 appointmentsDgv.DataSource = Appointment.allAppointments;
+                calendarDgv.DataSource = Appointment.allAppointments;
             }
         }
 
