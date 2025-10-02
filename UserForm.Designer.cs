@@ -170,7 +170,7 @@
             this.calendarDgv.Name = "calendarDgv";
             this.calendarDgv.ReadOnly = true;
             this.calendarDgv.RowHeadersVisible = false;
-            this.calendarDgv.Size = new System.Drawing.Size(491, 122);
+            this.calendarDgv.Size = new System.Drawing.Size(491, 139);
             this.calendarDgv.TabIndex = 8;
             this.calendarDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 

@@ -83,9 +83,7 @@ namespace scheduleApp
             AddAppointment addAppointment = new AddAppointment();
             if (addAppointment.ShowDialog() == DialogResult.OK)
             {
-                Appointment.allAppointments = DBconnection.GetAppointments();
-                appointmentsDgv.DataSource = Appointment.allAppointments;
-                calendarDgv.DataSource = Appointment.allAppointments;
+                UpdateDataGrid();
             }
         }
 
@@ -124,9 +122,7 @@ namespace scheduleApp
             }
             else
             {
-                Appointment.allAppointments = DBconnection.GetAppointments();
-                appointmentsDgv.DataSource = Appointment.allAppointments;
-                calendarDgv.DataSource = Appointment.allAppointments;
+                UpdateDataGrid();
             }
             
         }
@@ -174,6 +170,13 @@ namespace scheduleApp
             {
                 calendarDgv.DataSource = Calendar.DisplayDay(monthCalendar);
             }
+        }
+
+        private void UpdateDataGrid()
+        {
+            Appointment.allAppointments = DBconnection.GetAppointments();
+            appointmentsDgv.DataSource = Appointment.allAppointments;
+            calendarDgv.DataSource = Appointment.allAppointments;
         }
 
     }
