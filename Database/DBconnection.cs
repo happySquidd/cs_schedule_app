@@ -187,8 +187,6 @@ namespace scheduleApp.Database
             int countryId = 0;
             int cityId = 0;
             int addressId = 0;
-            bool countryExists = false;
-            bool cityExists = false;
 
 
             // see if the country exists and create it if not
@@ -196,7 +194,7 @@ namespace scheduleApp.Database
                 "USE client_schedule; " +
                 "SELECT countryId " +
                 "FROM country " +
-                "WHERE country = '@country';";
+                "WHERE country = @country;";
 
             using (MySqlCommand com = new MySqlCommand(queryCountry, connection))
             {
@@ -209,9 +207,8 @@ namespace scheduleApp.Database
                     if (exists != null)
                     {
                         // country exists, get id
-                        Console.WriteLine("db return: country exists");
                         countryId = Convert.ToInt32(com.ExecuteScalar());
-                        countryExists = true;
+                        Console.WriteLine("db return: country exists");
                         // continue after the try catch block
                     }
                     else
@@ -233,102 +230,79 @@ namespace scheduleApp.Database
             }
 
             // check if city exists, make it if not
-            if (countryExists)
+            string queryCity =
+                $"USE client_schedule; " +
+                $"SELECT cityId " +
+                $"FROM city " +
+                $"WHERE city = @city AND countryID = {countryId};";
+            try
             {
-                string queryCity =
-                    $"USE client_schedule; " +
-                    $"SELECT cityId " +
-                    $"FROM city " +
-                    $"WHERE countryId = {countryId}";
-                try
+                using (MySqlCommand com = new MySqlCommand(queryCity, connection))
                 {
-                    using (MySqlCommand com = new MySqlCommand(queryCity, connection))
+                    com.Parameters.AddWithValue("@city", city);
+                    object exists = com.ExecuteScalar();
+
+                    if (exists != null)
                     {
-                        object exists = com.ExecuteScalar();
-                        if (exists != null)
+                        // city exists, set id
+                        cityId = Convert.ToInt32(com.ExecuteScalar());
+                        Console.WriteLine("db return: city exists");
+                    }
+                    else
+                    {
+                        //create city
+                        cityId = CreateCity(countryId, city);
+                        if (cityId == 0)
                         {
-                            // city exists, set id
-                            Console.WriteLine("db return: city exists");
-                            cityId = Convert.ToInt32(com.ExecuteScalar());
-                            cityExists = true;
-                        }
-                        else
-                        {
-                            //create city
-                            cityId = CreateCity(countryId, city);
-                            if (cityId == 0)
-                            {
-                                Console.WriteLine("create city crashed");
-                                return false;
-                            }
+                            Console.WriteLine("create city crashed");
+                            return false;
                         }
                     }
                 }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine("sql error 5: " + ex.Message);
-                }
-
             }
-            else
+            catch (MySqlException ex)
             {
-                // country doesn't exist, make a new city for that country
-                cityId = CreateCity(countryId, city);
-                if (cityId == 0)
-                {
-                    Console.WriteLine("create city crashed");
-                    return false;
-                }
+                Console.WriteLine("sql error 5: " + ex.Message);
             }
+
 
             // check if address exists
-            if (cityExists)
+            string queryAddress =
+                $"USE client_schedule; " +
+                $"SELECT addressId " +
+                $"FROM address " +
+                $"WHERE address = @address AND cityId = {cityId};";
+            try
             {
-                string queryAddress =
-                    $"USE client_schedule; " +
-                    $"SELECT addressId " +
-                    $"FROM address " +
-                    $"WHERE cityId = {cityId};";
-                try
+                using (MySqlCommand com = new MySqlCommand(queryAddress, connection))
                 {
-                    using (MySqlCommand com = new MySqlCommand(queryAddress, connection))
+                    com.Parameters.AddWithValue("@address", address);
+                    object exists = com.ExecuteScalar();
+                    if (exists != null)
                     {
-                        object exists = com.ExecuteScalar();
-                        if (exists != null)
+                        //address exists
+                        addressId = Convert.ToInt32(exists);
+                        Console.WriteLine("db return: address exists");
+                    }
+                    else
+                    {
+                        // doesn't exist, create it
+                        addressId = CreateAddress(address, address2, cityId, postalCode, phone);
+                        if (addressId == 0)
                         {
-                            //address exists
-                            addressId = Convert.ToInt32(exists);
-                            Console.WriteLine("db return: city exists");
+                            Console.WriteLine("create address crashed");
+                            return false;
                         }
-                        else
-                        {
-                            // doesn't exist, create it
-                            addressId = CreateAddress(address, address2, cityId, postalCode, phone);
-                            if (addressId == 0)
-                            {
-                                Console.WriteLine("create address crashed");
-                                return false;
-                            }
 
-                        }
                     }
                 }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine("sql error 8:" + ex.Message);
-                    return false;
-                }
             }
-            else
+            catch (MySqlException ex)
             {
-                // city doesn't exist, create a new address
-                addressId = CreateAddress(address, address2, cityId, postalCode, phone);
-                if (addressId == 0)
-                {
-                    Console.WriteLine("create address crashed");
-                    return false;
-                }
+                Console.WriteLine("sql error 8:" + ex.Message);
+                return false;
             }
+            
 
             // if here then ready to create user
             string queryCustomer =
@@ -343,7 +317,6 @@ namespace scheduleApp.Database
                 {
                     com.ExecuteNonQuery();
                     // if here then everything is a success!
-                    Console.WriteLine("YOU DID IT!!!");
                     return true;
                 }
                 catch (MySqlException ex)
@@ -500,7 +473,7 @@ namespace scheduleApp.Database
                             "SELECT countryId " +
                             "FROM country " +
                             "WHERE country = @country";
-                        Console.WriteLine("grabbing country id");
+                        //Console.WriteLine("grabbing country id");
                         return Convert.ToInt32(com.ExecuteScalar());
                     }
                     else
@@ -533,12 +506,13 @@ namespace scheduleApp.Database
                 {
                     if (com.ExecuteNonQuery() == 1)
                     {
+                        Console.WriteLine("created city");
                         com.CommandText =
                             $"USE client_schedule; " +
                             $"SELECT cityId " +
                             $"FROM city " +
                             $"WHERE countryId = {countryId};";
-                        Console.WriteLine("grabbing new city id");
+                        //Console.WriteLine("grabbing new city id");
                         return Convert.ToInt32(com.ExecuteScalar());
                     }
                     else 
@@ -573,12 +547,13 @@ namespace scheduleApp.Database
                 {
                     if (com.ExecuteNonQuery() == 1)
                     {
-                        Console.WriteLine("Created address!");
+                        Console.WriteLine("created address");
                         com.CommandText =
                             $"USE client_schedule; " +
                             $"SELECT addressId " +
                             $"FROM address " +
                             $"WHERE cityId = {cityId};";
+                        //Console.WriteLine("grabbing address id");
                         return Convert.ToInt32(com.ExecuteScalar());
                     }
                     else
