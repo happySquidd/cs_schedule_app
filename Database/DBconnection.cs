@@ -499,7 +499,7 @@ namespace scheduleApp.Database
                             "USE client_schedule; " +
                             "SELECT countryId " +
                             "FROM country " +
-                            "WHERE country = '@country'";
+                            "WHERE country = @country";
                         Console.WriteLine("grabbing country id");
                         return Convert.ToInt32(com.ExecuteScalar());
                     }
@@ -522,7 +522,7 @@ namespace scheduleApp.Database
             string query =
                 "USE client_schedule; " +
                 "INSERT INTO city (city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy) " +
-                "VALUES ('@city', @countryId, NOW(), 'user', NOW(), 'user');";
+                "VALUES (@city, @countryId, NOW(), 'user', NOW(), 'user');";
 
             using (MySqlCommand com = new MySqlCommand(query, connection))
             {
