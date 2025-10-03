@@ -333,9 +333,25 @@ namespace scheduleApp.Database
             // not implemented
         }
 
-        public static void DeleteCustomer()
+        public static bool DeleteCustomer(int customerId)
         {
-            // not implemented
+            string query =
+                $"USE client_schedule; " +
+                $"DELETE FROM customer " +
+                $"WHERE customerId = {customerId};";
+
+            using (MySqlCommand com = new MySqlCommand(query, connection))
+            {
+                var complete = com.ExecuteNonQuery();
+                if (complete == 1)
+                {
+                    return true;
+                } 
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         // TODO: check if appointment overlaps on creation and modification

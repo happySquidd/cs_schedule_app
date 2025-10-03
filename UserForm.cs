@@ -81,6 +81,31 @@ namespace scheduleApp
             modifyCustomer.ShowDialog();
         }
 
+        private void deleteCustomerBtn_Click(object sender, EventArgs e)
+        {
+            if (customersDgv.CurrentRow == null)
+            {
+                MessageBox.Show("Nothing is selected");
+                return;
+            }
+            var confirm = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.No)
+            {
+                return;
+            }
+
+            Customer selected = customersDgv.CurrentRow.DataBoundItem as Customer;
+            int customerId = selected.customerId;
+            if (!DBconnection.DeleteCustomer(customerId)) {
+                MessageBox.Show("Something went wrong please try agian.");
+                return;
+            } 
+            else
+            {
+                UpdateCustomersDgv();
+            }
+        }
+
         // appointment tab
         private void addAppointmentBtn_Click(object sender, EventArgs e)
         {

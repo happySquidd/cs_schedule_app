@@ -402,6 +402,7 @@
             this.deleteCustomerBtn.TabIndex = 4;
             this.deleteCustomerBtn.Text = "Delete";
             this.deleteCustomerBtn.UseVisualStyleBackColor = true;
+            this.deleteCustomerBtn.Click += new System.EventHandler(this.deleteCustomerBtn_Click);
             // 
             // modifyCustomerBtn
             // 
