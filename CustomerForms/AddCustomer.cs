@@ -111,7 +111,7 @@ namespace scheduleApp
 
         private void postalBox_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(postalBox.Text) || !int.TryParse(postalBox.Text, out _))
+            if (string.IsNullOrWhiteSpace(postalBox.Text))
             {
                 postalBox.BackColor = Color.Salmon;
                 saveBtn.Enabled = false;
@@ -160,7 +160,14 @@ namespace scheduleApp
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            DBconnection.CreateCustomer();
+            if (!DBconnection.AddCustomer(nameBox.Text, addressBox.Text, address2Box.Text, postalBox.Text, phoneBox.Text, cityBox.Text, countryBox.Text))
+            {
+                Console.WriteLine("add customer function crash from main");
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+            }
             this.Close();
         }
     }

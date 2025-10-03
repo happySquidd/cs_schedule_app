@@ -62,7 +62,11 @@ namespace scheduleApp
         private void addCustomerBtn_Click(object sender, EventArgs e)
         {
             AddCustomer addCustomer = new AddCustomer();
-            addCustomer.ShowDialog();
+            if (addCustomer.ShowDialog() == DialogResult.OK) 
+            {
+                UpdateCustomersDgv();
+            }
+            ;
         }
 
         private void modifyCustomerBtn_Click(object sender, EventArgs e)
@@ -83,7 +87,7 @@ namespace scheduleApp
             AddAppointment addAppointment = new AddAppointment();
             if (addAppointment.ShowDialog() == DialogResult.OK)
             {
-                UpdateDataGrid();
+                UpdateAppointmentsDgv();
             }
         }
 
@@ -98,7 +102,7 @@ namespace scheduleApp
             ModifyAppointment modifyAppointment = new ModifyAppointment(appointment);
             if (modifyAppointment.ShowDialog() == DialogResult.OK)
             {
-                UpdateDataGrid();
+                UpdateAppointmentsDgv();
             }
             
         }
@@ -125,7 +129,7 @@ namespace scheduleApp
             }
             else
             {
-                UpdateDataGrid();
+                UpdateAppointmentsDgv();
             }
             
         }
@@ -175,12 +179,16 @@ namespace scheduleApp
             }
         }
 
-        private void UpdateDataGrid()
+        private void UpdateAppointmentsDgv()
         {
             Appointment.allAppointments = DBconnection.GetAppointments();
             appointmentsDgv.DataSource = Appointment.allAppointments;
             calendarDgv.DataSource = Appointment.allAppointments;
         }
-
+        private void UpdateCustomersDgv()
+        {
+            Customer.allCustomers = DBconnection.getCustomers();
+            customersDgv.DataSource = Customer.allCustomers;
+        }
     }
 }

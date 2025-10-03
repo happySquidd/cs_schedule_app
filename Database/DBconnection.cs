@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -181,9 +182,177 @@ namespace scheduleApp.Database
         }
 
         // Customer handling functions
-        public static void CreateCustomer()
+        public static bool AddCustomer(string customerName, string address, string address2, string postalCode, string phone, string city, string country)
         {
-            // not implemented
+            int countryId = 0;
+            int cityId = 0;
+            int addressId = 0;
+            bool countryExists = false;
+            bool cityExists = false;
+
+
+            // see if the country exists and create it if not
+            string queryCountry = 
+                "USE client_schedule; " +
+                "SELECT countryId " +
+                "FROM country " +
+                "WHERE country = '@country';";
+
+            using (MySqlCommand com = new MySqlCommand(queryCountry, connection))
+            {
+                
+                com.Parameters.AddWithValue("@country", country);
+
+                try
+                {
+                    object exists = com.ExecuteScalar();
+                    if (exists != null)
+                    {
+                        // country exists, get id
+                        Console.WriteLine("db return: country exists");
+                        countryId = Convert.ToInt32(com.ExecuteScalar());
+                        countryExists = true;
+                        // continue after the try catch block
+                    }
+                    else
+                    {
+                        // country doesn't exist, try creating it
+                        countryId = CreateCountry(country);
+                        if (countryId == 0)
+                        {
+                            Console.WriteLine("create country crashed");
+                            return false;
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error 6: " + ex.Message);
+                    return false;
+                }
+            }
+
+            // check if city exists, make it if not
+            if (countryExists)
+            {
+                string queryCity =
+                    $"USE client_schedule; " +
+                    $"SELECT cityId " +
+                    $"FROM city " +
+                    $"WHERE countryId = {countryId}";
+                try
+                {
+                    using (MySqlCommand com = new MySqlCommand(queryCity, connection))
+                    {
+                        object exists = com.ExecuteScalar();
+                        if (exists != null)
+                        {
+                            // city exists, set id
+                            Console.WriteLine("db return: city exists");
+                            cityId = Convert.ToInt32(com.ExecuteScalar());
+                            cityExists = true;
+                        }
+                        else
+                        {
+                            //create city
+                            cityId = CreateCity(countryId, city);
+                            if (cityId == 0)
+                            {
+                                Console.WriteLine("create city crashed");
+                                return false;
+                            }
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error 5: " + ex.Message);
+                }
+
+            }
+            else
+            {
+                // country doesn't exist, make a new city for that country
+                cityId = CreateCity(countryId, city);
+                if (cityId == 0)
+                {
+                    Console.WriteLine("create city crashed");
+                    return false;
+                }
+            }
+
+            // check if address exists
+            if (cityExists)
+            {
+                string queryAddress =
+                    $"USE client_schedule; " +
+                    $"SELECT addressId " +
+                    $"FROM address " +
+                    $"WHERE cityId = {cityId};";
+                try
+                {
+                    using (MySqlCommand com = new MySqlCommand(queryAddress, connection))
+                    {
+                        object exists = com.ExecuteScalar();
+                        if (exists != null)
+                        {
+                            //address exists
+                            addressId = Convert.ToInt32(exists);
+                            Console.WriteLine("db return: city exists");
+                        }
+                        else
+                        {
+                            // doesn't exist, create it
+                            addressId = CreateAddress(address, address2, cityId, postalCode, phone);
+                            if (addressId == 0)
+                            {
+                                Console.WriteLine("create address crashed");
+                                return false;
+                            }
+
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error 8:" + ex.Message);
+                    return false;
+                }
+            }
+            else
+            {
+                // city doesn't exist, create a new address
+                addressId = CreateAddress(address, address2, cityId, postalCode, phone);
+                if (addressId == 0)
+                {
+                    Console.WriteLine("create address crashed");
+                    return false;
+                }
+            }
+
+            // if here then ready to create user
+            string queryCustomer =
+                "USE client_schedule; " +
+                "INSERT INTO customer (customerName, addressId, active, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                "VALUES (@name, @addressId, 1, NOW(), 'user', NOW(), 'user');";
+            using (MySqlCommand com = new MySqlCommand(queryCustomer, connection))
+            {
+                com.Parameters.AddWithValue("@name", customerName);
+                com.Parameters.AddWithValue("@addressId", addressId);
+                try
+                {
+                    com.ExecuteNonQuery();
+                    // if here then everything is a success!
+                    Console.WriteLine("YOU DID IT!!!");
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error 9: " + ex.Message);
+                    return false;
+                }
+            }
+
         }
 
         public static void UpdateCustomer()
@@ -236,7 +405,7 @@ namespace scheduleApp.Database
                 }
                 catch (MySqlException ex)
                 {
-                    Console.WriteLine("sql error: " + ex.Message);
+                    Console.WriteLine("sql error 1: " + ex.Message);
                     return false;
                 }
             }
@@ -283,7 +452,7 @@ namespace scheduleApp.Database
                 }
                 catch (MySqlException ex)
                 {
-                    Console.WriteLine("sql error: " + ex.Message);
+                    Console.WriteLine("sql error 2: " + ex.Message);
                     return false;
                 }
                 
@@ -308,6 +477,122 @@ namespace scheduleApp.Database
         private static DateTime ConvertToUTC(DateTime local)
         {
             return TimeZoneInfo.ConvertTimeToUtc(local, TimeZoneInfo.Local);
+        }
+
+        // helper functions
+        private static int CreateCountry(string country)
+        {
+            string query =
+                "USE client_schedule; " +
+                "INSERT INTO country (country, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                "VALUES (@country, NOW(), 'user', NOW(), 'user');";
+            using (MySqlCommand com = new MySqlCommand(query, connection))
+            {
+                com.Parameters.AddWithValue("@country", country);
+
+                try
+                {
+                    if (com.ExecuteNonQuery() == 1)
+                    {
+                        Console.WriteLine("created country");
+                        com.CommandText =
+                            "USE client_schedule; " +
+                            "SELECT countryId " +
+                            "FROM country " +
+                            "WHERE country = '@country'";
+                        Console.WriteLine("grabbing country id");
+                        return Convert.ToInt32(com.ExecuteScalar());
+                    }
+                    else
+                    {
+                        Console.WriteLine("error inserting country");
+                        return 0;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error 3: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        private static int CreateCity(int countryId, string cityName)
+        {
+            string query =
+                "USE client_schedule; " +
+                "INSERT INTO city (city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                "VALUES ('@city', @countryId, NOW(), 'user', NOW(), 'user');";
+
+            using (MySqlCommand com = new MySqlCommand(query, connection))
+            {
+                com.Parameters.AddWithValue("@city", cityName);
+                com.Parameters.AddWithValue("@countryId", countryId);
+
+                try
+                {
+                    if (com.ExecuteNonQuery() == 1)
+                    {
+                        com.CommandText =
+                            $"USE client_schedule; " +
+                            $"SELECT cityId " +
+                            $"FROM city " +
+                            $"WHERE countryId = {countryId};";
+                        Console.WriteLine("grabbing new city id");
+                        return Convert.ToInt32(com.ExecuteScalar());
+                    }
+                    else 
+                    {
+                        Console.WriteLine("error inserting into city");
+                        return 0; 
+                    }
+                } 
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error 4: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
+
+        private static int CreateAddress(string address, string address2, int cityId, string postalCode, string phone)
+        {
+            string query =
+                "USE client_schedule; " +
+                "INSERT INTO address (address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                "VALUES (@address, @address2, @cityId, @postalCode, @phone, NOW(), 'user', NOW(), 'user');";
+            using (MySqlCommand com = new MySqlCommand(query, connection))
+            {
+                com.Parameters.AddWithValue("@address", address);
+                com.Parameters.AddWithValue("@address2", address2);
+                com.Parameters.AddWithValue("@cityId", cityId);
+                com.Parameters.AddWithValue("@postalCode", postalCode);
+                com.Parameters.AddWithValue("@phone", phone);
+
+                try
+                {
+                    if (com.ExecuteNonQuery() == 1)
+                    {
+                        Console.WriteLine("Created address!");
+                        com.CommandText =
+                            $"USE client_schedule; " +
+                            $"SELECT addressId " +
+                            $"FROM address " +
+                            $"WHERE cityId = {cityId};";
+                        return Convert.ToInt32(com.ExecuteScalar());
+                    }
+                    else
+                    {
+                        Console.WriteLine("error creating address");
+                        return 0;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error 7: " + ex.Message);
+                    return 0;
+                }
+            }
         }
     }
 }
