@@ -1,4 +1,5 @@
-﻿using scheduleApp.model;
+﻿using scheduleApp.Database;
+using scheduleApp.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +37,7 @@ namespace scheduleApp.CustomerForms
             countryBox.Text = customer.country;
             postalBox.Text = customer.postalCode;
             phoneBox.Text = customer.phone;
-
+            saveBtn.Enabled = false;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -156,11 +157,6 @@ namespace scheduleApp.CustomerForms
             }
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private bool canSave()
         {
             if (name && address && address2 && city && country && postal && phone)
@@ -173,5 +169,19 @@ namespace scheduleApp.CustomerForms
             }
         }
 
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (DBconnection.UpdateCustomer(Convert.ToInt32(idBox.Text), countryBox.Text, cityBox.Text, addressBox.Text, address2Box.Text, postalBox.Text, phoneBox.Text, nameBox.Text))
+            {
+                Console.WriteLine("update customer success");
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong updating customer,\nPlease check your boxes and try again.");
+                return;
+            }
+            this.Close();
+        }
     }
 }

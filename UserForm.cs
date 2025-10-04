@@ -78,7 +78,10 @@ namespace scheduleApp
             }
             Customer selected = customersDgv.CurrentRow.DataBoundItem as Customer;
             ModifyCustomer modifyCustomer = new ModifyCustomer(selected);
-            modifyCustomer.ShowDialog();
+            if (modifyCustomer.ShowDialog() == DialogResult.OK)
+            {
+                UpdateCustomersDgv();
+            }
         }
 
         private void deleteCustomerBtn_Click(object sender, EventArgs e)

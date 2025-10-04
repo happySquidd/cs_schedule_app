@@ -328,9 +328,42 @@ namespace scheduleApp.Database
 
         }
 
-        public static void UpdateCustomer()
+        // TODO: test edge cases and see if the tables are being updated correctly
+        public static bool UpdateCustomer(int customerId, string country, string city, string address, string address2, string postal, string phone, string name)
         {
-            // not implemented
+            string query =
+                "USE client_schedule; " +
+                "UPDATE country co " +
+                "JOIN city ci ON co.countryId = ci.countryId " +
+                "JOIN address ad ON ci.cityId = ad.cityId " +
+                "JOIN customer ON ad.addressId = customer.addressId " +
+                "SET co.country = @country, ci.city = @city, " +
+                "ad.address = @address, ad.address2 = @address2, ad.postalCode = @postal, ad.phone = @phone, " +
+                "customer.customerName = @name " +
+                "WHERE customer.customerId = @customerId;";
+
+            using (MySqlCommand com = new MySqlCommand(query, connection))
+            {
+                com.Parameters.AddWithValue("@country", country);
+                com.Parameters.AddWithValue("@city", city);
+                com.Parameters.AddWithValue("@address", address);
+                com.Parameters.AddWithValue("@address2", address2);
+                com.Parameters.AddWithValue("@postal", postal);
+                com.Parameters.AddWithValue("@phone", phone);
+                com.Parameters.AddWithValue("@name", name);
+                com.Parameters.AddWithValue("@customerId", customerId);
+
+                try
+                { 
+                    com.ExecuteNonQuery();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("sql error: " + ex.Message);
+                    return false;
+                }
+            }
         }
 
         public static bool DeleteCustomer(int customerId)
