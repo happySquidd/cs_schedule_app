@@ -207,6 +207,13 @@ namespace scheduleApp.AppointmentForms
                 }
             }
 
+            //check overlap with other appointments
+            if (CheckOverlap())
+            {
+                MessageBox.Show("Appointment overlaps,\nPlease enter a different time");
+                return;
+            }
+
             // get appointment id
             int appId = Convert.ToInt32(idBox.Text);
             // pass the data to update row
@@ -224,6 +231,66 @@ namespace scheduleApp.AppointmentForms
             }
         }
 
-        
+
+        private bool CheckOverlap()
+        {
+            DateTime startTime = Convert.ToDateTime(startTimeBox.Text);
+            DateTime endTime = Convert.ToDateTime(endTimeBox.Text);
+            Appointment.allAppointments = DBconnection.GetAppointments();
+            Console.WriteLine("startTime: " + startTime.ToString());
+            Console.WriteLine("endTime: " + endTime.ToString());
+
+            foreach (Appointment appointment in Appointment.allAppointments)
+            {
+                if (appointment.appointmentId == Convert.ToInt32(idBox.Text))
+                {
+                    // skip over the current appointment
+                    continue;
+                }
+                DateTime apStart = Convert.ToDateTime(appointment.start);
+                DateTime apEnd = Convert.ToDateTime(appointment.end);
+                Console.WriteLine("appointment start time: " + apStart.ToString());
+                Console.WriteLine("appointment end time: " + apEnd.ToString());
+
+                if (IsOverlap(startTime, apStart, endTime, apEnd))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool IsOverlap(DateTime startTime, DateTime apStart, DateTime endTime, DateTime apEnd)
+        {
+            //false = no overlap, true = overlap
+            if (startTime < apStart)
+            {
+                // start is before appointment
+                if (endTime >= apStart)
+                {
+                    // start is before, end is after, overlaps!
+                    return true;
+                }
+                else
+                {
+                    // startTime < apStart && endTime < startTime, no overlap
+                    return false;
+                }
+            }
+            else
+            {
+                // startTime >= apStart
+                if (startTime <= apEnd || startTime == apStart)
+                {
+                    // startTime >= apStart && startTime <= apEnd, overlaps!
+                    return true;
+                }
+                else
+                {
+                    // startTime > apStart && startTime > apEnd, no overlap
+                    return false;
+                }
+            }
+        }
     }
 }
