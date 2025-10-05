@@ -213,6 +213,7 @@ namespace scheduleApp.AppointmentForms
             }
             else
             {
+                // TODO: check for time overlap
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

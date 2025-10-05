@@ -36,16 +36,6 @@ namespace scheduleApp.AppointmentForms
             contactBox.Text = appointment.contact;
             urlBox.Text = appointment.url;
 
-            // convert times from local into est
-            //TimeZoneInfo estZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            //DateTime startDate = Convert.ToDateTime(appointment.start);
-            //DateTime estDate = TimeZoneInfo.ConvertTime(startDate, estZone);
-            //startTimeBox.Value = estDate;
-
-            //DateTime endDate = Convert.ToDateTime(appointment.end);
-            //DateTime estEndDate = TimeZoneInfo.ConvertTime(endDate, estZone);
-            //endTimeBox.Value = estEndDate;
-
             startTimeBox.Value = Convert.ToDateTime(appointment.start);
             endTimeBox.Value = Convert.ToDateTime(appointment.end);
             startTimeBox.Format = DateTimePickerFormat.Custom;
@@ -228,6 +218,7 @@ namespace scheduleApp.AppointmentForms
             }
             else
             {
+                // TODO: check for time overlap
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
