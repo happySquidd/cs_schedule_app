@@ -201,6 +201,13 @@ namespace scheduleApp.AppointmentForms
                 return;
             }
 
+            // check for overlap
+            if (CheckOverlap())
+            {
+                MessageBox.Show("There is an overlap with appointments,\nChange your time and try again");
+                return;
+            }
+
             // get customer id from the selected box
             string[] customerString = assignCustomerBox.Text.Split(' ');
             int customerId = Convert.ToInt32(customerString[0]);
@@ -213,12 +220,66 @@ namespace scheduleApp.AppointmentForms
             }
             else
             {
-                // TODO: check for time overlap
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
 
         }
 
+        private bool CheckOverlap()
+        {
+            DateTime startTime = Convert.ToDateTime(startTimeBox.Text);
+            DateTime endTime = Convert.ToDateTime(endTimeBox.Text);
+            Appointment.allAppointments = DBconnection.GetAppointments();
+            Console.WriteLine("startTime: " + startTime.ToString());
+            Console.WriteLine("endTime: " + endTime.ToString());
+
+            foreach (Appointment appointment in Appointment.allAppointments) 
+            {
+                DateTime apStart = Convert.ToDateTime(appointment.start);
+                DateTime apEnd = Convert.ToDateTime(appointment.end);
+                Console.WriteLine("appointment start time: " + apStart.ToString());
+                Console.WriteLine("appointment end time: " + apEnd.ToString());
+
+                if (IsOverlap(startTime, apStart, endTime, apEnd))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool IsOverlap(DateTime startTime, DateTime apStart, DateTime endTime, DateTime apEnd)
+        {
+            //false = no overlap, true = overlap
+            if (startTime < apStart)
+            {
+                // start is before appointment
+                if (endTime >= apStart)
+                {
+                    // start is before, end is after, overlaps!
+                    return true;
+                }
+                else
+                {
+                    // startTime < apStart && endTime < startTime, no overlap
+                    return false;
+                }
+            }
+            else
+            {
+                // startTime >= apStart
+                if (startTime <= apEnd || startTime == apStart)
+                {
+                    // startTime >= apStart && startTime <= apEnd, overlaps!
+                    return true;
+                }
+                else
+                {
+                    // startTime > apStart && startTime > apEnd, no overlap
+                    return false;
+                }
+            }
+        }
     }
 }
