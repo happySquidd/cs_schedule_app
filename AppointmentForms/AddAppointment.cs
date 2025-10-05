@@ -204,7 +204,7 @@ namespace scheduleApp.AppointmentForms
             // check for overlap
             if (CheckOverlap())
             {
-                MessageBox.Show("There is an overlap with appointments,\nChange your time and try again");
+                MessageBox.Show("Appointment overlaps,\nPlease change your time and try again");
                 return;
             }
 
@@ -231,18 +231,18 @@ namespace scheduleApp.AppointmentForms
             DateTime startTime = Convert.ToDateTime(startTimeBox.Text);
             DateTime endTime = Convert.ToDateTime(endTimeBox.Text);
             Appointment.allAppointments = DBconnection.GetAppointments();
-            Console.WriteLine("startTime: " + startTime.ToString());
-            Console.WriteLine("endTime: " + endTime.ToString());
 
             foreach (Appointment appointment in Appointment.allAppointments) 
             {
                 DateTime apStart = Convert.ToDateTime(appointment.start);
                 DateTime apEnd = Convert.ToDateTime(appointment.end);
-                Console.WriteLine("appointment start time: " + apStart.ToString());
-                Console.WriteLine("appointment end time: " + apEnd.ToString());
 
                 if (IsOverlap(startTime, apStart, endTime, apEnd))
                 {
+                    overlapStartLabel.Text = "Overlap: " + apStart.ToString("HH:mm");
+                    overlapEndLabel.Text = "Overlap: " + apEnd.ToString("HH:mm");
+                    overlapStartLabel.Visible = true;
+                    overlapEndLabel.Visible = true;
                     return true;
                 }
             }

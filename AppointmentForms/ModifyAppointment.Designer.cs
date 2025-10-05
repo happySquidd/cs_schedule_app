@@ -54,6 +54,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.localTimeLabel = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.overlapStartLabel = new System.Windows.Forms.Label();
+            this.overlapEndLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelBtn
@@ -287,11 +289,35 @@
             this.label13.TabIndex = 56;
             this.label13.Text = "Choose your local time";
             // 
+            // overlapStartLabel
+            // 
+            this.overlapStartLabel.AutoSize = true;
+            this.overlapStartLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.overlapStartLabel.Location = new System.Drawing.Point(310, 297);
+            this.overlapStartLabel.Name = "overlapStartLabel";
+            this.overlapStartLabel.Size = new System.Drawing.Size(44, 13);
+            this.overlapStartLabel.TabIndex = 57;
+            this.overlapStartLabel.Text = "Overlap";
+            this.overlapStartLabel.Visible = false;
+            // 
+            // overlapEndLabel
+            // 
+            this.overlapEndLabel.AutoSize = true;
+            this.overlapEndLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.overlapEndLabel.Location = new System.Drawing.Point(310, 327);
+            this.overlapEndLabel.Name = "overlapEndLabel";
+            this.overlapEndLabel.Size = new System.Drawing.Size(44, 13);
+            this.overlapEndLabel.TabIndex = 58;
+            this.overlapEndLabel.Text = "Overlap";
+            this.overlapEndLabel.Visible = false;
+            // 
             // ModifyAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 419);
+            this.ClientSize = new System.Drawing.Size(404, 419);
+            this.Controls.Add(this.overlapEndLabel);
+            this.Controls.Add(this.overlapStartLabel);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.localTimeLabel);
             this.Controls.Add(this.label3);
@@ -354,5 +380,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label localTimeLabel;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label overlapStartLabel;
+        private System.Windows.Forms.Label overlapEndLabel;
     }
 }

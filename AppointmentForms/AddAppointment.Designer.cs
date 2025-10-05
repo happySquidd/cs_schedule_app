@@ -54,6 +54,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.localTimeLabel = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.overlapStartLabel = new System.Windows.Forms.Label();
+            this.overlapEndLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -161,7 +163,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(143, 54);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(141, 20);
+            this.textBox2.Size = new System.Drawing.Size(161, 20);
             this.textBox2.TabIndex = 13;
             // 
             // titleBox
@@ -169,7 +171,7 @@
             this.titleBox.BackColor = System.Drawing.Color.Salmon;
             this.titleBox.Location = new System.Drawing.Point(143, 114);
             this.titleBox.Name = "titleBox";
-            this.titleBox.Size = new System.Drawing.Size(141, 20);
+            this.titleBox.Size = new System.Drawing.Size(161, 20);
             this.titleBox.TabIndex = 15;
             this.titleBox.TextChanged += new System.EventHandler(this.titleBox_TextChanged);
             // 
@@ -178,7 +180,7 @@
             this.descriptionBox.BackColor = System.Drawing.Color.Salmon;
             this.descriptionBox.Location = new System.Drawing.Point(143, 144);
             this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(141, 20);
+            this.descriptionBox.Size = new System.Drawing.Size(161, 20);
             this.descriptionBox.TabIndex = 16;
             this.descriptionBox.TextChanged += new System.EventHandler(this.descriptionBox_TextChanged);
             // 
@@ -187,7 +189,7 @@
             this.locationBox.BackColor = System.Drawing.Color.Salmon;
             this.locationBox.Location = new System.Drawing.Point(143, 174);
             this.locationBox.Name = "locationBox";
-            this.locationBox.Size = new System.Drawing.Size(141, 20);
+            this.locationBox.Size = new System.Drawing.Size(161, 20);
             this.locationBox.TabIndex = 17;
             this.locationBox.TextChanged += new System.EventHandler(this.locationBox_TextChanged);
             // 
@@ -196,7 +198,7 @@
             this.contactBox.BackColor = System.Drawing.Color.Salmon;
             this.contactBox.Location = new System.Drawing.Point(143, 204);
             this.contactBox.Name = "contactBox";
-            this.contactBox.Size = new System.Drawing.Size(141, 20);
+            this.contactBox.Size = new System.Drawing.Size(161, 20);
             this.contactBox.TabIndex = 18;
             this.contactBox.TextChanged += new System.EventHandler(this.contactBox_TextChanged);
             // 
@@ -205,7 +207,7 @@
             this.urlBox.BackColor = System.Drawing.Color.Salmon;
             this.urlBox.Location = new System.Drawing.Point(143, 264);
             this.urlBox.Name = "urlBox";
-            this.urlBox.Size = new System.Drawing.Size(141, 20);
+            this.urlBox.Size = new System.Drawing.Size(161, 20);
             this.urlBox.TabIndex = 20;
             this.urlBox.TextChanged += new System.EventHandler(this.urlBox_TextChanged);
             // 
@@ -235,7 +237,7 @@
             this.assignCustomerBox.FormattingEnabled = true;
             this.assignCustomerBox.Location = new System.Drawing.Point(143, 84);
             this.assignCustomerBox.Name = "assignCustomerBox";
-            this.assignCustomerBox.Size = new System.Drawing.Size(141, 21);
+            this.assignCustomerBox.Size = new System.Drawing.Size(161, 21);
             this.assignCustomerBox.TabIndex = 26;
             this.assignCustomerBox.SelectedIndexChanged += new System.EventHandler(this.assignCustomerBox_SelectedIndexChanged);
             // 
@@ -245,7 +247,7 @@
             this.typeBox.FormattingEnabled = true;
             this.typeBox.Location = new System.Drawing.Point(143, 234);
             this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(141, 21);
+            this.typeBox.Size = new System.Drawing.Size(161, 21);
             this.typeBox.TabIndex = 27;
             // 
             // startTimeBox
@@ -292,11 +294,35 @@
             this.label13.TabIndex = 32;
             this.label13.Text = "Choose your local time";
             // 
+            // overlapStartLabel
+            // 
+            this.overlapStartLabel.AutoSize = true;
+            this.overlapStartLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.overlapStartLabel.Location = new System.Drawing.Point(310, 297);
+            this.overlapStartLabel.Name = "overlapStartLabel";
+            this.overlapStartLabel.Size = new System.Drawing.Size(44, 13);
+            this.overlapStartLabel.TabIndex = 33;
+            this.overlapStartLabel.Text = "Overlap";
+            this.overlapStartLabel.Visible = false;
+            // 
+            // overlapEndLabel
+            // 
+            this.overlapEndLabel.AutoSize = true;
+            this.overlapEndLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.overlapEndLabel.Location = new System.Drawing.Point(310, 327);
+            this.overlapEndLabel.Name = "overlapEndLabel";
+            this.overlapEndLabel.Size = new System.Drawing.Size(44, 13);
+            this.overlapEndLabel.TabIndex = 34;
+            this.overlapEndLabel.Text = "Overlap";
+            this.overlapEndLabel.Visible = false;
+            // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 419);
+            this.ClientSize = new System.Drawing.Size(404, 419);
+            this.Controls.Add(this.overlapEndLabel);
+            this.Controls.Add(this.overlapStartLabel);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.localTimeLabel);
             this.Controls.Add(this.label3);
@@ -359,5 +385,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label localTimeLabel;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label overlapStartLabel;
+        private System.Windows.Forms.Label overlapEndLabel;
     }
 }

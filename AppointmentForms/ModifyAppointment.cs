@@ -202,7 +202,7 @@ namespace scheduleApp.AppointmentForms
                 if (estStart.TimeOfDay < am.TimeOfDay || estStart.TimeOfDay >= pm.TimeOfDay ||
                     estEnd.TimeOfDay < am.TimeOfDay || estEnd.TimeOfDay > pm.TimeOfDay)
                 {
-                    MessageBox.Show("Business hours are between 9:00am. and 5:00pm. EST, \nPlease adjust your time");
+                    MessageBox.Show("Business hours are between 9:00am. and 5:00pm. EST, Mon-Fri \nPlease adjust your time");
                     return;
                 }
             }
@@ -237,8 +237,6 @@ namespace scheduleApp.AppointmentForms
             DateTime startTime = Convert.ToDateTime(startTimeBox.Text);
             DateTime endTime = Convert.ToDateTime(endTimeBox.Text);
             Appointment.allAppointments = DBconnection.GetAppointments();
-            Console.WriteLine("startTime: " + startTime.ToString());
-            Console.WriteLine("endTime: " + endTime.ToString());
 
             foreach (Appointment appointment in Appointment.allAppointments)
             {
@@ -249,11 +247,13 @@ namespace scheduleApp.AppointmentForms
                 }
                 DateTime apStart = Convert.ToDateTime(appointment.start);
                 DateTime apEnd = Convert.ToDateTime(appointment.end);
-                Console.WriteLine("appointment start time: " + apStart.ToString());
-                Console.WriteLine("appointment end time: " + apEnd.ToString());
 
                 if (IsOverlap(startTime, apStart, endTime, apEnd))
                 {
+                    overlapStartLabel.Text = "Overlap: " + apStart.ToString("HH:mm");
+                    overlapEndLabel.Text = "Overlap: " + apEnd.ToString("HH:mm");
+                    overlapStartLabel.Visible = true;
+                    overlapEndLabel.Visible = true;
                     return true;
                 }
             }

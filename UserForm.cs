@@ -140,6 +140,7 @@ namespace scheduleApp
             if (appointmentsDgv.CurrentRow == null)
             {
                 MessageBox.Show("Nothing is selected");
+                return;
             }
             Appointment appointment = appointmentsDgv.CurrentRow.DataBoundItem as Appointment;
 
