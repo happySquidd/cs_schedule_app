@@ -30,9 +30,9 @@ namespace scheduleApp.AppointmentForms
             this.MaximizeBox = false;
             saveBtn.Enabled = false;
             startTimeBox.Format = DateTimePickerFormat.Custom;
-            startTimeBox.CustomFormat = "yyyy-MM-dd  HH:mm";
+            startTimeBox.CustomFormat = "yyyy/MM/dd  HH:mm";
             endTimeBox.Format = DateTimePickerFormat.Custom;
-            endTimeBox.CustomFormat = "yyyy-MM-dd  HH:mm";
+            endTimeBox.CustomFormat = "yyyy/MM/dd  HH:mm";
 
             // populate customer ids
             assignCustomerBox.BeginUpdate();

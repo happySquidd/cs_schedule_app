@@ -81,9 +81,9 @@ namespace scheduleApp.Database
                         customerName = Convert.ToString(reader["customerName"]),
                         addressId = Convert.ToInt32(reader["addressId"]),
                         active = Convert.ToInt32(reader["active"]),
-                        createdDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["cuCreateDate"])),
+                        createdDate = ConvertDataReaderToLocalDate(reader["cuCreateDate"]),
                         createdBy = Convert.ToString(reader["cuCreatedBy"]),
-                        lastUpdated = Convert.ToString(ConvertDataReaderToLocalDate(reader["cuLastUpdate"])),
+                        lastUpdated = ConvertDataReaderToLocalDate(reader["cuLastUpdate"]),
                         lastUpdatedBy = Convert.ToString(reader["cuLastUpdateBy"]),
 
                         // address
@@ -92,24 +92,24 @@ namespace scheduleApp.Database
                         cityId = Convert.ToInt32(reader["cityId"]),
                         postalCode = Convert.ToString(reader["postalCode"]),
                         phone = Convert.ToString(reader["phone"]),
-                        addressCreatedDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["adCreateDate"])),
+                        addressCreatedDate = ConvertDataReaderToLocalDate(reader["adCreateDate"]),
                         addressCreatedBy = Convert.ToString(reader["adCreatedBy"]),
-                        addressLastUpdated = Convert.ToString(ConvertDataReaderToLocalDate(reader["adLastUpdate"])),
+                        addressLastUpdated = ConvertDataReaderToLocalDate(reader["adLastUpdate"]),
                         addressLastUpdatedBy = Convert.ToString(reader["adLastUpdateBy"]),
 
                         // city
                         city = Convert.ToString(reader["city"]),
                         countryId = Convert.ToInt32(reader["countryId"]),
-                        cityCreatedDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["ciCreateDate"])),
+                        cityCreatedDate = ConvertDataReaderToLocalDate(reader["ciCreateDate"]),
                         cityCreatedBy = Convert.ToString(reader["ciCreatedBy"]),
-                        cityLastUpdatedDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["ciLastUpdate"])),
+                        cityLastUpdatedDate = ConvertDataReaderToLocalDate(reader["ciLastUpdate"]),
                         cityLastUpdatedBy = Convert.ToString(reader["ciLastUpdateBy"]),
 
                         // country 
                         country = Convert.ToString(reader["country"]),
-                        countryCreatedDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["cyCreateDate"])),
+                        countryCreatedDate = ConvertDataReaderToLocalDate(reader["cyCreateDate"]),
                         countryCreatedBy = Convert.ToString(reader["cyCreatedBy"]),
-                        countryLastUpdatedDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["cyLastUpdate"])),
+                        countryLastUpdatedDate = ConvertDataReaderToLocalDate(reader["cyLastUpdate"]),
                         countryLastUpdatedBy = Convert.ToString(reader["cyLastUpdateBy"])
                     };
                     customers.Add(customer);
@@ -158,11 +158,11 @@ namespace scheduleApp.Database
                         contact = Convert.ToString(reader["contact"]),
                         type = Convert.ToString(reader["type"]),
                         url = Convert.ToString(reader["url"]),
-                        start = Convert.ToString(ConvertDataReaderToLocalDate(reader["start"])),
-                        end = Convert.ToString(ConvertDataReaderToLocalDate(reader["end"])),
-                        createDate = Convert.ToString(ConvertDataReaderToLocalDate(reader["createDate"])),
+                        start = ConvertDataReaderToLocalDate(reader["start"]),
+                        end = ConvertDataReaderToLocalDate(reader["end"]),
+                        createDate = ConvertDataReaderToLocalDate(reader["createDate"]),
                         createdBy = Convert.ToString(reader["createdBy"]),
-                        lastUpdate = Convert.ToString(ConvertDataReaderToLocalDate(reader["lastUpdate"])),
+                        lastUpdate = ConvertDataReaderToLocalDate(reader["lastUpdate"]),
                         lastUpdateBy = Convert.ToString(reader["lastUpdateBy"]),
 
                         customerName = Convert.ToString(reader["customerName"]),
@@ -176,9 +176,10 @@ namespace scheduleApp.Database
             return appointments;
         }
 
-        private static DateTime ConvertDataReaderToLocalDate(object reader)
+        private static string ConvertDataReaderToLocalDate(object reader)
         {
-            return TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(Convert.ToString(reader)), TimeZoneInfo.Local);
+            DateTime localTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(Convert.ToString(reader)), TimeZoneInfo.Local);
+            return localTime.ToString("yyyy/MM/dd HH:mm:ss");
         }
 
         // Customer handling functions

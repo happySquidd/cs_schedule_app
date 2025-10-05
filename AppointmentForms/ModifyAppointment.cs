@@ -39,9 +39,9 @@ namespace scheduleApp.AppointmentForms
             startTimeBox.Value = Convert.ToDateTime(appointment.start);
             endTimeBox.Value = Convert.ToDateTime(appointment.end);
             startTimeBox.Format = DateTimePickerFormat.Custom;
-            startTimeBox.CustomFormat = "yyyy-MM-dd  HH:mm";
+            startTimeBox.CustomFormat = "yyyy/MM/dd  HH:mm";
             endTimeBox.Format = DateTimePickerFormat.Custom;
-            endTimeBox.CustomFormat = "yyyy-MM-dd  HH:mm";
+            endTimeBox.CustomFormat = "yyyy/MM/dd  HH:mm";
 
             // fill type box
             typeBox.BeginUpdate();

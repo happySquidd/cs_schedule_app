@@ -47,14 +47,6 @@
             this.addAppointmentBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.appointmentsDgv = new System.Windows.Forms.DataGridView();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exitBtn2 = new System.Windows.Forms.Button();
             this.tabCustomers = new System.Windows.Forms.TabPage();
             this.exitBtn = new System.Windows.Forms.Button();
@@ -72,6 +64,14 @@
             this.tabReport = new System.Windows.Forms.TabControl();
             this.tabReports = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarDgv)).BeginInit();
             this.tabAppointment.SuspendLayout();
@@ -301,63 +301,6 @@
             this.appointmentsDgv.TabIndex = 7;
             this.appointmentsDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "appointmentId";
-            this.Column7.HeaderText = "Id";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 50;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "title";
-            this.Column8.HeaderText = "Title";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "description";
-            this.Column9.HeaderText = "Description";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "url";
-            this.Column10.HeaderText = "Url";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "start";
-            this.Column11.HeaderText = "Start";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "end";
-            this.Column12.HeaderText = "End";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "customerName";
-            this.Column13.HeaderText = "Name";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "phone";
-            this.Column14.HeaderText = "Phone";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
             // exitBtn2
             // 
             this.exitBtn2.Location = new System.Drawing.Point(455, 370);
@@ -530,6 +473,65 @@
             this.button1.Text = "Log out";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "appointmentId";
+            this.Column7.HeaderText = "Id";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 50;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "title";
+            this.Column8.HeaderText = "Title";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "description";
+            this.Column9.HeaderText = "Description";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "url";
+            this.Column10.HeaderText = "Url";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "start";
+            this.Column11.HeaderText = "Start";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 130;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "end";
+            this.Column12.HeaderText = "End";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 130;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "customerName";
+            this.Column13.HeaderText = "Name";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "phone";
+            this.Column14.HeaderText = "Phone";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -574,14 +576,6 @@
         private System.Windows.Forms.Button addAppointmentBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView appointmentsDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.Button exitBtn2;
         private System.Windows.Forms.TabPage tabCustomers;
         private System.Windows.Forms.Button exitBtn;
@@ -599,5 +593,13 @@
         private System.Windows.Forms.TabControl tabReport;
         private System.Windows.Forms.TabPage tabReports;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
     }
 }
