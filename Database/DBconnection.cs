@@ -369,18 +369,27 @@ namespace scheduleApp.Database
 
         public static bool DeleteCustomer(int customerId)
         {
-            string query =
+            string appQuery =
+                $"USE client_schedule; " +
+                $"DELETE FROM appointment " +
+                $"WHERE appointment.customerId = {customerId};";
+            string customerQuery =
                 $"USE client_schedule; " +
                 $"DELETE FROM customer " +
                 $"WHERE customerId = {customerId};";
 
-            using (MySqlCommand com = new MySqlCommand(query, connection))
+            using (MySqlCommand com = new MySqlCommand(appQuery, connection))
+            {
+                com.ExecuteNonQuery();
+            }
+
+            using (MySqlCommand com = new MySqlCommand(customerQuery, connection))
             {
                 var complete = com.ExecuteNonQuery();
                 if (complete == 1)
                 {
                     return true;
-                } 
+                }
                 else
                 {
                     return false;
