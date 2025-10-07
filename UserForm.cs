@@ -91,7 +91,7 @@ namespace scheduleApp
                 MessageBox.Show("Nothing is selected");
                 return;
             }
-            var confirm = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm", MessageBoxButtons.YesNo);
+            var confirm = MessageBox.Show("Are you sure you want to delete this customer?\nThis will delete any related appointments", "Confirm", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.No)
             {
                 return;
@@ -106,6 +106,7 @@ namespace scheduleApp
             else
             {
                 UpdateCustomersDgv();
+                UpdateAppointmentsDgv();
             }
         }
 
