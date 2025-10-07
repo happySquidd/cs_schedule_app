@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using scheduleApp.Database;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 
 namespace scheduleApp
 {
@@ -20,6 +21,9 @@ namespace scheduleApp
     {
         readonly string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         public static int userId = 0;
+        private string fileName = "Login_History.txt";
+        private string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
         public Form1()
         {
             InitializeComponent();
@@ -69,8 +73,20 @@ namespace scheduleApp
                     // execute query to get user id
                     using (MySqlCommand getId = new MySqlCommand(id, DBconnection.connection))
                     {
+                        // very important line
                         userId = Convert.ToInt32(getId.ExecuteScalar());
                         Console.WriteLine("user id : " + userId);
+                    }
+
+                    string filePath = Path.Combine(folderPath, fileName);
+                    string text = $"Successful login for user: '{usernameBox.Text}' at " + DateTime.UtcNow.ToString() + " UTC" + Environment.NewLine;
+                    if (File.Exists(filePath))
+                    {
+                        File.AppendAllText(filePath, text);
+                    }
+                    else
+                    {
+                        File.WriteAllText(filePath, text);
                     }
 
                     // see any appointments within 15 minutes
@@ -84,6 +100,17 @@ namespace scheduleApp
                 }
                 else
                 {
+                    string filePath = Path.Combine(folderPath, fileName);
+                    string text = $"Failed login attempt for user: '{usernameBox.Text}' at " + DateTime.UtcNow.ToString() + " UTC" + Environment.NewLine;
+                    if (File.Exists(filePath))
+                    {
+                        File.AppendAllText(filePath, text);
+                    }
+                    else
+                    {
+                        File.WriteAllText(filePath, text);
+                    }
+
                     if (culture == "es") { MessageBox.Show("Nombre de usuario o contraseña incorrectos"); }
                     else { MessageBox.Show("Incorrect username or password"); }
                 }
