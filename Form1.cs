@@ -19,10 +19,11 @@ namespace scheduleApp
 {
     public partial class Form1 : Form
     {
-        readonly string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+        private readonly string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         public static int userId = 0;
-        private string fileName = "Login_History.txt";
-        private string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        private bool success = false;
+        private readonly string fileName = "Login_History.txt";
+        private readonly string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public Form1()
         {
@@ -78,42 +79,36 @@ namespace scheduleApp
                         Console.WriteLine("user id : " + userId);
                     }
 
-                    string filePath = Path.Combine(folderPath, fileName);
-                    string text = $"Successful login for user: '{usernameBox.Text}' at " + DateTime.UtcNow.ToString() + " UTC" + Environment.NewLine;
-                    if (File.Exists(filePath))
-                    {
-                        File.AppendAllText(filePath, text);
-                    }
-                    else
-                    {
-                        File.WriteAllText(filePath, text);
-                    }
 
                     // see any appointments within 15 minutes
                     if (upcomingAppointment())
                     {
                         MessageBox.Show("You have an appointment in the next 15 minutes.");
                     }
-
+                    success = true;
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
                 }
                 else
                 {
-                    string filePath = Path.Combine(folderPath, fileName);
-                    string text = $"Failed login attempt for user: '{usernameBox.Text}' at " + DateTime.UtcNow.ToString() + " UTC" + Environment.NewLine;
-                    if (File.Exists(filePath))
-                    {
-                        File.AppendAllText(filePath, text);
-                    }
-                    else
-                    {
-                        File.WriteAllText(filePath, text);
-                    }
-
+                    success = false;
                     if (culture == "es") { MessageBox.Show("Nombre de usuario o contraseña incorrectos"); }
                     else { MessageBox.Show("Incorrect username or password"); }
                 }
+            }
+
+            // log into Login_History.txt in desktop
+            string filePath = Path.Combine(folderPath, fileName);
+            if (success)
+            {
+                string text = $"Successful login for user: '{usernameBox.Text}' at " + DateTime.UtcNow.ToString() + " UTC" + Environment.NewLine;
+                File.AppendAllText(filePath, text);
+
+                this.Close();
+            }
+            else
+            {
+                string text = $"Failed login attempt for user: '{usernameBox.Text}' at " + DateTime.UtcNow.ToString() + " UTC" + Environment.NewLine;
+                File.AppendAllText(filePath, text);
             }
 
         }
