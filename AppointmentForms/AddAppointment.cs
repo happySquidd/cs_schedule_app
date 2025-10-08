@@ -180,12 +180,13 @@ namespace scheduleApp.AppointmentForms
                 MessageBox.Show("The end time should be after the start time");
                 return;
             }
-            if (startTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || startTimeBox.Value.DayOfWeek == DayOfWeek.Sunday ||
-                endTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || endTimeBox.Value.DayOfWeek == DayOfWeek.Sunday)
-            {
-                MessageBox.Show("Business is not open on weekends, please adjust your time");
-                return;
-            }
+            // Allow weekend scheduling for ease of use/testing, uncomment for a more "real" experience
+            //if (startTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || startTimeBox.Value.DayOfWeek == DayOfWeek.Sunday ||
+            //    endTimeBox.Value.DayOfWeek == DayOfWeek.Saturday || endTimeBox.Value.DayOfWeek == DayOfWeek.Sunday)
+            //{
+            //    MessageBox.Show("Business is not open on weekends, please adjust your time");
+            //    return;
+            //}
 
             //validate time by comparing it to datetime hours 9am and 5pm
             DateTime am = DateTime.Parse("1/1/2000 09:00:00");
