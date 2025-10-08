@@ -35,11 +35,6 @@
             this.viewWeekBtn = new System.Windows.Forms.RadioButton();
             this.viewAllBtn = new System.Windows.Forms.RadioButton();
             this.calendarDgv = new System.Windows.Forms.DataGridView();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exitBtn3 = new System.Windows.Forms.Button();
             this.tabAppointment = new System.Windows.Forms.TabPage();
             this.deleteAppointmentBtn = new System.Windows.Forms.Button();
@@ -83,6 +78,11 @@
             this.typeCountLabel = new System.Windows.Forms.Label();
             this.schedulePanel = new System.Windows.Forms.Panel();
             this.scheduleDgv = new System.Windows.Forms.DataGridView();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -193,43 +193,6 @@
             this.calendarDgv.Size = new System.Drawing.Size(491, 139);
             this.calendarDgv.TabIndex = 8;
             this.calendarDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "appointmentId";
-            this.Column15.FillWeight = 70F;
-            this.Column15.HeaderText = "ID";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Width = 70;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "title";
-            this.Column16.HeaderText = "Title";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "start";
-            this.Column17.HeaderText = "Start Time";
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "end";
-            this.Column18.HeaderText = "End Time";
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "contact";
-            this.Column19.HeaderText = "Contact";
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
             // 
             // exitBtn3
             // 
@@ -668,6 +631,7 @@
             this.Column23,
             this.Column24,
             this.Column25});
+            this.scheduleDgv.EnableHeadersVisualStyles = false;
             this.scheduleDgv.Location = new System.Drawing.Point(-1, 22);
             this.scheduleDgv.MultiSelect = false;
             this.scheduleDgv.Name = "scheduleDgv";
@@ -677,12 +641,57 @@
             this.scheduleDgv.TabIndex = 0;
             this.scheduleDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "appointmentId";
+            this.Column15.FillWeight = 50F;
+            this.Column15.HeaderText = "ID";
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            this.Column15.Width = 50;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "title";
+            this.Column16.FillWeight = 80F;
+            this.Column16.HeaderText = "Title";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            this.Column16.Width = 80;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "start";
+            this.Column17.FillWeight = 120F;
+            this.Column17.HeaderText = "Start Time";
+            this.Column17.Name = "Column17";
+            this.Column17.ReadOnly = true;
+            this.Column17.Width = 120;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "end";
+            this.Column18.FillWeight = 120F;
+            this.Column18.HeaderText = "End Time";
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            this.Column18.Width = 120;
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "contact";
+            this.Column19.HeaderText = "Contact";
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            // 
             // Column20
             // 
             this.Column20.DataPropertyName = "appointmentId";
+            this.Column20.FillWeight = 50F;
             this.Column20.HeaderText = "Id";
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
+            this.Column20.Width = 50;
             // 
             // Column21
             // 
@@ -708,9 +717,11 @@
             // Column24
             // 
             this.Column24.DataPropertyName = "start";
+            this.Column24.FillWeight = 120F;
             this.Column24.HeaderText = "Date";
             this.Column24.Name = "Column24";
             this.Column24.ReadOnly = true;
+            this.Column24.Width = 120;
             // 
             // Column25
             // 
@@ -755,11 +766,6 @@
         private System.Windows.Forms.RadioButton viewWeekBtn;
         private System.Windows.Forms.RadioButton viewAllBtn;
         private System.Windows.Forms.DataGridView calendarDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.Button exitBtn3;
         private System.Windows.Forms.TabPage tabAppointment;
         private System.Windows.Forms.Button deleteAppointmentBtn;
@@ -803,6 +809,11 @@
         private System.Windows.Forms.Label typeCountLabel;
         private System.Windows.Forms.Panel schedulePanel;
         private System.Windows.Forms.DataGridView scheduleDgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;

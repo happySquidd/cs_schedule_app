@@ -51,6 +51,7 @@ namespace scheduleApp
             viewAllBtn.Checked = true;
 
             // reports - month and type
+            typePanel.BringToFront();
             monthBox.BeginUpdate();
             for (int i = 0; i < 12; i++)
             {
