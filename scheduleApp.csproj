@@ -136,6 +136,7 @@
     <Compile Include="model\Appointment.cs" />
     <Compile Include="model\Calendar.cs" />
     <Compile Include="model\Customer.cs" />
+    <Compile Include="model\Reports.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserForm.cs">

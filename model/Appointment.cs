@@ -14,6 +14,7 @@ namespace scheduleApp.model
 
         public static BindingList<Appointment> allAppointments = DBconnection.GetAppointments();
         public static List<string> types = new List<string>() { "Onboarding", "Advising", "Questions", "Presentation", "Scrum"};
+        public static List<string> months = new List<string>() { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 
         public int appointmentId { get; set; }
         public int customerId { get; set; }

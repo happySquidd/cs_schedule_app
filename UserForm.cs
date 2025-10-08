@@ -17,6 +17,10 @@ namespace scheduleApp
 {
     public partial class UserForm : Form
     {
+        // lists for reports tab
+        private readonly List<string> months = Appointment.months;
+        private readonly List<string> types = Appointment.types;
+
         public UserForm()
         {
             InitializeComponent();
@@ -45,6 +49,21 @@ namespace scheduleApp
             var currentDay = DateTime.Now;
             monthCalendar.AddBoldedDate(currentDay);
             viewAllBtn.Checked = true;
+
+            // reports
+            monthBox.BeginUpdate();
+            for (int i = 0; i < 12; i++)
+            {
+                monthBox.Items.Add(months[i]);
+            }
+            monthBox.EndUpdate();
+            typeBox.BeginUpdate();
+            for (int i = 0; i < types.Count; i++)
+            {
+                typeBox.Items.Add(types[i]);
+            }
+            typeBox.EndUpdate();
+            
         }
         private void dataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -219,6 +238,42 @@ namespace scheduleApp
         {
             Customer.allCustomers = DBconnection.getCustomers();
             customersDgv.DataSource = Customer.allCustomers;
+        }
+
+        // reports tab
+        // -> report by type of appointment tab
+        private void typeReportBtn_Click(object sender, EventArgs e)
+        {
+            typePanel.BringToFront();
+            typeReportBtn.BackColor = Color.FromArgb(224, 238, 249);
+            scheduleReportBtn.BackColor = Color.Transparent;
+            customersReportBtn.BackColor = Color.Transparent;
+        }
+
+        private void scheduleReportBtn_Click(object sender, EventArgs e)
+        {
+
+            typeReportBtn.BackColor = Color.Transparent;
+            scheduleReportBtn.BackColor = Color.FromArgb(224, 238, 249);
+            customersReportBtn.BackColor = Color.Transparent;
+        }
+
+        private void customersReportBtn_Click(object sender, EventArgs e)
+        {
+
+            typeReportBtn.BackColor = Color.Transparent;
+            scheduleReportBtn.BackColor = Color.Transparent;
+            customersReportBtn.BackColor = Color.FromArgb(224, 238, 249);
+        }
+
+        private void monthBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            typeCountLabel.Text = Reports.GetMonthReport(monthBox.SelectedIndex, typeBox.Text);
+        }
+
+        private void typeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            typeCountLabel.Text = Reports.GetMonthReport(monthBox.SelectedIndex, typeBox.Text);
         }
     }
 }

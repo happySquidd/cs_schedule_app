@@ -23,7 +23,7 @@ namespace scheduleApp.model
             string endDate = ConvertDateFormat(selectedDate.AddDays(1).Date);
             // continuation of the query "WHERE userid = x AND"
             string query = $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
-            Console.WriteLine("query for day: " + query);
+            //Console.WriteLine("query for day: " + query);
             return DBconnection.GetAppointments(query);
         }
 
@@ -43,7 +43,7 @@ namespace scheduleApp.model
             string endDate = ConvertDateFormat(selectedDate.AddDays(7 - dayOfWeek).Date);
             // continuation of the query "WHERE userid = x AND"
             string query = $"AND ap.start BETWEEN '{startDate}' AND '{endDate}'";
-            Console.WriteLine("query for week: " + query);
+            //Console.WriteLine("query for week: " + query);
             return DBconnection.GetAppointments(query);
         }
 
@@ -83,7 +83,7 @@ namespace scheduleApp.model
             string queryEndDate = ConvertDateFormat(endDate.Date);
             // continuation of the query "WHERE userid = x AND"
             string query =  $"AND ap.start BETWEEN '{queryStartDate}' AND '{queryEndDate}'";
-            Console.WriteLine("query for month: " + query);
+            //Console.WriteLine("query for month: " + query);
             return DBconnection.GetAppointments(query);
         }
         
