@@ -81,6 +81,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.typeCountLabel = new System.Windows.Forms.Label();
+            this.schedulePanel = new System.Windows.Forms.Panel();
+            this.scheduleDgv = new System.Windows.Forms.DataGridView();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarDgv)).BeginInit();
             this.tabAppointment.SuspendLayout();
@@ -90,6 +98,8 @@
             this.tabReport.SuspendLayout();
             this.tabReports.SuspendLayout();
             this.typePanel.SuspendLayout();
+            this.schedulePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scheduleDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // tabCalendar
@@ -525,6 +535,7 @@
             // 
             // tabReports
             // 
+            this.tabReports.Controls.Add(this.schedulePanel);
             this.tabReports.Controls.Add(this.customersReportBtn);
             this.tabReports.Controls.Add(this.scheduleReportBtn);
             this.tabReports.Controls.Add(this.typeReportBtn);
@@ -637,6 +648,77 @@
             this.typeCountLabel.TabIndex = 5;
             this.typeCountLabel.Text = "Number of appointments for the selected month of this type:";
             // 
+            // schedulePanel
+            // 
+            this.schedulePanel.Controls.Add(this.scheduleDgv);
+            this.schedulePanel.Location = new System.Drawing.Point(41, 62);
+            this.schedulePanel.Name = "schedulePanel";
+            this.schedulePanel.Size = new System.Drawing.Size(492, 281);
+            this.schedulePanel.TabIndex = 6;
+            // 
+            // scheduleDgv
+            // 
+            this.scheduleDgv.AllowUserToAddRows = false;
+            this.scheduleDgv.AllowUserToResizeRows = false;
+            this.scheduleDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.scheduleDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column20,
+            this.Column21,
+            this.Column22,
+            this.Column23,
+            this.Column24,
+            this.Column25});
+            this.scheduleDgv.Location = new System.Drawing.Point(-1, 22);
+            this.scheduleDgv.MultiSelect = false;
+            this.scheduleDgv.Name = "scheduleDgv";
+            this.scheduleDgv.ReadOnly = true;
+            this.scheduleDgv.RowHeadersVisible = false;
+            this.scheduleDgv.Size = new System.Drawing.Size(493, 221);
+            this.scheduleDgv.TabIndex = 0;
+            this.scheduleDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
+            // 
+            // Column20
+            // 
+            this.Column20.DataPropertyName = "appointmentId";
+            this.Column20.HeaderText = "Id";
+            this.Column20.Name = "Column20";
+            this.Column20.ReadOnly = true;
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "title";
+            this.Column21.HeaderText = "Title";
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "type";
+            this.Column22.HeaderText = "Type";
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "contact";
+            this.Column23.HeaderText = "Contact";
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            // 
+            // Column24
+            // 
+            this.Column24.DataPropertyName = "start";
+            this.Column24.HeaderText = "Date";
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "phone";
+            this.Column25.HeaderText = "Phone";
+            this.Column25.Name = "Column25";
+            this.Column25.ReadOnly = true;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,6 +741,8 @@
             this.tabReports.ResumeLayout(false);
             this.typePanel.ResumeLayout(false);
             this.typePanel.PerformLayout();
+            this.schedulePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scheduleDgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -717,5 +801,13 @@
         private System.Windows.Forms.ComboBox typeBox;
         private System.Windows.Forms.ComboBox monthBox;
         private System.Windows.Forms.Label typeCountLabel;
+        private System.Windows.Forms.Panel schedulePanel;
+        private System.Windows.Forms.DataGridView scheduleDgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
     }
 }

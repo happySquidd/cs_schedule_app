@@ -50,7 +50,7 @@ namespace scheduleApp
             monthCalendar.AddBoldedDate(currentDay);
             viewAllBtn.Checked = true;
 
-            // reports
+            // reports - month and type
             monthBox.BeginUpdate();
             for (int i = 0; i < 12; i++)
             {
@@ -63,13 +63,20 @@ namespace scheduleApp
                 typeBox.Items.Add(types[i]);
             }
             typeBox.EndUpdate();
-            
+
+            // reports - appointment schedule
+            scheduleDgv.AutoGenerateColumns = false;
+            scheduleDgv.DataSource = Appointment.allAppointments;
+            scheduleDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            scheduleDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            scheduleDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = scheduleDgv.ColumnHeadersDefaultCellStyle.BackColor;
         }
         private void dataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             customersDgv.ClearSelection();
             appointmentsDgv.ClearSelection();
             calendarDgv.ClearSelection();
+            scheduleDgv.ClearSelection();
         }
 
         private void exit(object sender, EventArgs e)
@@ -250,14 +257,6 @@ namespace scheduleApp
             customersReportBtn.BackColor = Color.Transparent;
         }
 
-        private void scheduleReportBtn_Click(object sender, EventArgs e)
-        {
-
-            typeReportBtn.BackColor = Color.Transparent;
-            scheduleReportBtn.BackColor = Color.FromArgb(224, 238, 249);
-            customersReportBtn.BackColor = Color.Transparent;
-        }
-
         private void customersReportBtn_Click(object sender, EventArgs e)
         {
 
@@ -274,6 +273,15 @@ namespace scheduleApp
         private void typeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             typeCountLabel.Text = Reports.GetMonthReport(monthBox.SelectedIndex, typeBox.Text);
+        }
+
+        // -> view schedule report
+        private void scheduleReportBtn_Click(object sender, EventArgs e)
+        {
+            schedulePanel.BringToFront();
+            typeReportBtn.BackColor = Color.Transparent;
+            scheduleReportBtn.BackColor = Color.FromArgb(224, 238, 249);
+            customersReportBtn.BackColor = Color.Transparent;
         }
     }
 }
