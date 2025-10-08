@@ -71,6 +71,13 @@ namespace scheduleApp
             scheduleDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             scheduleDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             scheduleDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = scheduleDgv.ColumnHeadersDefaultCellStyle.BackColor;
+
+            // reports - customers view
+            reportCustomersDgv.AutoGenerateColumns = false;
+            reportCustomersDgv.DataSource = Customer.relatedCustomers;
+            reportCustomersDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            reportCustomersDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            reportCustomersDgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = customersDgv.ColumnHeadersDefaultCellStyle.BackColor;
         }
         private void dataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -78,6 +85,7 @@ namespace scheduleApp
             appointmentsDgv.ClearSelection();
             calendarDgv.ClearSelection();
             scheduleDgv.ClearSelection();
+            reportCustomersDgv.ClearSelection();
         }
 
         private void exit(object sender, EventArgs e)
@@ -246,6 +254,8 @@ namespace scheduleApp
         {
             Customer.allCustomers = DBconnection.getCustomers();
             customersDgv.DataSource = Customer.allCustomers;
+            Customer.relatedCustomers = DBconnection.GetRelatedCustomers();
+            reportCustomersDgv.DataSource = Customer.relatedCustomers;
         }
 
         // reports tab
@@ -256,14 +266,6 @@ namespace scheduleApp
             typeReportBtn.BackColor = Color.FromArgb(224, 238, 249);
             scheduleReportBtn.BackColor = Color.Transparent;
             customersReportBtn.BackColor = Color.Transparent;
-        }
-
-        private void customersReportBtn_Click(object sender, EventArgs e)
-        {
-
-            typeReportBtn.BackColor = Color.Transparent;
-            scheduleReportBtn.BackColor = Color.Transparent;
-            customersReportBtn.BackColor = Color.FromArgb(224, 238, 249);
         }
 
         private void monthBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -283,6 +285,16 @@ namespace scheduleApp
             typeReportBtn.BackColor = Color.Transparent;
             scheduleReportBtn.BackColor = Color.FromArgb(224, 238, 249);
             customersReportBtn.BackColor = Color.Transparent;
+        }
+
+        // -> view related customers
+        private void customersReportBtn_Click(object sender, EventArgs e)
+        {
+            customersPanel.BringToFront();
+            reportNumCustomersLabel.Text = Reports.GetNumberCustomers();
+            typeReportBtn.BackColor = Color.Transparent;
+            scheduleReportBtn.BackColor = Color.Transparent;
+            customersReportBtn.BackColor = Color.FromArgb(224, 238, 249);
         }
     }
 }

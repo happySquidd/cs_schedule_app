@@ -35,6 +35,11 @@
             this.viewWeekBtn = new System.Windows.Forms.RadioButton();
             this.viewAllBtn = new System.Windows.Forms.RadioButton();
             this.calendarDgv = new System.Windows.Forms.DataGridView();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exitBtn3 = new System.Windows.Forms.Button();
             this.tabAppointment = new System.Windows.Forms.TabPage();
             this.deleteAppointmentBtn = new System.Windows.Forms.Button();
@@ -66,29 +71,33 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabReport = new System.Windows.Forms.TabControl();
             this.tabReports = new System.Windows.Forms.TabPage();
-            this.customersReportBtn = new System.Windows.Forms.Button();
-            this.scheduleReportBtn = new System.Windows.Forms.Button();
-            this.typeReportBtn = new System.Windows.Forms.Button();
-            this.typePanel = new System.Windows.Forms.Panel();
-            this.logoutBtn = new System.Windows.Forms.Button();
-            this.monthBox = new System.Windows.Forms.ComboBox();
-            this.typeBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.typeCountLabel = new System.Windows.Forms.Label();
+            this.customersPanel = new System.Windows.Forms.Panel();
+            this.reportCustomersDgv = new System.Windows.Forms.DataGridView();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schedulePanel = new System.Windows.Forms.Panel();
             this.scheduleDgv = new System.Windows.Forms.DataGridView();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customersReportBtn = new System.Windows.Forms.Button();
+            this.scheduleReportBtn = new System.Windows.Forms.Button();
+            this.typeReportBtn = new System.Windows.Forms.Button();
+            this.typePanel = new System.Windows.Forms.Panel();
+            this.typeCountLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.typeBox = new System.Windows.Forms.ComboBox();
+            this.monthBox = new System.Windows.Forms.ComboBox();
+            this.logoutBtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.reportNumCustomersLabel = new System.Windows.Forms.Label();
             this.tabCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarDgv)).BeginInit();
             this.tabAppointment.SuspendLayout();
@@ -97,9 +106,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersDgv)).BeginInit();
             this.tabReport.SuspendLayout();
             this.tabReports.SuspendLayout();
-            this.typePanel.SuspendLayout();
+            this.customersPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reportCustomersDgv)).BeginInit();
             this.schedulePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scheduleDgv)).BeginInit();
+            this.typePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCalendar
@@ -193,6 +204,49 @@
             this.calendarDgv.Size = new System.Drawing.Size(491, 139);
             this.calendarDgv.TabIndex = 8;
             this.calendarDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "appointmentId";
+            this.Column15.FillWeight = 50F;
+            this.Column15.HeaderText = "ID";
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            this.Column15.Width = 50;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "title";
+            this.Column16.FillWeight = 80F;
+            this.Column16.HeaderText = "Title";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            this.Column16.Width = 80;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "start";
+            this.Column17.FillWeight = 120F;
+            this.Column17.HeaderText = "Start Time";
+            this.Column17.Name = "Column17";
+            this.Column17.ReadOnly = true;
+            this.Column17.Width = 120;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "end";
+            this.Column18.FillWeight = 120F;
+            this.Column18.HeaderText = "End Time";
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            this.Column18.Width = 120;
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "contact";
+            this.Column19.HeaderText = "Contact";
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
             // 
             // exitBtn3
             // 
@@ -498,6 +552,7 @@
             // 
             // tabReports
             // 
+            this.tabReports.Controls.Add(this.customersPanel);
             this.tabReports.Controls.Add(this.schedulePanel);
             this.tabReports.Controls.Add(this.customersReportBtn);
             this.tabReports.Controls.Add(this.scheduleReportBtn);
@@ -511,105 +566,71 @@
             this.tabReports.Text = "Reports";
             this.tabReports.UseVisualStyleBackColor = true;
             // 
-            // customersReportBtn
+            // customersPanel
             // 
-            this.customersReportBtn.Location = new System.Drawing.Point(367, 22);
-            this.customersReportBtn.Name = "customersReportBtn";
-            this.customersReportBtn.Size = new System.Drawing.Size(164, 34);
-            this.customersReportBtn.TabIndex = 10;
-            this.customersReportBtn.Text = "View customers";
-            this.customersReportBtn.UseVisualStyleBackColor = true;
-            this.customersReportBtn.Click += new System.EventHandler(this.customersReportBtn_Click);
+            this.customersPanel.Controls.Add(this.reportNumCustomersLabel);
+            this.customersPanel.Controls.Add(this.label5);
+            this.customersPanel.Controls.Add(this.reportCustomersDgv);
+            this.customersPanel.Location = new System.Drawing.Point(41, 62);
+            this.customersPanel.Name = "customersPanel";
+            this.customersPanel.Size = new System.Drawing.Size(492, 281);
+            this.customersPanel.TabIndex = 11;
             // 
-            // scheduleReportBtn
+            // reportCustomersDgv
             // 
-            this.scheduleReportBtn.Location = new System.Drawing.Point(204, 22);
-            this.scheduleReportBtn.Name = "scheduleReportBtn";
-            this.scheduleReportBtn.Size = new System.Drawing.Size(164, 34);
-            this.scheduleReportBtn.TabIndex = 9;
-            this.scheduleReportBtn.Text = "View schedule";
-            this.scheduleReportBtn.UseVisualStyleBackColor = true;
-            this.scheduleReportBtn.Click += new System.EventHandler(this.scheduleReportBtn_Click);
+            this.reportCustomersDgv.AllowUserToAddRows = false;
+            this.reportCustomersDgv.AllowUserToResizeRows = false;
+            this.reportCustomersDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.reportCustomersDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column26,
+            this.Column27,
+            this.Column28,
+            this.Column29,
+            this.Column30});
+            this.reportCustomersDgv.EnableHeadersVisualStyles = false;
+            this.reportCustomersDgv.Location = new System.Drawing.Point(0, 48);
+            this.reportCustomersDgv.MultiSelect = false;
+            this.reportCustomersDgv.Name = "reportCustomersDgv";
+            this.reportCustomersDgv.ReadOnly = true;
+            this.reportCustomersDgv.RowHeadersVisible = false;
+            this.reportCustomersDgv.Size = new System.Drawing.Size(492, 158);
+            this.reportCustomersDgv.TabIndex = 0;
+            this.reportCustomersDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
             // 
-            // typeReportBtn
+            // Column26
             // 
-            this.typeReportBtn.BackColor = System.Drawing.Color.Transparent;
-            this.typeReportBtn.Location = new System.Drawing.Point(41, 22);
-            this.typeReportBtn.Name = "typeReportBtn";
-            this.typeReportBtn.Size = new System.Drawing.Size(164, 34);
-            this.typeReportBtn.TabIndex = 8;
-            this.typeReportBtn.Text = "View by type";
-            this.typeReportBtn.UseVisualStyleBackColor = false;
-            this.typeReportBtn.Click += new System.EventHandler(this.typeReportBtn_Click);
+            this.Column26.DataPropertyName = "customerName";
+            this.Column26.HeaderText = "Name";
+            this.Column26.Name = "Column26";
+            this.Column26.ReadOnly = true;
             // 
-            // typePanel
+            // Column27
             // 
-            this.typePanel.Controls.Add(this.typeCountLabel);
-            this.typePanel.Controls.Add(this.label4);
-            this.typePanel.Controls.Add(this.label3);
-            this.typePanel.Controls.Add(this.typeBox);
-            this.typePanel.Controls.Add(this.monthBox);
-            this.typePanel.Location = new System.Drawing.Point(41, 62);
-            this.typePanel.Name = "typePanel";
-            this.typePanel.Size = new System.Drawing.Size(492, 281);
-            this.typePanel.TabIndex = 7;
+            this.Column27.DataPropertyName = "phone";
+            this.Column27.HeaderText = "Phone";
+            this.Column27.Name = "Column27";
+            this.Column27.ReadOnly = true;
             // 
-            // logoutBtn
+            // Column28
             // 
-            this.logoutBtn.Location = new System.Drawing.Point(455, 370);
-            this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(77, 31);
-            this.logoutBtn.TabIndex = 6;
-            this.logoutBtn.Text = "Log out";
-            this.logoutBtn.UseVisualStyleBackColor = true;
-            this.logoutBtn.Click += new System.EventHandler(this.exit);
+            this.Column28.DataPropertyName = "address";
+            this.Column28.HeaderText = "Address";
+            this.Column28.Name = "Column28";
+            this.Column28.ReadOnly = true;
             // 
-            // monthBox
+            // Column29
             // 
-            this.monthBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.monthBox.FormattingEnabled = true;
-            this.monthBox.Location = new System.Drawing.Point(88, 85);
-            this.monthBox.Name = "monthBox";
-            this.monthBox.Size = new System.Drawing.Size(121, 24);
-            this.monthBox.TabIndex = 1;
-            this.monthBox.SelectedIndexChanged += new System.EventHandler(this.monthBox_SelectedIndexChanged);
+            this.Column29.DataPropertyName = "country";
+            this.Column29.HeaderText = "Country";
+            this.Column29.Name = "Column29";
+            this.Column29.ReadOnly = true;
             // 
-            // typeBox
+            // Column30
             // 
-            this.typeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.typeBox.FormattingEnabled = true;
-            this.typeBox.Location = new System.Drawing.Point(303, 85);
-            this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(121, 24);
-            this.typeBox.TabIndex = 2;
-            this.typeBox.SelectedIndexChanged += new System.EventHandler(this.typeBox_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Month:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(255, 88);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Type:";
-            // 
-            // typeCountLabel
-            // 
-            this.typeCountLabel.AutoSize = true;
-            this.typeCountLabel.Location = new System.Drawing.Point(36, 48);
-            this.typeCountLabel.Name = "typeCountLabel";
-            this.typeCountLabel.Size = new System.Drawing.Size(355, 16);
-            this.typeCountLabel.TabIndex = 5;
-            this.typeCountLabel.Text = "Number of appointments for the selected month of this type:";
+            this.Column30.DataPropertyName = "city";
+            this.Column30.HeaderText = "City";
+            this.Column30.Name = "Column30";
+            this.Column30.ReadOnly = true;
             // 
             // schedulePanel
             // 
@@ -640,49 +661,6 @@
             this.scheduleDgv.Size = new System.Drawing.Size(493, 221);
             this.scheduleDgv.TabIndex = 0;
             this.scheduleDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataBindingComplete);
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "appointmentId";
-            this.Column15.FillWeight = 50F;
-            this.Column15.HeaderText = "ID";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Width = 50;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "title";
-            this.Column16.FillWeight = 80F;
-            this.Column16.HeaderText = "Title";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            this.Column16.Width = 80;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "start";
-            this.Column17.FillWeight = 120F;
-            this.Column17.HeaderText = "Start Time";
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            this.Column17.Width = 120;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "end";
-            this.Column18.FillWeight = 120F;
-            this.Column18.HeaderText = "End Time";
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            this.Column18.Width = 120;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "contact";
-            this.Column19.HeaderText = "Contact";
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
             // 
             // Column20
             // 
@@ -730,6 +708,124 @@
             this.Column25.Name = "Column25";
             this.Column25.ReadOnly = true;
             // 
+            // customersReportBtn
+            // 
+            this.customersReportBtn.Location = new System.Drawing.Point(367, 22);
+            this.customersReportBtn.Name = "customersReportBtn";
+            this.customersReportBtn.Size = new System.Drawing.Size(164, 34);
+            this.customersReportBtn.TabIndex = 10;
+            this.customersReportBtn.Text = "View customers";
+            this.customersReportBtn.UseVisualStyleBackColor = true;
+            this.customersReportBtn.Click += new System.EventHandler(this.customersReportBtn_Click);
+            // 
+            // scheduleReportBtn
+            // 
+            this.scheduleReportBtn.Location = new System.Drawing.Point(204, 22);
+            this.scheduleReportBtn.Name = "scheduleReportBtn";
+            this.scheduleReportBtn.Size = new System.Drawing.Size(164, 34);
+            this.scheduleReportBtn.TabIndex = 9;
+            this.scheduleReportBtn.Text = "View schedule";
+            this.scheduleReportBtn.UseVisualStyleBackColor = true;
+            this.scheduleReportBtn.Click += new System.EventHandler(this.scheduleReportBtn_Click);
+            // 
+            // typeReportBtn
+            // 
+            this.typeReportBtn.BackColor = System.Drawing.Color.Transparent;
+            this.typeReportBtn.Location = new System.Drawing.Point(41, 22);
+            this.typeReportBtn.Name = "typeReportBtn";
+            this.typeReportBtn.Size = new System.Drawing.Size(164, 34);
+            this.typeReportBtn.TabIndex = 8;
+            this.typeReportBtn.Text = "View by type";
+            this.typeReportBtn.UseVisualStyleBackColor = false;
+            this.typeReportBtn.Click += new System.EventHandler(this.typeReportBtn_Click);
+            // 
+            // typePanel
+            // 
+            this.typePanel.Controls.Add(this.typeCountLabel);
+            this.typePanel.Controls.Add(this.label4);
+            this.typePanel.Controls.Add(this.label3);
+            this.typePanel.Controls.Add(this.typeBox);
+            this.typePanel.Controls.Add(this.monthBox);
+            this.typePanel.Location = new System.Drawing.Point(41, 62);
+            this.typePanel.Name = "typePanel";
+            this.typePanel.Size = new System.Drawing.Size(492, 281);
+            this.typePanel.TabIndex = 7;
+            // 
+            // typeCountLabel
+            // 
+            this.typeCountLabel.AutoSize = true;
+            this.typeCountLabel.Location = new System.Drawing.Point(36, 48);
+            this.typeCountLabel.Name = "typeCountLabel";
+            this.typeCountLabel.Size = new System.Drawing.Size(355, 16);
+            this.typeCountLabel.TabIndex = 5;
+            this.typeCountLabel.Text = "Number of appointments for the selected month of this type:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(255, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 16);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Type:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(36, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Month:";
+            // 
+            // typeBox
+            // 
+            this.typeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.Location = new System.Drawing.Point(303, 85);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(121, 24);
+            this.typeBox.TabIndex = 2;
+            this.typeBox.SelectedIndexChanged += new System.EventHandler(this.typeBox_SelectedIndexChanged);
+            // 
+            // monthBox
+            // 
+            this.monthBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monthBox.FormattingEnabled = true;
+            this.monthBox.Location = new System.Drawing.Point(88, 85);
+            this.monthBox.Name = "monthBox";
+            this.monthBox.Size = new System.Drawing.Size(121, 24);
+            this.monthBox.TabIndex = 1;
+            this.monthBox.SelectedIndexChanged += new System.EventHandler(this.monthBox_SelectedIndexChanged);
+            // 
+            // logoutBtn
+            // 
+            this.logoutBtn.Location = new System.Drawing.Point(455, 370);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(77, 31);
+            this.logoutBtn.TabIndex = 6;
+            this.logoutBtn.Text = "Log out";
+            this.logoutBtn.UseVisualStyleBackColor = true;
+            this.logoutBtn.Click += new System.EventHandler(this.exit);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(249, 16);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Customers that I have appointments with: ";
+            // 
+            // reportNumCustomersLabel
+            // 
+            this.reportNumCustomersLabel.AutoSize = true;
+            this.reportNumCustomersLabel.Location = new System.Drawing.Point(246, 22);
+            this.reportNumCustomersLabel.Name = "reportNumCustomersLabel";
+            this.reportNumCustomersLabel.Size = new System.Drawing.Size(14, 16);
+            this.reportNumCustomersLabel.TabIndex = 2;
+            this.reportNumCustomersLabel.Text = "0";
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -750,10 +846,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersDgv)).EndInit();
             this.tabReport.ResumeLayout(false);
             this.tabReports.ResumeLayout(false);
-            this.typePanel.ResumeLayout(false);
-            this.typePanel.PerformLayout();
+            this.customersPanel.ResumeLayout(false);
+            this.customersPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reportCustomersDgv)).EndInit();
             this.schedulePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scheduleDgv)).EndInit();
+            this.typePanel.ResumeLayout(false);
+            this.typePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -820,5 +919,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
+        private System.Windows.Forms.Panel customersPanel;
+        private System.Windows.Forms.DataGridView reportCustomersDgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label reportNumCustomersLabel;
     }
 }

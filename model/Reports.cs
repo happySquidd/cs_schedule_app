@@ -36,5 +36,15 @@ namespace scheduleApp.model
             }
             return title + total.ToString();
         }
+
+        public static string GetNumberCustomers()
+        {
+            int number = 0;
+            foreach (Customer customer in Customer.relatedCustomers)
+            {
+                number++;
+            }
+            return number.ToString();
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace scheduleApp.model
         // note - all times are converted to local time when retrieved from the database
 
         public static BindingList<Customer> allCustomers = DBconnection.getCustomers();
+        public static BindingList<Customer> relatedCustomers = DBconnection.GetRelatedCustomers();
 
         // customer info
         public int customerId { get; set; }

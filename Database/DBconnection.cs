@@ -119,6 +119,72 @@ namespace scheduleApp.Database
             return customers;
         }
 
+        public static BindingList<Customer> GetRelatedCustomers()
+        {
+            BindingList<Customer> relatedCustomers = new BindingList<Customer>();
+            
+            string query =
+                $"SELECT DISTINCT cu.customerId, cu.customerName, cu.addressId, cu.active, cu.createDate AS cuCreateDate, cu.createdBy AS cuCreatedBy, cu.lastUpdate AS cuLastUpdate, cu.lastUpdateBy AS cuLastUpdateBy, " +
+                $"ad.address, ad.address2, ad.cityId, ad.postalCode, ad.phone, ad.createDate AS adCreateDate, ad.createdBy AS adCreatedBy, ad.lastUpdate AS adLastUpdate, ad.lastUpdateBy AS adLastUpdateBy, " +
+                $"ci.city, ci.countryId, ci.createDate AS ciCreateDate, ci.createdBy AS ciCreatedBy, ci.lastUpdate AS ciLastUpdate, ci.lastUpdateBy AS ciLastUpdateBy, " +
+                $"cy.country, cy.createDate AS cyCreateDate, cy.createdBy AS cyCreatedBy, cy.lastUpdate AS cyLastUpdate, cy.lastUpdateBy AS cyLastUpdateBy " +
+                $"FROM user " +
+                $"INNER JOIN appointment ap ON user.userId = ap.userId " +
+                $"INNER JOIN customer cu ON ap.customerId = cu.customerId " +
+                $"INNER JOIN address ad ON cu.addressId = ad.addressId " +
+                $"INNER JOIN city ci ON ad.cityId = ci.cityId " +
+                $"INNER JOIN country cy ON ci.countryId = cy.countryId " +
+                $"WHERE user.userId = '{Form1.userId}'";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection))
+            {
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Customer customer = new Customer()
+                    {
+                        customerId = Convert.ToInt32(reader["customerId"]),
+                        customerName = Convert.ToString(reader["customerName"]),
+                        addressId = Convert.ToInt32(reader["addressId"]),
+                        active = Convert.ToInt32(reader["active"]),
+                        createdDate = ConvertDataReaderToLocalDate(reader["cuCreateDate"]),
+                        createdBy = Convert.ToString(reader["cuCreatedBy"]),
+                        lastUpdated = ConvertDataReaderToLocalDate(reader["cuLastUpdate"]),
+                        lastUpdatedBy = Convert.ToString(reader["cuLastUpdateBy"]),
+
+                        // address
+                        address = Convert.ToString(reader["address"]),
+                        address2 = Convert.ToString(reader["address2"]),
+                        cityId = Convert.ToInt32(reader["cityId"]),
+                        postalCode = Convert.ToString(reader["postalCode"]),
+                        phone = Convert.ToString(reader["phone"]),
+                        addressCreatedDate = ConvertDataReaderToLocalDate(reader["adCreateDate"]),
+                        addressCreatedBy = Convert.ToString(reader["adCreatedBy"]),
+                        addressLastUpdated = ConvertDataReaderToLocalDate(reader["adLastUpdate"]),
+                        addressLastUpdatedBy = Convert.ToString(reader["adLastUpdateBy"]),
+
+                        // city
+                        city = Convert.ToString(reader["city"]),
+                        countryId = Convert.ToInt32(reader["countryId"]),
+                        cityCreatedDate = ConvertDataReaderToLocalDate(reader["ciCreateDate"]),
+                        cityCreatedBy = Convert.ToString(reader["ciCreatedBy"]),
+                        cityLastUpdatedDate = ConvertDataReaderToLocalDate(reader["ciLastUpdate"]),
+                        cityLastUpdatedBy = Convert.ToString(reader["ciLastUpdateBy"]),
+
+                        // country 
+                        country = Convert.ToString(reader["country"]),
+                        countryCreatedDate = ConvertDataReaderToLocalDate(reader["cyCreateDate"]),
+                        countryCreatedBy = Convert.ToString(reader["cyCreatedBy"]),
+                        countryLastUpdatedDate = ConvertDataReaderToLocalDate(reader["cyLastUpdate"]),
+                        countryLastUpdatedBy = Convert.ToString(reader["cyLastUpdateBy"])
+                    };
+                    relatedCustomers.Add(customer);
+                }
+                reader.Close();
+            }
+            return relatedCustomers;
+        }
+
         public static BindingList<Appointment> GetAppointments(string query = "none")
         {
             BindingList<Appointment> appointments = new BindingList<Appointment>();
@@ -329,7 +395,6 @@ namespace scheduleApp.Database
 
         }
 
-        // TODO: test edge cases and see if the tables are being updated correctly
         public static bool UpdateCustomer(int customerId, string country, string city, string address, string address2, string postal, string phone, string name)
         {
             string query =
@@ -397,7 +462,6 @@ namespace scheduleApp.Database
             }
         }
 
-        // TODO: check if appointment overlaps on creation and modification
         // Appointment handling functions
         public static bool CreateAppointment(int customerId, string title, string description, string location,
             string contact, string type, string url, DateTime startTime, DateTime endTime)
@@ -444,7 +508,6 @@ namespace scheduleApp.Database
 
         }
 
-        // TODO: see if appointment overlaps
         public static bool UpdateAppointment(int appointmentId, string title, string description, string location,
             string contact, string type, string url, DateTime startTime, DateTime endTime)
         {
