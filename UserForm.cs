@@ -249,6 +249,7 @@ namespace scheduleApp
             Appointment.allAppointments = DBconnection.GetAppointments();
             appointmentsDgv.DataSource = Appointment.allAppointments;
             calendarDgv.DataSource = Appointment.allAppointments;
+            scheduleDgv.DataSource = Appointment.allAppointments;
         }
         private void UpdateCustomersDgv()
         {
