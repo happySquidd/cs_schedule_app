@@ -72,6 +72,8 @@
             this.tabReport = new System.Windows.Forms.TabControl();
             this.tabReports = new System.Windows.Forms.TabPage();
             this.customersPanel = new System.Windows.Forms.Panel();
+            this.reportNumCustomersLabel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.reportCustomersDgv = new System.Windows.Forms.DataGridView();
             this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,8 +98,6 @@
             this.typeBox = new System.Windows.Forms.ComboBox();
             this.monthBox = new System.Windows.Forms.ComboBox();
             this.logoutBtn = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.reportNumCustomersLabel = new System.Windows.Forms.Label();
             this.tabCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarDgv)).BeginInit();
             this.tabAppointment.SuspendLayout();
@@ -187,6 +187,7 @@
             // calendarDgv
             // 
             this.calendarDgv.AllowUserToAddRows = false;
+            this.calendarDgv.AllowUserToDeleteRows = false;
             this.calendarDgv.AllowUserToResizeRows = false;
             this.calendarDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.calendarDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -317,6 +318,7 @@
             // appointmentsDgv
             // 
             this.appointmentsDgv.AllowUserToAddRows = false;
+            this.appointmentsDgv.AllowUserToDeleteRows = false;
             this.appointmentsDgv.AllowUserToResizeRows = false;
             this.appointmentsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.appointmentsDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -476,6 +478,7 @@
             // customersDgv
             // 
             this.customersDgv.AllowUserToAddRows = false;
+            this.customersDgv.AllowUserToDeleteRows = false;
             this.customersDgv.AllowUserToResizeRows = false;
             this.customersDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customersDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -576,9 +579,28 @@
             this.customersPanel.Size = new System.Drawing.Size(492, 281);
             this.customersPanel.TabIndex = 11;
             // 
+            // reportNumCustomersLabel
+            // 
+            this.reportNumCustomersLabel.AutoSize = true;
+            this.reportNumCustomersLabel.Location = new System.Drawing.Point(246, 22);
+            this.reportNumCustomersLabel.Name = "reportNumCustomersLabel";
+            this.reportNumCustomersLabel.Size = new System.Drawing.Size(14, 16);
+            this.reportNumCustomersLabel.TabIndex = 2;
+            this.reportNumCustomersLabel.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(249, 16);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Customers that I have appointments with: ";
+            // 
             // reportCustomersDgv
             // 
             this.reportCustomersDgv.AllowUserToAddRows = false;
+            this.reportCustomersDgv.AllowUserToDeleteRows = false;
             this.reportCustomersDgv.AllowUserToResizeRows = false;
             this.reportCustomersDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.reportCustomersDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -643,6 +665,7 @@
             // scheduleDgv
             // 
             this.scheduleDgv.AllowUserToAddRows = false;
+            this.scheduleDgv.AllowUserToDeleteRows = false;
             this.scheduleDgv.AllowUserToResizeRows = false;
             this.scheduleDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.scheduleDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -807,24 +830,6 @@
             this.logoutBtn.Text = "Log out";
             this.logoutBtn.UseVisualStyleBackColor = true;
             this.logoutBtn.Click += new System.EventHandler(this.exit);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(249, 16);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Customers that I have appointments with: ";
-            // 
-            // reportNumCustomersLabel
-            // 
-            this.reportNumCustomersLabel.AutoSize = true;
-            this.reportNumCustomersLabel.Location = new System.Drawing.Point(246, 22);
-            this.reportNumCustomersLabel.Name = "reportNumCustomersLabel";
-            this.reportNumCustomersLabel.Size = new System.Drawing.Size(14, 16);
-            this.reportNumCustomersLabel.TabIndex = 2;
-            this.reportNumCustomersLabel.Text = "0";
             // 
             // UserForm
             // 
