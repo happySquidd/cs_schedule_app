@@ -198,7 +198,7 @@ namespace scheduleApp.AppointmentForms
             if (estStart.TimeOfDay < am.TimeOfDay || estStart.TimeOfDay >= pm.TimeOfDay || 
                 estEnd.TimeOfDay < am.TimeOfDay || estEnd.TimeOfDay > pm.TimeOfDay)
             {
-                MessageBox.Show("Business hours are between 9:00am. and 5:00pm. EST, \nPlease adjust your time");
+                MessageBox.Show("Business hours are between 9:00am. and 5:00pm. EST, \nPlease adjust your time (local time may vary)");
                 return;
             }
 

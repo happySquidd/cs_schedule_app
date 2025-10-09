@@ -270,12 +270,14 @@ namespace scheduleApp
 
         private void monthBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            typeCountLabel.Text = Reports.GetMonthReport(monthBox.SelectedIndex, typeBox.Text);
+            // call to a lambda
+            typeCountLabel.Text = Reports.getMonthReport(monthBox.SelectedIndex, typeBox.Text);
         }
 
         private void typeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            typeCountLabel.Text = Reports.GetMonthReport(monthBox.SelectedIndex, typeBox.Text);
+            // call to a lambda
+            typeCountLabel.Text = Reports.getMonthReport(monthBox.SelectedIndex, typeBox.Text);
         }
 
         // -> view schedule report
@@ -291,7 +293,19 @@ namespace scheduleApp
         private void customersReportBtn_Click(object sender, EventArgs e)
         {
             customersPanel.BringToFront();
-            reportNumCustomersLabel.Text = Reports.GetNumberCustomers();
+
+            // lambda assigned to Action delegate, counts the number of customers assigned to a user, sets the text box to the amount, returns nothing
+            Action GetCustomersNumber = () =>
+            {
+                int number = 0;
+                foreach (Customer customer in Customer.relatedCustomers)
+                {
+                    number++;
+                }
+                reportNumCustomersLabel.Text = number.ToString();
+            };
+            GetCustomersNumber();
+
             typeReportBtn.BackColor = Color.Transparent;
             scheduleReportBtn.BackColor = Color.Transparent;
             customersReportBtn.BackColor = Color.FromArgb(224, 238, 249);

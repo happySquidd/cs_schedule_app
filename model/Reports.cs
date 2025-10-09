@@ -8,11 +8,11 @@ namespace scheduleApp.model
 {
     internal class Reports
     {
-        public static string GetMonthReport(int monthIdx, string type)
+        // lambda that is assigned to a Func delegate, taking in int of month index and a string of type, outputting a string
+        // this lambda will output a string which will calculate the amount of appointments of a single type a user has in a specific month
+        public static Func<int, string, string> getMonthReport = (monthIdx, type) =>
         {
-            // uncomment returnText to see appointment names, and also switch to rich text box for output
             string title = "Number of appointments for the selected month of this type: ";
-            //string returnText = "";
             int total = 0;
 
 
@@ -24,27 +24,17 @@ namespace scheduleApp.model
             foreach (Appointment appointment in Appointment.allAppointments)
             {
                 int appMonth = Convert.ToDateTime(appointment.start).Month;
-                if ((monthIdx+1) == appMonth)
+                if ((monthIdx + 1) == appMonth)
                 {
                     // month matches, check if type matches
                     if (type == appointment.type)
                     {
-                        //returnText += appointment.title + "\n";
                         total++;
                     }
                 }
             }
             return title + total.ToString();
-        }
+        };
 
-        public static string GetNumberCustomers()
-        {
-            int number = 0;
-            foreach (Customer customer in Customer.relatedCustomers)
-            {
-                number++;
-            }
-            return number.ToString();
-        }
     }
 }
