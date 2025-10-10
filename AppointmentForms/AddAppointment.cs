@@ -214,7 +214,7 @@ namespace scheduleApp.AppointmentForms
             int customerId = Convert.ToInt32(customerString[0]);
 
             // create the appointment
-            bool add = DBconnection.CreateAppointment(customerId, titleBox.Text, descriptionBox.Text, locationBox.Text, contactBox.Text, typeBox.Text, urlBox.Text, Convert.ToDateTime(startTimeBox.Text), Convert.ToDateTime(endTimeBox.Text));
+            bool add = DBconnection.CreateAppointment(customerId, titleBox.Text.Trim(), descriptionBox.Text.Trim(), locationBox.Text.Trim(), contactBox.Text.Trim(), typeBox.Text.Trim(), urlBox.Text.Trim(), Convert.ToDateTime(startTimeBox.Text), Convert.ToDateTime(endTimeBox.Text));
             if (!add)
             {
                 MessageBox.Show("There was a problem inserting into\nthe database, please check your fields");

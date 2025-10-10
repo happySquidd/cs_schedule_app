@@ -218,7 +218,7 @@ namespace scheduleApp.AppointmentForms
             // get appointment id
             int appId = Convert.ToInt32(idBox.Text);
             // pass the data to update row
-            bool modify = DBconnection.UpdateAppointment(appId, titleBox.Text, descriptionBox.Text, locationBox.Text, contactBox.Text, typeBox.Text, urlBox.Text, startTimeBox.Value, endTimeBox.Value);
+            bool modify = DBconnection.UpdateAppointment(appId, titleBox.Text.Trim(), descriptionBox.Text.Trim(), locationBox.Text.Trim(), contactBox.Text.Trim(), typeBox.Text.Trim(), urlBox.Text.Trim(), startTimeBox.Value, endTimeBox.Value);
             if (!modify)
             {
                 MessageBox.Show("There was an error updating this appointment,\nPlease check your boxes and try again");

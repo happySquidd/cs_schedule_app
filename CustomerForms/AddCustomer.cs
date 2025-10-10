@@ -160,7 +160,7 @@ namespace scheduleApp
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (!DBconnection.AddCustomer(nameBox.Text, addressBox.Text, address2Box.Text, postalBox.Text, phoneBox.Text, cityBox.Text, countryBox.Text))
+            if (!DBconnection.AddCustomer(nameBox.Text.Trim(), addressBox.Text.Trim(), address2Box.Text.Trim(), postalBox.Text.Trim(), phoneBox.Text.Trim(), cityBox.Text.Trim(), countryBox.Text.Trim()))
             {
                 Console.WriteLine("add customer function crash from main");
             }

@@ -171,7 +171,7 @@ namespace scheduleApp.CustomerForms
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (DBconnection.UpdateCustomer(Convert.ToInt32(idBox.Text), countryBox.Text, cityBox.Text, addressBox.Text, address2Box.Text, postalBox.Text, phoneBox.Text, nameBox.Text))
+            if (DBconnection.UpdateCustomer(Convert.ToInt32(idBox.Text), countryBox.Text.Trim(), cityBox.Text.Trim(), addressBox.Text.Trim(), address2Box.Text.Trim(), postalBox.Text.Trim(), phoneBox.Text.Trim(), nameBox.Text.Trim()))
             {
                 Console.WriteLine("update customer success");
                 DialogResult = DialogResult.OK;
